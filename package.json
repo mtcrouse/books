@@ -1,0 +1,22 @@
+{
+  "name": "books",
+  "version": "1.0.0",
+  "description": "book tracker",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtcrouse/books.git"
+  },
+  "keywords": [
+    "books"
+  ],
+  "author": "Metta Crouse <mettacrouse@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mtcrouse/books/issues"
+  },
+  "homepage": "https://github.com/mtcrouse/books#readme"
+}
