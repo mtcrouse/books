@@ -16,6 +16,30 @@ exports.seed = function(knex) {
         publication_year: 1998,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 2,
+        title: 'The Secret History',
+        subtitle: null,
+        author: 'Donna Tartt',
+        genre: '',
+        language: 'English',
+        original_language: 'English',
+        publication_year: 1992,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 3,
+        title: 'The Sun Also Rises',
+        subtitle: null,
+        author: 'Ernest Hemingway',
+        genre: '',
+        language: 'English',
+        original_language: 'English',
+        publication_year: 1926,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
       }]);
     })
     .then(() => {
