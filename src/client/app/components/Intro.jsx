@@ -10,19 +10,19 @@ class Intro extends React.Component {
 
   signedIn() {
     if (this.props.isLoggedIn === true) {
-      return <Link to='/profile'><li>Profile</li></Link>
+      return <Redirect to="/profile" />
     } else {
-      return <Link to='/signin'><li>Sign In</li></Link>
+      return <Link to='/signin'><p class="link-option">Sign In</p></Link>
     }
   }
 
   render() {
     return (
       <div>
-        <h1>Welcome!</h1>
-        <ul id="link-options">
+        <h1 id="welcome">Welcome!</h1>
+        <div id="below-welcome">
           <this.signedIn />
-        </ul>
+        </div>
       </div>
     );
   }
