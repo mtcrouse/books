@@ -5,6 +5,15 @@ class Intro extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.signedIn = this.signedIn.bind(this);
+  }
+
+  signedIn() {
+    if (this.props.isLoggedIn === true) {
+      return <Link to='/profile'><li>Profile</li></Link>
+    } else {
+      return <Link to='/signin'><li>Sign In</li></Link>
+    }
   }
 
   render() {
@@ -12,8 +21,7 @@ class Intro extends React.Component {
       <div>
         <h1>Welcome!</h1>
         <ul id="link-options">
-          <Link to='/profile'><li>Profile</li></Link>
-          <Link to='/signin'><li>Sign In</li></Link>
+          <this.signedIn />
         </ul>
       </div>
     );

@@ -7,8 +7,8 @@ import NotFound from './NotFound.jsx';
 import axios from 'axios';
 
 class Main extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { isLoggedIn: false };
 
     this.componentDidMount = this.componentDidMount.bind(this);
@@ -18,7 +18,6 @@ class Main extends React.Component {
     axios.get('/token')
       .then(res => {
         let isLoggedIn = res.data;
-        console.log(isLoggedIn);
         if (isLoggedIn) {
           this.setState({ isLoggedIn: true });
         } else {

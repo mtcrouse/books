@@ -11,12 +11,7 @@ class Footer extends React.Component {
   render() {
     return (
       <footer id="footer">
-        &copy; Book Tracker
-        <ul>
-          <Link to="/"><li>Home</li></Link>
-          <Link to="/signin"><li>Sign In</li></Link>
-          <Link to="/profile"><li>Profile</li></Link>
-        </ul>
+        <Link to="/">&copy; Book Tracker</Link>
       </footer>
     );
   }
