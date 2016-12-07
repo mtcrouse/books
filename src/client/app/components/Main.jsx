@@ -10,21 +10,23 @@ class Main extends React.Component {
   constructor() {
     super();
     this.state = { isLoggedIn: false };
+
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
-  handleClick() {
-    axios.get('/users')
+  componentDidMount() {
+    axios.get('/token')
       .then(res => {
-        console.log('ok');
-        // let isLoggedIn = res.data;
-        // if (isLoggedIn) {
-        //   this.setState({ isLoggedIn: true });
-        // } else {
-        //   this.setState({ isLoggedIn: false });
-        // }
+        let isLoggedIn = res.data;
+        console.log(isLoggedIn);
+        if (isLoggedIn) {
+          this.setState({ isLoggedIn: true });
+        } else {
+          this.setState({ isLoggedIn: false });
+        }
       })
       .catch(err => {
-        this.setState({ loadErr: err });
+        console.log(err);
       });
   }
 
@@ -34,7 +36,6 @@ class Main extends React.Component {
         <Match pattern="/" exactly render={ () =>
           <Intro
             { ...this.state }
-            handleClick={this.handleClick}
           /> } />
         <Match pattern="/signin" exactly render={ () =>
           <SignIn

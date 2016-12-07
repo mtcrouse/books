@@ -21,9 +21,9 @@ const auth = require('./routes/auth');
 const users = require('./routes/users');
 const token = require('./routes/token');
 
-app.use('/token', token);
 app.use('/auth', auth);
-app.use('/users', users);
+app.use(users);
+app.use(token);
 
 app.use(express.static(path.join('src/client')));
 
