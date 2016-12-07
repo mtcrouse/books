@@ -14,6 +14,7 @@ class Intro extends React.Component {
         <ul id="link-options">
           <Link to='/profile'><li>Profile</li></Link>
           <Link to='/signin'><li>Sign In</li></Link>
+          <li onClick={this.props.handleClick}>Click</li>
         </ul>
       </div>
     );

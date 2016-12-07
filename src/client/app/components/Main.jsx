@@ -7,13 +7,13 @@ import NotFound from './NotFound.jsx';
 import axios from 'axios';
 
 class Main extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+  constructor() {
+    super();
+    this.state = { isLoggedIn: false };
   }
 
-  componentWillMount() {
-    axios.get('/token')
+  handleClick() {
+    axios.get('/users')
       .then(res => {
         console.log('ok');
         // let isLoggedIn = res.data;
@@ -31,14 +31,15 @@ class Main extends React.Component {
   render() {
     return (
       <main>
-        <Match pattern="/" exactly render={
-          () => <Intro
-                  { ...this.state }
-                /> } />
-        <Match pattern="/signin" exactly render={
-          () => <SignIn
-                  { ...this.state }
-                /> } />
+        <Match pattern="/" exactly render={ () =>
+          <Intro
+            { ...this.state }
+            handleClick={this.handleClick}
+          /> } />
+        <Match pattern="/signin" exactly render={ () =>
+          <SignIn
+            { ...this.state }
+          /> } />
         <Match pattern="/profile"  render={ () => <Profile /> } />
         <Miss component={NotFound} />
       </main>

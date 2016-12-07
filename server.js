@@ -17,15 +17,15 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(morgan('short'));
 
-app.use(express.static(path.join('src/client')));
-
 const auth = require('./routes/auth');
 const users = require('./routes/users');
 const token = require('./routes/token');
 
+app.use('/token', token);
 app.use('/auth', auth);
 app.use('/users', users);
-app.use('/token', token);
+
+app.use(express.static(path.join('src/client')));
 
 app.use((_req, res) => {
   res.sendStatus(404);
