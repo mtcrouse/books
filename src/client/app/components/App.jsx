@@ -1,6 +1,8 @@
 import { BrowserRouter } from 'react-router';
 import React from 'react';
 import Main from './Main.jsx';
+import Header from './layout/Header.jsx';
+import Footer from './layout/Footer.jsx';
 
 class App extends React.Component {
 
@@ -13,7 +15,9 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div>
+          <Header />
           <Main />
+          <Footer />
         </div>
       </BrowserRouter>
     );
