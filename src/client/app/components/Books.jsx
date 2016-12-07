@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
+import axios from 'axios';
+import Book from './Book.jsx';
 
 class Books extends React.Component {
   constructor(props) {
@@ -22,6 +24,19 @@ class Books extends React.Component {
     return (
       <div>
         <p>Books</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.books.map((book,index) => {
+              return <Book key={index} book={book} />;
+            })}
+          </tbody>
+        </table>
       </div>
     );
   }
