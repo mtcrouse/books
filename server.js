@@ -21,9 +21,11 @@ app.use(express.static(path.join('src/client')));
 
 const auth = require('./routes/auth');
 const users = require('./routes/users');
+const token = require('./routes/token');
 
 app.use('/auth', auth);
 app.use('/users', users);
+app.use('/token', token);
 
 app.use((_req, res) => {
   res.sendStatus(404);
