@@ -39,29 +39,29 @@ router.get('/books', (req, res, next) => {
     });
 });
 
-router.post('/books', (req, res, next) => {
-  const { title, subtitle, author, genre, language, original_language, publication_year } = req.body;
-
-      knex('books')
-        .where('email', email)
-        .first()
-        .then((row) => {
-          if (row) {
-            return next(boom.create(400, 'Email already exists'));
-          }
-        })
-        .then(() => {
-          return knex('users').insert(decamelizeKeys(insertUser), '*');
-        });
-    })
-    .then((books) => {
-      const book = camelizeKeys(rows[0]);
-
-      res.send(book);
-    })
-    .catch((err) => {
-      next(err);
-    });
-});
+// router.post('/books', (req, res, next) => {
+//   const { title, subtitle, author, genre, language, original_language, publication_year } = req.body;
+// 
+//       knex('books')
+//         .where('email', email)
+//         .first()
+//         .then((row) => {
+//           if (row) {
+//             return next(boom.create(400, 'Email already exists'));
+//           }
+//         })
+//         .then(() => {
+//           return knex('users').insert(decamelizeKeys(insertUser), '*');
+//         });
+//     })
+//     .then((books) => {
+//       const book = camelizeKeys(rows[0]);
+//
+//       res.send(book);
+//     })
+//     .catch((err) => {
+//       next(err);
+//     });
+// });
 
 module.exports = router;

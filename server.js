@@ -20,10 +20,12 @@ app.use(morgan('short'));
 const auth = require('./routes/auth');
 const users = require('./routes/users');
 const token = require('./routes/token');
+const books = require('./routes/books');
 
 app.use('/auth', auth);
 app.use(users);
 app.use(token);
+app.use(books);
 
 app.use(express.static(path.join('src/client')));
 

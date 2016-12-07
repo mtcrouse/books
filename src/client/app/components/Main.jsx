@@ -3,6 +3,7 @@ import { Match, Miss } from 'react-router';
 import Profile from './Profile.jsx';
 import Intro from './Intro.jsx';
 import SignIn from './SignIn.jsx';
+import Books from './Books.jsx';
 import NotFound from './NotFound.jsx';
 import axios from 'axios';
 
@@ -29,6 +30,18 @@ class Main extends React.Component {
       });
   }
 
+  signOut() {
+    axios.delete('/token')
+      .then(res => {
+        this.setState({
+          isLoggedIn: false
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
   render() {
     return (
       <main>
@@ -41,6 +54,7 @@ class Main extends React.Component {
             { ...this.state }
           /> } />
         <Match pattern="/profile"  render={ () => <Profile /> } />
+        <Match pattern="/books"  render={ () => <Books /> } />
         <Miss component={NotFound} />
       </main>
     );

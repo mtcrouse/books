@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-class Profile extends React.Component {
+class Books extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -10,11 +10,10 @@ class Profile extends React.Component {
   render() {
     return (
       <div>
-        <p>Profile</p>
-        <Link to="/books">Books</Link>
+        <p>Books</p>
       </div>
     );
   }
 }
 
-export default Profile;
+export default Books;
