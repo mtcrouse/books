@@ -13,6 +13,7 @@ class Main extends React.Component {
     this.state = { isLoggedIn: false };
 
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.signOut = this.signOut.bind(this);
   }
 
   componentDidMount() {
@@ -53,7 +54,11 @@ class Main extends React.Component {
           <SignIn
             { ...this.state }
           /> } />
-        <Match pattern="/profile"  render={ () => <Profile /> } />
+        <Match pattern="/profile"  render={ () =>
+          <Profile
+            { ...this.state }
+            signOut={this.signOut}
+          /> } />
         <Match pattern="/books"  render={ () => <Books /> } />
         <Miss component={NotFound} />
       </main>

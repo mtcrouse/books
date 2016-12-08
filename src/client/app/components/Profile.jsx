@@ -4,7 +4,11 @@ import { Link } from 'react-router';
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.signOut = this.signOut.bind(this);
+  }
+
+  signOut() {
+    this.props.signOut();
   }
 
   render() {
@@ -12,6 +16,7 @@ class Profile extends React.Component {
       <div>
         <p>Profile</p>
         <Link to="/books">Books</Link>
+        <p onClick={this.signOut}>Sign Out</p>
       </div>
     );
   }
