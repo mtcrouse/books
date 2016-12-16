@@ -12,7 +12,7 @@ class Header extends React.Component {
     return (
       <div>
         <nav id="navbar">
-          Book Tracker
+          <Link to="/">Book Tracker</Link>
         </nav>
       </div>
     );

@@ -1,4 +1,3 @@
-import { Link } from 'react-router';
 import React from 'react';
 
 class Footer extends React.Component {
@@ -11,7 +10,7 @@ class Footer extends React.Component {
   render() {
     return (
       <footer id="footer">
-        <Link to="/">&copy; Book Tracker</Link>
+        &copy; Book Tracker
       </footer>
     );
   }
