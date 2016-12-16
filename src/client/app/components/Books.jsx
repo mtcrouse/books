@@ -45,22 +45,30 @@ class Books extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>Books</p>
-        <table>
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Author</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.books.map((book,index) => {
-              return <Book key={index} book={book} />;
-            })}
-          </tbody>
-        </table>
-        <AddBook addBook={this.addBook} />
+      <div className="container">
+        <div className="row">
+          <p>Books</p>
+        </div>
+        <div className="row">
+          <div className="eight columns" id="book-table">
+            <table>
+              <thead>
+                <tr>
+                  <th id="th-title">Title</th>
+                  <th id="th-author">Author</th>
+                </tr>
+              </thead>
+              <tbody id="book-table-body">
+                {this.state.books.map((book,index) => {
+                  return <Book key={index} book={book} />;
+                })}
+              </tbody>
+            </table>
+          </div>
+          <div className="four columns">
+            <AddBook addBook={this.addBook} />
+          </div>
+        </div>
       </div>
     );
   }
