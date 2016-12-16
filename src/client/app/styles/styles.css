@@ -1,3 +1,19 @@
+* {
+  text-align: center;
+}
+
+a {
+  color: black;
+}
+
+input {
+  width: 100%;
+}
+
+td, th {
+  text-align: center;
+}
+
 .link-option {
   text-align: center;
 }
@@ -5,6 +21,27 @@
 #below-welcome {
   margin: 0 auto;
   text-align: center;
+}
+
+#footer {
+  padding: 10px;
+  border-top: 2px solid black;
+  margin-top: 30px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+#navbar {
+  padding: 10px;
+  border-bottom: 2px solid black;
+  margin-bottom: 30px;
+}
+
+#thing-table {
+  overflow-y: scroll;
+  height: 70%;
 }
 
 #welcome {

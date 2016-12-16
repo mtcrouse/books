@@ -27,7 +27,7 @@ class AddBook extends React.Component {
         <form onSubmit={this.addBook}>
           <input type="text" placeholder="title" name="title" onChange={this.handleChange} />
           <input type="text" placeholder="author" name="author" onChange={this.handleChange} />
-          {/* <input type="number" placeholder="year" name="year" onChange={this.handleChange} /> */}
+          <input type="number" placeholder="year" name="year" onChange={this.handleChange} />
           <button type="submit">SUBMIT BOOK</button>
         </form>
       </div>
