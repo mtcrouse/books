@@ -43,6 +43,10 @@ class Main extends React.Component {
       });
   }
 
+  getBooks() {
+    console.log('hey');
+  }
+
   render() {
     return (
       <main>
@@ -58,6 +62,7 @@ class Main extends React.Component {
           <Profile
             { ...this.state }
             signOut={this.signOut}
+            getBooks={this.getBooks}
           /> } />
         <Match pattern="/books"  render={ () => <Books /> } />
         <Miss component={NotFound} />

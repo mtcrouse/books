@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, Redirect } from 'react-router';
 
 class Profile extends React.Component {
   constructor(props) {
