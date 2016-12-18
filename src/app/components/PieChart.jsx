@@ -11,19 +11,19 @@ class PieChart extends React.Component {
 
   createDataSet() {
     let data = [];
-    let categories = [];
+    let genres = [];
 
-    for (let item of this.props.things) {
-      if (categories.indexOf(item.category) >= 0) {
+    for (let item of this.props.books) {
+      if (genres.indexOf(item.genre) >= 0) {
         for (let dataCategory of data) {
-          if (dataCategory.label === item.category) {
-            dataCategory.count += 100/this.props.things.length;
+          if (dataCategory.label === item.genre) {
+            dataCategory.count += 100/this.props.books.length;
           }
         }
       } else {
-        let newCount = 100/this.props.things.length;
-        data.push({ label: item.category, count: newCount });
-        categories.push(item.category);
+        let newCount = 100/this.props.books.length;
+        data.push({ label: item.genre, count: newCount });
+        genres.push(item.genre);
       }
     }
 

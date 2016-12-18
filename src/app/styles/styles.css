@@ -33,6 +33,10 @@ td, th {
   left: 0;
 }
 
+#logo {
+  float: left;
+}
+
 #navbar {
   padding: 10px;
   border-bottom: 2px solid black;

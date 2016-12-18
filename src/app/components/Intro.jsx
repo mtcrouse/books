@@ -12,7 +12,7 @@ class Intro extends React.Component {
     if (this.props.isLoggedIn === true) {
       return <Redirect to="/profile" />
     } else {
-      return <Link to='/signin'><p className="link-option">Sign In</p></Link>
+      return <Link to='/signin'><button className="link-option">Sign In</button></Link>
     }
   }
 

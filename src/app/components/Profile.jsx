@@ -29,7 +29,7 @@ class Profile extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <h3>Profile</h3>
+          <h3>User Profile</h3>
         </div>
         <div className="row">
           <div className="six columns">
