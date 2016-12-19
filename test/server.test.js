@@ -1,6 +1,6 @@
 'use strict';
 
-process.env.NODE_ENV = 'test';
+// process.env.NODE_ENV = 'test';
 
 const { suite, test } = require('mocha');
 const app = require('../server');
@@ -10,7 +10,7 @@ suite('book routes', () => {
   test('GET /books/allbooks', (done) => {
     supertest(app)
       .get('/books/allbooks')
-      .expect(200, '0')
+      .expect(200)
       .expect('Content-Type', /json/)
       .end(done);
   });
