@@ -13,7 +13,26 @@ exports.seed = function(knex) {
         date_read: '2011',
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
-      }]);
+      },
+      {
+        id: 2,
+        user_id: 1,
+        book_id: 2,
+        times_read: 1,
+        date_read: '2015',
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 3,
+        user_id: 2,
+        book_id: 2,
+        times_read: 3,
+        date_read: '2014',
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      }
+    ]);
     })
     .then(() => {
       return knex.raw(

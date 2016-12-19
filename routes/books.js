@@ -2,6 +2,7 @@
 
 const boom = require('boom');
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const knex = require('../knex');
 const { camelizeKeys, decamelizeKeys } = require('humps');
 
@@ -26,7 +27,7 @@ const authorize = function(req, res, next) {
   });
 };
 
-router.get('/books', (req, res, next) => {
+router.get('/books/allbooks', (req, res, next) => {
   knex('books')
     .orderBy('id')
     .then((rows) => {
@@ -39,7 +40,23 @@ router.get('/books', (req, res, next) => {
     });
 });
 
-router.post('/books', (req, res, next) => {
+router.get('/books', authorize, (req, res, next) => {
+  const { userId } = req.token;
+
+  knex('books_users')
+    .where('user_id', userId)
+    .innerJoin('users', 'users.id', 'books_users.book_id')
+    .then((rows) => {
+      const books = camelizeKeys(rows);
+
+      res.send(books);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+router.post('/books', authorize, (req, res, next) => {
   const { title, subtitle, author, genre, language, originalLanguage, publicationYear } = req.body;
   const insertBook = {
     title, subtitle, author, genre, language, originalLanguage, publicationYear

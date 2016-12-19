@@ -4,16 +4,19 @@ import Profile from './Profile.jsx';
 import Intro from './Intro.jsx';
 import SignIn from './SignIn.jsx';
 import Books from './Books.jsx';
+import Analysis from './Analysis.jsx';
 import NotFound from './NotFound.jsx';
 import axios from 'axios';
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLoggedIn: false };
+    this.state = { isLoggedIn: false, books: [] };
 
     this.componentDidMount = this.componentDidMount.bind(this);
     this.signOut = this.signOut.bind(this);
+    this.addBook = this.addBook.bind(this);
+    this.getBooks = this.getBooks.bind(this);
   }
 
   componentDidMount() {
@@ -22,6 +25,7 @@ class Main extends React.Component {
         let isLoggedIn = res.data;
         if (isLoggedIn) {
           this.setState({ isLoggedIn: true });
+          this.getBooks();
         } else {
           this.setState({ isLoggedIn: false });
         }
@@ -44,7 +48,17 @@ class Main extends React.Component {
   }
 
   getBooks() {
-    console.log('hey');
+    axios.get('/books')
+      .then((res) => {
+        this.setState( { books: res.data } );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  addBook(newBooks) {
+    this.setState( { books: newBooks } );
   }
 
   render() {
@@ -64,7 +78,15 @@ class Main extends React.Component {
             signOut={this.signOut}
             getBooks={this.getBooks}
           /> } />
-        <Match pattern="/books"  render={ () => <Books /> } />
+          <Match pattern="/books"  render={ () =>
+            <Books
+              { ...this.state }
+              addBook={this.addBook}
+            /> } />
+          <Match pattern="/analysis"  render={ () =>
+            <Analysis
+              { ...this.state }
+            /> } />
         <Miss component={NotFound} />
       </main>
     );

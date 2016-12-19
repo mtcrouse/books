@@ -7,9 +7,17 @@ exports.seed = function(knex) {
     .then(() => {
       return knex('users').insert([{
         id: 1,
-        first_name: 'metta2',
-        email: 'mettacrouse2@gmail.com',
-        linkedin_token: 'AQX6vt2qc1LleDcOupuFbvT5Tka1NXaeowreG4ympJta6qDwUlvGruOCcQVPRYyy74n-Lh2n_8sfg0q1gBAtJMwopEv3p0rfMiGswSBeYtvDjEUf8j15N2Fl-BEAdzCxRBrTI7wN8S5YUKgDP2pDKVzA4x1CayjgcgR8Kcsy_C_qwBHxMyY',
+        first_name: 'metta',
+        email: 'mettacrouse@gmail.com',
+        linkedin_token: 'AQVpBXBMKEvbHJ2cAvp9aW5bo6xZ32SsO-LckwcCbrDPf7MgMlNj7cCI8GRnkE7WnnidNwmSNywck2eLP7Nr6xTeHomLjQXiv5zXRRO7MjYSVMqql6fMM0hVRmnolWp7pKuMScmExV_DSsOeWIm5UuHcpCt4OjGo8s0Tixu6dwFZcm3N-ko',
+        created_at: new Date('2016-11-25 16:17:12 UTC'),
+        updated_at: new Date('2016-11-25 16:17:12 UTC')
+      },
+      {
+        id: 2,
+        first_name: 'finley',
+        email: 'finley@gmail.com',
+        linkedin_token: 'FINpBXBMKEvbHJ2cAvp9aW5bo6xZ32SsO-LckwcCbrDPf7MgMlNj7cCI8GRnkE7WnnidNwmSNywck2eLP7Nr6xTeHomLjQXiv5zXRRO7MjYSVMqql6fMM0hVRmnolWp7pKuMScmExV_DSsOeWIm5UuHcpCt4OjGo8s0Tixu6dwFZcm3N-ko',
         created_at: new Date('2016-11-25 16:17:12 UTC'),
         updated_at: new Date('2016-11-25 16:17:12 UTC')
       }]);
