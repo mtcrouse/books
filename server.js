@@ -1,43 +1,69 @@
-// eslint-disable-next-line new-cap
 'use strict';
-
-const express = require('express');
-const app = express();
-const knex = require('knex');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const path = require('path');
-const webpack = require('webpack');
-const config = require('./webpack.config.dev');
-const compiler = webpack(config);
-
-app.use(cookieParser());
-app.use(bodyParser());
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
 
-const port = process.env.PORT || 8000;
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const morgan = require('morgan');
+const path = require('path');
 
-app.use(require('webpack-dev-middleware')(compiler, {
-  noInfo: true,
-  publicPath: config.output.publicPath
-}));
+app.disable('x-powered-by');
 
-app.use(require('webpack-hot-middleware')(compiler));
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(morgan('short'));
 
-app.use('/dist', express.static('dist'));
+const auth = require('./routes/auth');
+const users = require('./routes/users');
+const token = require('./routes/token');
+const books = require('./routes/books');
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+app.use('/auth', auth);
+app.use(users);
+app.use(token);
+app.use(books);
+
+app.use(express.static(path.join('src/client')));
+
+app.use((_req, res) => {
+  res.sendStatus(404);
 });
 
-app.listen(port, err => {
-  if (err) {
-    console.log(err);
-    return;
+// eslint-disable-next-line max-params
+app.use((err, _req, res, _next) => {
+  if (err.output && err.output.statusCode) {
+    return res
+      .status(err.output.statusCode)
+      .set('Content-Type', 'text/plain')
+      .send(err.message);
   }
 
-  console.log('Listening on port: ' + port);
+  // eslint-disable-next-line no-console
+  console.error(JSON.stringify(err, null, 2));
+
+  if (err.status) {
+    return res
+      .status(err.status)
+      .set('Content-Type', 'text/plain')
+      .send(err.statusText);
+  }
+
+  // eslint-disable-next-line no-console
+  console.error(err.stack);
+  res.sendStatus(500);
 });
+
+const port = process.env.PORT || 8000;
+
+app.listen(port, () => {
+  if (app.get('env') !== 'test') {
+    // eslint-disable-next-line no-console
+    console.log('Listening on port', port);
+  }
+});
+
+module.exports = app;
