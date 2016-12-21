@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class AddBook extends React.Component {
   constructor(props) {
@@ -18,18 +19,32 @@ class AddBook extends React.Component {
       author: this.state.author
     };
 
-    this.props.addBook(data);
+    let title = this.state.title.replace(/ /g, '+');
+    let author = this.state.author.replace(/ /g, '+');
+
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${title}+${author}`)
+      .then(res => {
+        this.props.addSearchResults(res.data.items);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
+    // this.props.addBook(data);
   }
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.addBook}>
-          <input type="text" placeholder="title" name="title" onChange={this.handleChange} />
-          <input type="text" placeholder="author" name="author" onChange={this.handleChange} />
-          <input type="number" placeholder="year" name="year" onChange={this.handleChange} />
-          <button type="submit">SUBMIT BOOK</button>
-        </form>
+      <div className="container">
+        <div className="row">
+          <form onSubmit={this.addBook}>
+            <input type="text" placeholder="title" name="title" onChange={this.handleChange} />
+            <input type="text" placeholder="author" name="author" onChange={this.handleChange} />
+            <input type="number" placeholder="year" name="year" onChange={this.handleChange} />
+            <button type="submit">SEARCH</button>
+          </form>
+        </div>
+
       </div>
     );
   }

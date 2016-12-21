@@ -2,39 +2,14 @@ import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
 import Book from './Book.jsx';
-import AddBook from './AddBook.jsx';
 
 class Books extends React.Component {
   constructor(props) {
     super(props);
     this.state = { sortedBooks: this.props.books.slice(), sortOrder: '' };
 
-    this.addBook = this.addBook.bind(this);
     this.sortedBooks = this.sortedBooks.bind(this);
     this.handleClick = this.handleClick.bind(this);
-  }
-
-  addBook(data) {
-    const book = {
-      title: data.title,
-      author: data.author,
-      subtitle: null,
-      genre: 'fiction',
-      publicationYear: 2000,
-      language: 'English',
-      originalLanguage: 'English'
-    }
-
-    axios.post('/books', book)
-      .then((res) => {
-        const newBooks = this.props.books.concat([res.data]);
-        this.props.addBook(newBooks);
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    console.log('add book from books.jsx');
   }
 
   handleClick(event) {
@@ -76,6 +51,7 @@ class Books extends React.Component {
                 <tr>
                   <th id="th-title" onClick={this.handleClick}>Title</th>
                   <th id="th-author" onClick={this.handleClick}>Author</th>
+                  <th id="th-genre" onClick={this.handleClick}>Genre</th>
                   <th id="th-year" onClick={this.handleClick}>Year</th>
                 </tr>
               </thead>
@@ -85,9 +61,6 @@ class Books extends React.Component {
                 })}
               </tbody>
             </table>
-          </div>
-          <div className="four columns">
-            <AddBook addBook={this.addBook} />
           </div>
         </div>
       </div>

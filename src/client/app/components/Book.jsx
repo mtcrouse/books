@@ -3,7 +3,6 @@ import React from 'react';
 class Book extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   render() {
@@ -11,6 +10,8 @@ class Book extends React.Component {
       <tr>
         <td>{this.props.book.title}</td>
         <td>{this.props.book.author}</td>
+        <td>{this.props.book.genre}</td>
+        <td>{this.props.book.publicationYear}</td>
       </tr>
     );
   }

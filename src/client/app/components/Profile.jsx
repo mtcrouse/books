@@ -32,10 +32,13 @@ class Profile extends React.Component {
           <h3>User Profile</h3>
         </div>
         <div className="row">
-          <div className="six columns">
-            <Link to="/books"><button>Books</button></Link>
+          <div className="four columns">
+            <Link to="/books"><button>Your Books</button></Link>
           </div>
-          <div className="six columns">
+          <div className="four columns">
+            <Link to="/addbooks"><button>Add A Book</button></Link>
+          </div>
+          <div className="four columns">
             <button onClick={this.signOut}>Sign Out</button>
           </div>
         </div>

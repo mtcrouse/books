@@ -57,6 +57,7 @@ router.get('/books', authorize, (req, res, next) => {
 });
 
 router.post('/books', authorize, (req, res, next) => {
+  const { userId } = req.token;
   const { title, subtitle, author, genre, language, originalLanguage, publicationYear } = req.body;
   const insertBook = {
     title, subtitle, author, genre, language, originalLanguage, publicationYear
@@ -74,9 +75,19 @@ router.post('/books', authorize, (req, res, next) => {
       return knex('books').insert(decamelizeKeys(insertBook), '*');
     })
     .then((rows) => {
-      const book = camelizeKeys(rows[0]);
+      const bookId = camelizeKeys(rows)[0].id;
+      const insertUserBook = {
+        bookId,
+        userId,
+        dateRead: null,
+        timesRead: 1
+      }
 
-      res.send(book);
+      return knex('books_users').insert(decamelizeKeys(insertUserBook), '*');
+    })
+    .then((rows) => {
+
+      res.send('book');
     })
     .catch((err) => {
       next(err);

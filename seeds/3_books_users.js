@@ -11,6 +11,7 @@ exports.seed = function(knex) {
         book_id: 1,
         times_read: 2,
         date_read: '2011',
+        shelf: 'read',
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -20,6 +21,7 @@ exports.seed = function(knex) {
         book_id: 2,
         times_read: 1,
         date_read: '2015',
+        shelf: 'read',
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -29,6 +31,7 @@ exports.seed = function(knex) {
         book_id: 2,
         times_read: 3,
         date_read: '2014',
+        shelf: 'read',
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       }
