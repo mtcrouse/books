@@ -19,32 +19,38 @@ class AddBook extends React.Component {
       author: this.state.author
     };
 
-    let title = this.state.title.replace(/ /g, '+');
-    let author = this.state.author.replace(/ /g, '+');
+    let query = '';
 
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${title}+${author}`)
+    if (this.state.title) {
+      query += `intitle:${this.state.title.replace(/ /g, '+')}`;
+    }
+
+    if (this.state.author && query !== '') {
+      query += `+inauthor:${this.state.author.replace(/ /g, '+')}`
+    } else if (this.state.author && query === '') {
+      query += `inauthor:${this.state.author.replace(/ /g, '+')}`
+    }
+
+    query += `&maxResults=25&printType=books`;
+
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
       .then(res => {
         this.props.addSearchResults(res.data.items);
       })
       .catch(err => {
         console.log(err);
       });
-
-    // this.props.addBook(data);
   }
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <form onSubmit={this.addBook}>
-            <input type="text" placeholder="title" name="title" onChange={this.handleChange} />
-            <input type="text" placeholder="author" name="author" onChange={this.handleChange} />
-            <input type="number" placeholder="year" name="year" onChange={this.handleChange} />
-            <button type="submit">SEARCH</button>
-          </form>
-        </div>
-
+      <div className="row">
+        <form onSubmit={this.addBook}>
+          <input type="text" placeholder="title" name="title" onChange={this.handleChange} />
+          <input type="text" placeholder="author" name="author" onChange={this.handleChange} />
+          <input type="number" placeholder="year" name="year" onChange={this.handleChange} />
+          <button type="submit">SEARCH</button>
+        </form>
       </div>
     );
   }

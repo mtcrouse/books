@@ -42,13 +42,17 @@ class AddBooks extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="twelve columns">
-          <AddBook addBook={this.addBook} addSearchResults={this.addSearchResults} />
+      <div className="container">
+        <div className="row">
+          <div className="twelve columns">
+            <AddBook addBook={this.addBook} addSearchResults={this.addSearchResults} />
+          </div>
         </div>
-        {this.state.searchResults.map((book,index) => {
-          return <SearchResult key={index} book={book} />;
-        })}
+        <div className="row">
+          {this.state.searchResults.map((book,index) => {
+            return <SearchResult key={index} book={book} />;
+          })}
+        </div>
       </div>
     );
   }

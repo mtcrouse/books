@@ -14,8 +14,16 @@ td, th {
   text-align: center;
 }
 
+.container {
+  margin-bottom: 40px;
+}
+
 .link-option {
   text-align: center;
+}
+
+.search-result {
+  border: 1px solid black;
 }
 
 #below-welcome {
@@ -31,6 +39,7 @@ td, th {
   bottom: 0;
   right: 0;
   left: 0;
+  background: white;
 }
 
 /*#logo {
@@ -43,7 +52,7 @@ td, th {
   margin-bottom: 30px;
 }
 
-#thing-table {
+#book-table {
   overflow-y: scroll;
   height: 70%;
 }
