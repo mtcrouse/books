@@ -60,7 +60,7 @@ class Books extends React.Component {
       this.setState({ sortOrder: `${sortBy} ASC` });
     }
 
-    this.setState({ sortedBooks: sortByTitle });
+    this.setState({ sortedBooks: newSortedBooks });
   }
 
   render() {
