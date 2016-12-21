@@ -65,11 +65,11 @@ router.post('/books', authorize, (req, res, next) => {
   knex('books')
     .where('title', title)
     .first()
-    .then((row) => {
-      if (row) {
-        return next(boom.create(400, 'Book already exists'));
-      }
-    })
+    // .then((row) => {
+    //   if (row) {
+    //     return next(boom.create(400, 'Book already exists'));
+    //   }
+    // })
     .then(() => {
       return knex('books').insert(decamelizeKeys(insertBook), '*');
     })
