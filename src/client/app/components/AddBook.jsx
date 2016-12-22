@@ -5,6 +5,7 @@ class AddBook extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+
     this.addBook = this.addBook.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
@@ -223,8 +224,10 @@ class AddBook extends React.Component {
       }
     }
 
-    if (this.state.language) {
-      let language = this.state.language.charAt(0).toUpperCase() + this.state.language.slice(1);
+    console.log(this.language.value);
+
+    if (this.language.value) {
+      let language = this.language.value.charAt(0).toUpperCase() + this.language.value.slice(1);
       let languageCode;
 
       if (this.iso639.hasOwnProperty(language)) {
@@ -292,7 +295,7 @@ class AddBook extends React.Component {
           <input type="text" placeholder="title" name="title" onChange={this.handleChange} />
           <input type="text" placeholder="author" name="author" onChange={this.handleChange} />
           <input type="number" placeholder="year" name="year" onChange={this.handleChange} />
-          <input type="text" placeholder="language" name="language" id="language" onChange={this.handleChange} />
+          <input type="text" placeholder="language" name="language" id="language" ref={(language) => this.language = language} />
           <button type="submit">SEARCH</button>
         </form>
       </div>

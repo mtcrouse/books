@@ -27,16 +27,13 @@ class AddBooks extends React.Component {
       .then((res) => {
         const newBooks = this.props.books.concat([res.data]);
         this.props.addBook(newBooks);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-    console.log('add book from books.jsx');
   }
 
   addSearchResults(results) {
-    console.log(results);
     this.setState( { searchResults: results });
   }
 
