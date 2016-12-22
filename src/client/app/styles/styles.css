@@ -46,6 +46,33 @@ td, th {
   float: left;
 }*/
 
+#modal {
+  position: fixed;
+  top: 100px;
+  right: 100px;
+  bottom: 100px;
+  left: 100px;
+  z-index: 1;
+  border: 10px solid red;
+  background: black;
+  overflow-y: scroll;
+}
+
+#modal table {
+  color: white;
+  margin: 0 auto;
+  max-width: 70%;
+}
+
+#modal-x {
+  color: white;
+  font-weight: bolder;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  cursor: pointer;
+}
+
 #navbar {
   padding: 10px;
   border-bottom: 2px solid black;
