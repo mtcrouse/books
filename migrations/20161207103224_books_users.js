@@ -15,8 +15,8 @@ exports.up = function(knex) {
       .inTable('books')
       .onDelete('CASCADE')
       .index();
-    table.integer('times_read').defaultTo(1);
     table.string('date_read');
+    table.string('shelf');
     table.timestamps(true, true);
   });
 };

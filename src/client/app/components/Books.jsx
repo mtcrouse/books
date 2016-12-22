@@ -1,14 +1,32 @@
 import React from 'react';
 import axios from 'axios';
 import Book from './Book.jsx';
+import ReadBooks from './ReadBooks.jsx';
+import ToReadBooks from './ToReadBooks.jsx';
+import ReadingBooks from './ReadingBooks.jsx';
 
 class Books extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { sortedBooks: this.props.books.slice(), sortOrder: '' };
+    this.state = { sortedBooks: this.props.books.slice(), sortOrder: '', bookshelf: 'read' };
 
     this.sortedBooks = this.sortedBooks.bind(this);
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentWillMount() {
+    
+    return this.sortedBooks(this.props.books.slice(), event.target.id);
+  }
+
+  getBookshelf() {
+    if (this.state.bookshelf === 'read') {
+      console.log('state is read');
+    } else if (this.state.bookshelf === 'reading') {
+      console.log('state is reading');
+    } else if (this.state.bookshelf === 'to-read') {
+      console.log('state is to-read');
+    }
   }
 
   handleClick(event) {

@@ -9,7 +9,6 @@ exports.seed = function(knex) {
         id: 1,
         user_id: 1,
         book_id: 1,
-        times_read: 2,
         date_read: '2011',
         shelf: 'read',
         created_at: new Date('2016-12-07 16:17:12 UTC'),
@@ -19,7 +18,6 @@ exports.seed = function(knex) {
         id: 2,
         user_id: 1,
         book_id: 2,
-        times_read: 1,
         date_read: '2015',
         shelf: 'read',
         created_at: new Date('2016-12-07 16:17:12 UTC'),
@@ -29,9 +27,71 @@ exports.seed = function(knex) {
         id: 3,
         user_id: 2,
         book_id: 2,
-        times_read: 3,
         date_read: '2014',
         shelf: 'read',
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 4,
+        user_id: 1,
+        book_id: 10,
+        date_read: '',
+        shelf: 'to-read',
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 5,
+        user_id: 1,
+        book_id: 9,
+        date_read: '',
+        shelf: 'read',
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 6,
+        user_id: 1,
+        book_id: 8,
+        date_read: '',
+        shelf: 'to-read',
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 7,
+        user_id: 1,
+        book_id: 7,
+        date_read: '',
+        shelf: 'read',
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 8,
+        user_id: 1,
+        book_id: 6,
+        date_read: '',
+        shelf: 'read',
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 9,
+        user_id: 1,
+        book_id: 5,
+        date_read: '',
+        shelf: 'reading',
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 10,
+        user_id: 1,
+        book_id: 4,
+        date_read: '',
+        shelf: 'reading',
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       }
