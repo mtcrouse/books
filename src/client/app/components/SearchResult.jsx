@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 
 class SearchResult extends React.Component {
   constructor(props) {
@@ -25,13 +24,13 @@ class SearchResult extends React.Component {
     return (
       <div className="row search-result">
         <div className="three columns">
-          <p>{title ? title : 'none'}</p>
+          <p>{title ? title : 'NOT AVAILABLE'}</p>
         </div>
         <div className="three columns">
-          {authors ? authors.map((author,index) => {return <p key={index}>{author}</p>;}) : 'none'}
+          {authors ? authors.map((author,index) => {return <p key={index}>{author}</p>;}) : 'NOT AVAILABLE'}
         </div>
         <div className="three columns">
-          {genres ? genres.map((genre, index) => { return <p key={index}>{genre}</p>; }) : 'none'}
+          {genres ? genres.map((genre, index) => { return <p key={index}>{genre}</p>; }) : 'NOT AVAILABLE'}
         </div>
         <div className="three columns">
           <button onClick={this.moreInfo}>More Information</button>
