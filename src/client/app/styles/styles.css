@@ -53,13 +53,13 @@ td, th {
   bottom: 100px;
   left: 100px;
   z-index: 1;
-  border: 10px solid red;
-  background: black;
+  border: 10px solid black;
+  background: white;
   overflow-y: scroll;
 }
 
 #modal table {
-  color: white;
+  color: black;
   margin: 0 auto;
   max-width: 70%;
 }
