@@ -47,14 +47,12 @@ class SearchResult extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="three columns"></div>
-          <div className="three columns">
+          <div className="six columns">
             <button onClick={this.createModal}>More Information</button>
           </div>
-          <div className="three columns">
+          <div className="six columns">
             <button onClick={this.addBook}>Add Book</button>
           </div>
-          <div className="three columns"></div>
         </div>
         <div id="modal-x-holder"></div>
         {this.state.modal ? (
