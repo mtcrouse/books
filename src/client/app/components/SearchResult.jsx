@@ -7,12 +7,29 @@ class SearchResult extends React.Component {
     this.state = { modal: false };
 
     this.addBook = this.addBook.bind(this);
-    this.moreInfo = this.moreInfo.bind(this);
     this.createModal = this.createModal.bind(this);
     this.destroyModal = this.destroyModal.bind(this);
   }
 
   addBook() {
+    // let title = this.props.book.volumeInfo.title;
+    // let author = this.props.book.volumeInfo.authors.join(', ');
+    // let subtitle = this.props.book.volumeInfo.subtitle;
+    // let genre = this.props.book.volumeInfo.categories.join(', ');
+    // let language = this.props.book.volumeInfo.language;
+    // let publicationYear = this.props.book.volumeInfo.publishedDate;
+    //
+    // let data = {
+    //   title,
+    //   subtitle,
+    //   author,
+    //   genre,
+    //   language,
+    //   originalLanguage,
+    //   publicationYear
+    // }
+
+    console.log(this.props.book);
     console.log(this.props.book.volumeInfo);
   }
 
@@ -22,10 +39,6 @@ class SearchResult extends React.Component {
 
   destroyModal() {
     this.setState( { modal: false });
-  }
-
-  moreInfo() {
-    console.log(this.props.book.volumeInfo);
   }
 
   render() {
