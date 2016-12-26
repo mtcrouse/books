@@ -6,6 +6,30 @@ a {
   color: black;
 }
 
+footer {
+  background: black;
+  padding: 10px;
+  margin-top: 30px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  color: white;
+}
+
+header {
+  background: black;
+  color: white;
+  font-size: 1.5em;
+  height: 10%;
+  margin-bottom: 30px;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+}
+
 input {
   width: 100%;
 }
@@ -26,25 +50,9 @@ td, th {
   border: 1px solid black;
 }
 
-#below-welcome {
-  margin: 0 auto;
-  text-align: center;
+#logo {
+  padding: 15px;
 }
-
-#footer {
-  padding: 10px;
-  border-top: 2px solid black;
-  margin-top: 30px;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: white;
-}
-
-/*#logo {
-  float: left;
-}*/
 
 #modal {
   position: fixed;
@@ -73,17 +81,7 @@ td, th {
   cursor: pointer;
 }
 
-#navbar {
-  padding: 10px;
-  border-bottom: 2px solid black;
-  margin-bottom: 30px;
-}
-
 #book-table {
   overflow-y: scroll;
   height: 70%;
-}
-
-#welcome {
-  text-align: center;
 }

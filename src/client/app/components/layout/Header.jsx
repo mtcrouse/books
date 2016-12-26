@@ -10,11 +10,9 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div>
-        <nav id="navbar">
-          <Link to="/" id="logo">Book Tracker</Link>
-        </nav>
-      </div>
+      <header>
+          <Link to="/" id="logo" className="u-pull-left">Book Tracker</Link>
+      </header>
     );
   }
 
