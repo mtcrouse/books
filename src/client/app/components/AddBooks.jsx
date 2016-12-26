@@ -41,8 +41,11 @@ class AddBooks extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="twelve columns">
+          <div className="six columns">
             <AddBook addBook={this.addBook} addSearchResults={this.addSearchResults} />
+          </div>
+          <div className="six columns">
+            Put something here.
           </div>
         </div>
         <div className="row">

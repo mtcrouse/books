@@ -12,6 +12,7 @@ class Books extends React.Component {
 
     this.sortedBooks = this.sortedBooks.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.switchShelf = this.switchShelf.bind(this);
   }
 
   componentWillMount() {
@@ -59,7 +60,7 @@ class Books extends React.Component {
 
     if (this.state.bookshelf !== clickedShelf) {
       this.setState( { bookshelf: clickedShelf });
-      
+
     }
   }
 
