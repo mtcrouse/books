@@ -79,19 +79,19 @@ class Main extends React.Component {
             signOut={this.signOut}
             getBooks={this.getBooks}
           /> } />
-          <Match pattern="/books"  render={ () =>
-            <Books
-              { ...this.state }
-            /> } />
-          <Match pattern="/addbooks"  render={ () =>
-            <AddBooks
-              { ...this.state }
-              addBook={this.addBook}
-            /> } />
-          <Match pattern="/analysis"  render={ () =>
-            <Analysis
-              { ...this.state }
-            /> } />
+        <Match pattern="/books"  render={ () =>
+          <Books
+            { ...this.state }
+          /> } />
+        <Match pattern="/addbooks"  render={ () =>
+          <AddBooks
+            { ...this.state }
+            addBook={this.addBook}
+          /> } />
+        <Match pattern="/analysis"  render={ () =>
+          <Analysis
+            { ...this.state }
+          /> } />
         <Miss component={NotFound} />
       </main>
     );

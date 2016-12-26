@@ -15,7 +15,6 @@ class Books extends React.Component {
   }
 
   componentWillMount() {
-    
     return this.sortedBooks(this.props.books.slice(), event.target.id);
   }
 
@@ -55,11 +54,23 @@ class Books extends React.Component {
     this.setState({ sortedBooks: newSortedBooks });
   }
 
+  switchShelf(event) {
+    let clickedShelf = event.target.id;
+
+    if (this.state.bookshelf !== clickedShelf) {
+      this.setState( { bookshelf: clickedShelf });
+      
+    }
+  }
+
   render() {
     return (
       <div className="container">
         <div className="row">
           <p>Books</p>
+          <button id="read" onClick={this.switchShelf}>Read</button>
+          <button id="reading" onClick={this.switchShelf}>Reading</button>
+          <button id="to-read" onClick={this.switchShelf}>To Read</button>
         </div>
         <div className="row">
           <div className="eight columns" id="book-table">
