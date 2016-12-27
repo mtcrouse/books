@@ -12,6 +12,7 @@ class Book extends React.Component {
         <td>{this.props.book.author}</td>
         <td>{this.props.book.genre}</td>
         <td>{this.props.book.publicationYear}</td>
+        <td>{this.props.book.shelf}</td>
       </tr>
     );
   }

@@ -16,7 +16,6 @@ class Books extends React.Component {
   }
 
   handleClick(event) {
-    console.log(event.target.style);
     return this.sortedBooks(this.props.books, event.target.id);
   }
 
@@ -31,6 +30,9 @@ class Books extends React.Component {
   switchShelf(event) {
     let clickedShelf = event.target.id;
     let currentBookshelf = [];
+
+    event.target.style.background = 'black';
+    event.target.style.color = 'white';
 
     if (this.state.bookshelf !== clickedShelf) {
       this.setState( { bookshelf: clickedShelf });
@@ -55,7 +57,7 @@ class Books extends React.Component {
           <button id="to-read" onClick={this.switchShelf}>To Read</button>
         </div>
         <div className="row">
-          <div className="eight columns" id="book-table">
+          <div className="" id="book-table">
             <table>
               <thead>
                 <tr>
@@ -63,6 +65,7 @@ class Books extends React.Component {
                   <th id="th-author" onClick={this.handleClick}>Author</th>
                   <th id="th-genre" onClick={this.handleClick}>Genre</th>
                   <th id="th-year" onClick={this.handleClick}>Year</th>
+                  <th id="th-shelf" onClick={this.handleClick}>Status</th>
                 </tr>
               </thead>
               <tbody id="book-table-body">
