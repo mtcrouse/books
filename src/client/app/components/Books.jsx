@@ -16,14 +16,31 @@ class Books extends React.Component {
   }
 
   handleClick(event) {
-    return this.sortedBooks(this.props.books, event.target.id);
+    return this.sortedBooks(this.state.sortedBooks, event.target.id);
   }
 
   sortedBooks(books, sortBy) {
-    sortBy = sortBy.slice(3);
-    const newSortedBooks = books.sort();
+    // sortBy = sortBy.slice(3);
+    // const newSortedBooks = books.sort(function(a, b){return a[sortBy]-b[sortBy]});
+    // console.log(newSortedBooks);
 
-    this.setState({ sortOrder: sortBy });
+    const newSortedBooks = books.sort(function(a, b) {
+      if (a.title < b.title) {
+        return -1;
+      }
+      if (a.title > b.title) {
+        return 1;
+      }
+      return 0;
+    });
+
+    if (this.state.sortOrder === 'title ASC') {
+      newSortedBooks.reverse();
+      this.setState({ sortOrder: 'title DESC' });
+    } else {
+      this.setState({ sortOrder: 'title ASC' });
+    }
+
     this.setState({ sortedBooks: newSortedBooks });
   }
 
