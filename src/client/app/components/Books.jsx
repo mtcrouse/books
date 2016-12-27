@@ -8,60 +8,41 @@ import ReadingBooks from './ReadingBooks.jsx';
 class Books extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { sortedBooks: this.props.books.slice(), sortOrder: '', bookshelf: 'read' };
+    this.state = { sortedBooks: this.props.books, sortOrder: '', bookshelf: 'read' };
 
     this.sortedBooks = this.sortedBooks.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.switchShelf = this.switchShelf.bind(this);
   }
 
-  componentWillMount() {
-    return this.sortedBooks(this.props.books.slice(), event.target.id);
-  }
-
-  getBookshelf() {
-    if (this.state.bookshelf === 'read') {
-      console.log('state is read');
-    } else if (this.state.bookshelf === 'reading') {
-      console.log('state is reading');
-    } else if (this.state.bookshelf === 'to-read') {
-      console.log('state is to-read');
-    }
-  }
-
   handleClick(event) {
-    return this.sortedBooks(this.props.books.slice(), event.target.id);
+    console.log(event.target.style);
+    return this.sortedBooks(this.props.books, event.target.id);
   }
 
   sortedBooks(books, sortBy) {
     sortBy = sortBy.slice(3);
-    const newSortedBooks = books.sort(function(a, b) {
-      if (a.sortBy < b.sortBy) {
-        return -1;
-      }
-      if (a.sortBy > b.sortBy) {
-        return 1;
-      }
-      return 0;
-    });
+    const newSortedBooks = books.sort();
 
-    if (this.state.sortOrder === `${sortBy} ASC`) {
-      newSortedBooks.reverse();
-      this.setState({ sortOrder: `${sortBy} DESC` });
-    } else {
-      this.setState({ sortOrder: `${sortBy} ASC` });
-    }
-
+    this.setState({ sortOrder: sortBy });
     this.setState({ sortedBooks: newSortedBooks });
   }
 
   switchShelf(event) {
     let clickedShelf = event.target.id;
+    let currentBookshelf = [];
 
     if (this.state.bookshelf !== clickedShelf) {
       this.setState( { bookshelf: clickedShelf });
-
     }
+
+    for (let i = 0; i < this.props.books.length; i++) {
+      if (this.props.books[i].shelf === event.target.id) {
+        currentBookshelf.push(this.props.books[i]);
+      }
+    }
+
+    return this.sortedBooks(currentBookshelf, 'th-title');
   }
 
   render() {
