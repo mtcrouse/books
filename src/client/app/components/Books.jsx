@@ -20,25 +20,23 @@ class Books extends React.Component {
   }
 
   sortedBooks(books, sortBy) {
-    // sortBy = sortBy.slice(3);
-    // const newSortedBooks = books.sort(function(a, b){return a[sortBy]-b[sortBy]});
-    // console.log(newSortedBooks);
+    sortBy = sortBy.slice(3);
 
     const newSortedBooks = books.sort(function(a, b) {
-      if (a.title < b.title) {
+      if (a[sortBy] < b[sortBy]) {
         return -1;
       }
-      if (a.title > b.title) {
+      if (a[sortBy] > b[sortBy]) {
         return 1;
       }
       return 0;
     });
 
-    if (this.state.sortOrder === 'title ASC') {
+    if (this.state.sortOrder === `${sortBy} ASC`) {
       newSortedBooks.reverse();
-      this.setState({ sortOrder: 'title DESC' });
+      this.setState({ sortOrder: `${sortBy} DESC` });
     } else {
-      this.setState({ sortOrder: 'title ASC' });
+      this.setState({ sortOrder: `${sortBy} ASC` });
     }
 
     this.setState({ sortedBooks: newSortedBooks });
