@@ -20,8 +20,8 @@ footer {
 header {
   background: black;
   color: white;
-  font-size: 1.5em;
-  height: 10%;
+  font-size: 1em;
+  height: 60px;
   margin-bottom: 30px;
 }
 
@@ -55,8 +55,13 @@ td, th {
   color: white;
 }
 
+.header-item {
+  padding: 15px;
+}
+
 #logo {
   padding: 15px;
+  font-size: 1.5em;
 }
 
 #modal {

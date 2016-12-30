@@ -8,7 +8,7 @@ import ReadingBooks from './ReadingBooks.jsx';
 class Books extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { sortedBooks: this.props.books, sortOrder: '', bookshelf: 'read' };
+    this.state = { sortedBooks: this.props.books, sortOrder: '', bookshelf: '' };
 
     this.sortedBooks = this.sortedBooks.bind(this);
     this.handleClick = this.handleClick.bind(this);
