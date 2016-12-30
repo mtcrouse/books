@@ -46,9 +46,6 @@ class Books extends React.Component {
     let clickedShelf = event.target.id;
     let currentBookshelf = [];
 
-    event.target.style.background = 'black';
-    event.target.style.color = 'white';
-
     if (this.state.bookshelf !== clickedShelf) {
       this.setState( { bookshelf: clickedShelf });
     }
@@ -67,9 +64,35 @@ class Books extends React.Component {
       <div className="container">
         <div className="row">
           <p>Books</p>
-          <button id="read" onClick={this.switchShelf}>Read</button>
-          <button id="reading" onClick={this.switchShelf}>Reading</button>
-          <button id="to-read" onClick={this.switchShelf}>To Read</button>
+          <div className="row">
+            <div className="three columns">
+              Choose a shelf:
+            </div>
+            <div className="three columns">
+              { this.state.bookshelf === 'read' ? (
+                <button id="read" className="selected-shelf" onClick={this.switchShelf}>Read</button>
+              ) : (
+                <button id="read" className="" onClick={this.switchShelf}>Read</button>
+              )
+              }
+            </div>
+            <div className="three columns">
+              { this.state.bookshelf === 'reading' ? (
+                <button id="reading" className="selected-shelf" onClick={this.switchShelf}>Reading</button>
+              ) : (
+                <button id="reading" className="" onClick={this.switchShelf}>Reading</button>
+              )
+              }
+            </div>
+            <div className="three columns">
+              { this.state.bookshelf === 'to-read' ? (
+                <button id="to-read" className="selected-shelf" onClick={this.switchShelf}>To Read</button>
+              ) : (
+                <button id="to-read" className="" onClick={this.switchShelf}>To Read</button>
+              )
+              }
+            </div>
+          </div>
         </div>
         <div className="row">
           <div className="" id="book-table">

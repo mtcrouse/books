@@ -50,6 +50,11 @@ td, th {
   border: 1px solid black;
 }
 
+.selected-shelf, .selected-shelf:hover, .selected-shelf:focus {
+  background: black;
+  color: white;
+}
+
 #logo {
   padding: 15px;
 }
