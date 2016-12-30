@@ -23,6 +23,10 @@ class Books extends React.Component {
     sortBy = sortBy.slice(3);
 
     const newSortedBooks = books.sort(function(a, b) {
+      if (sortBy === 'author') {
+        a[sortBy] = a[sortBy].split(' ')[a[sortBy].split(' ').length - 1];
+        b[sortBy] = b[sortBy].split(' ')[b[sortBy].split(' ').length - 1];
+      }
       if (a[sortBy] < b[sortBy]) {
         return -1;
       }
