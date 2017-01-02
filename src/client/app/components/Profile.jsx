@@ -42,6 +42,9 @@ class Profile extends React.Component {
             <button onClick={this.signOut}>Sign Out</button>
           </div>
         </div>
+        <div className="row">
+          <Link to="/lists"><button>Lists</button></Link>
+        </div>
         <this.checkIfSignedOut />
       </div>
     );
