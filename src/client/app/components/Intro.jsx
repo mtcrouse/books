@@ -19,7 +19,7 @@ class Intro extends React.Component {
   render() {
     return (
       <div>
-        <h1>Welcome to Book Tracker!</h1>
+        <h1>Welcome to Grimoire!</h1>
         <div>
           <this.signedIn />
         </div>

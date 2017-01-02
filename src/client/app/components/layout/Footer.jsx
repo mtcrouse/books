@@ -10,7 +10,7 @@ class Footer extends React.Component {
   render() {
     return (
       <footer>
-        &copy; Book Tracker
+        &copy; Grimoire
       </footer>
     );
   }
