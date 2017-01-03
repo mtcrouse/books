@@ -79,6 +79,7 @@ router.post('/books', authorize, (req, res, next) => {
   const insertBook = {
     title, subtitle, author, genre, language, originalLanguage, publicationYear
   }
+  const { shelf } = req.body;
 
   knex('books')
     .where('title', title)
@@ -96,7 +97,8 @@ router.post('/books', authorize, (req, res, next) => {
       const insertUserBook = {
         bookId,
         userId,
-        dateRead: null
+        dateRead: null,
+        shelf
       }
 
       return knex('books_users').insert(decamelizeKeys(insertUserBook), '*');

@@ -4,11 +4,16 @@ import BookTable from './BookTable.jsx';
 class SearchResult extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { modal: false };
+    this.state = { modal: false, selectedShelf: 'read' };
 
     this.addBook = this.addBook.bind(this);
     this.createModal = this.createModal.bind(this);
     this.destroyModal = this.destroyModal.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ selectedShelf: event.target.value });
   }
 
   addBook() {
@@ -20,6 +25,7 @@ class SearchResult extends React.Component {
     let originalLanguage = null;
     // let publicationYear = this.props.book.volumeInfo.publishedDate;
     let publicationYear = 1000;
+    let shelf = this.state.selectedShelf;
 
     let data = {
       title,
@@ -28,7 +34,8 @@ class SearchResult extends React.Component {
       genre,
       language,
       originalLanguage,
-      publicationYear
+      publicationYear,
+      shelf
     }
 
     this.props.addBook(data);
