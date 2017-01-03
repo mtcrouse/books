@@ -6,7 +6,7 @@ class Nebula extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { awardBooks: [] };
 
     this.componentDidMount = this.componentDidMount.bind(this);
     this.getAwardBooks = this.getAwardBooks.bind(this);
@@ -31,7 +31,7 @@ class Nebula extends React.Component {
       <div className="container">
         <div className="row">
           <div className="">
-            {/* <AwardsTable award="nebula" books={this.state.awardBooks} /> */}
+            <AwardsTable award="nebula" books={this.state.awardBooks} />
           </div>
         </div>
       </div>

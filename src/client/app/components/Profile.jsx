@@ -28,15 +28,13 @@ class Profile extends React.Component {
           <h3 className="u-pull-left cormorant">Metta's Profile</h3>
         </div>
         <div className="row">
-          <div className="four columns">
             Books read: {this.props.books.length}
-          </div>
-          <div className="four columns">
-            Another column
-          </div>
-          <div className="four columns">
-            One more
-          </div>
+        </div>
+        <div className="row">
+            Member since: December 2016
+        </div>
+        <div className="row">
+            List progress: :(
         </div>
         <this.checkIfSignedOut />
       </div>

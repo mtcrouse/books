@@ -1,5 +1,5 @@
 import React from 'react';
-import Book from './Book.jsx';
+import AwardBook from './AwardBook.jsx';
 
 class AwardsTable extends React.Component {
 
@@ -13,16 +13,15 @@ class AwardsTable extends React.Component {
       <table>
         <thead>
           <tr>
+            <th>Award Year</th>
             <th>Title</th>
             <th>Author</th>
-            <th>Genre</th>
-            <th>Year</th>
             <th>Add Book</th>
           </tr>
         </thead>
         <tbody>
           {this.props.books.map((book,index) => {
-            return <Book key={index} book={book} />;
+            return <AwardBook key={index} book={book} />;
           })}
         </tbody>
       </table>
