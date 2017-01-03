@@ -1,9 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import Book from './Book.jsx';
-import ReadBooks from './ReadBooks.jsx';
-import ToReadBooks from './ToReadBooks.jsx';
-import ReadingBooks from './ReadingBooks.jsx';
 
 class Books extends React.Component {
   constructor(props) {
@@ -94,7 +91,7 @@ class Books extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="" id="book-table">  
+          <div className="" id="book-table">
             <table>
               <thead>
                 <tr>

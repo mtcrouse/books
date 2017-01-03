@@ -13,7 +13,7 @@ class Nebula extends React.Component {
       <div className="container">
         <div className="row">
           <div className="">
-            <AwardsTable award="nebula" />
+            <AwardsTable award="nebula" books={this.props.books} />
           </div>
         </div>
       </div>
