@@ -1,5 +1,6 @@
 * {
   text-align: center;
+  font-family: Garamond;
 }
 
 a {
@@ -62,6 +63,7 @@ td, th {
 #logo {
   padding: 15px;
   font-size: 1.5em;
+  font-family: 'Cormorant Unicase';
 }
 
 #modal {
