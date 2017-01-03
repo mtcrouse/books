@@ -40,6 +40,23 @@ router.get('/books/allbooks', (req, res, next) => {
     });
 });
 
+router.get('/books/awards/:awardId', (req, res, next) => {
+  const { awardId } = req.params;
+
+  knex('awards_books')
+    .where('award_id', awardId)
+    .innerJoin('books', 'books.id', 'awards_books.book_id')
+    .orderBy('books.id')
+    .then((rows) => {
+      const books = camelizeKeys(rows);
+
+      res.send(books);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 router.get('/books', authorize, (req, res, next) => {
   const { userId } = req.token;
 

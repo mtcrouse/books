@@ -25,17 +25,17 @@ class Profile extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <h3 className="u-pull-left">User Profile</h3>
+          <h3 className="u-pull-left cormorant">Metta's Profile</h3>
         </div>
         <div className="row">
           <div className="four columns">
-            <Link to="/books"><button>Your Books</button></Link>
+            Books read: {this.props.books.length}
           </div>
           <div className="four columns">
-            <Link to="/addbooks"><button>Add A Book</button></Link>
+            Another column
           </div>
           <div className="four columns">
-            <Link to="/lists"><button>Lists</button></Link>
+            One more
           </div>
         </div>
         <this.checkIfSignedOut />
