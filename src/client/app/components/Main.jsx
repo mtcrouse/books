@@ -9,6 +9,10 @@ import Analysis from './Analysis.jsx';
 import NotFound from './NotFound.jsx';
 import Header from './layout/Header.jsx';
 import Footer from './layout/Footer.jsx';
+import Hugo from './Hugo.jsx';
+import Nebula from './Nebula.jsx';
+import NPR from './NPR.jsx';
+import Lists from './Lists.jsx';
 import axios from 'axios';
 
 class Main extends React.Component {
@@ -94,6 +98,22 @@ class Main extends React.Component {
             /> } />
           <Match pattern="/analysis"  render={ () =>
             <Analysis
+              { ...this.state }
+            /> } />
+          <Match pattern="/lists"  render={ () =>
+            <Lists
+              { ...this.state }
+            /> } />
+          <Match pattern="/hugo" exactly render={ () =>
+            <Hugo
+              { ...this.state }
+            /> } />
+          <Match pattern="/nebula" exactly render={ () =>
+            <Nebula
+              { ...this.state }
+            /> } />
+          <Match pattern="/npr" exactly render={ () =>
+            <NPR
               { ...this.state }
             /> } />
           <Miss component={NotFound} />

@@ -63,7 +63,6 @@ class Books extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <p>Books</p>
           <div className="row">
             <div className="three columns">
               Choose a shelf:

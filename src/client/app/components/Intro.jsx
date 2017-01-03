@@ -23,13 +23,15 @@ class Intro extends React.Component {
         <div className="container">
           <div className="row">
             <div className="four columns intro-column">
-              Track your sci-fi and fantasy reading.
+              Track your sci-fi and fantasy reading
             </div>
             <div className="four columns intro-column">
-              View analysis of your progress and something else stupid.
+              See how many books you've read out of the most celebrated science 
+              fiction and fantasy novels of all time
             </div>
             <div className="four columns intro-column">
-              Discuss your favorite books with other fans.
+              Discuss your favorite books with other fans and change this column
+              later
             </div>
           </div>
           <div>

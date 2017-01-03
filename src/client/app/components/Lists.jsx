@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 class Lists extends React.Component {
 
@@ -10,7 +11,15 @@ class Lists extends React.Component {
   render() {
     return (
       <div className="container">
-        Hello, lists.
+        <div className="row">
+          <Link to="/hugo">Hugo Awards</Link>
+        </div>
+        <div className="row">
+          <Link to="nebula">Nebula Award for Best Novel</Link>
+        </div>
+        <div className="row">
+          <Link to="/npr">NPR Top 100 Science Fiction and Fantasy Books</Link>
+        </div>
       </div>
     );
   }
