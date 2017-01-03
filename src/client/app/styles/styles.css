@@ -43,6 +43,15 @@ td, th {
   margin-bottom: 40px;
 }
 
+.cormorant {
+  font-family: 'Cormorant Unicase';
+}
+
+.intro-column {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
 .link-option {
   text-align: center;
 }
@@ -60,10 +69,20 @@ td, th {
   padding: 15px;
 }
 
+#banner {
+  width: 100%;
+  /*height: 400px;*/
+  margin-top: -30px;
+}
+
+#book-table {
+  overflow-y: scroll;
+  height: 70%;
+}
+
 #logo {
   padding: 15px;
   font-size: 1.5em;
-  font-family: 'Cormorant Unicase';
 }
 
 #modal {
@@ -91,9 +110,4 @@ td, th {
   top: 15px;
   left: 15px;
   cursor: pointer;
-}
-
-#book-table {
-  overflow-y: scroll;
-  height: 70%;
 }

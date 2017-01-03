@@ -12,16 +12,29 @@ class Intro extends React.Component {
     if (this.props.isLoggedIn === true) {
       return <Redirect to="/profile" />
     } else {
-      return <Link to='/signin'><button className="link-option">Sign In</button></Link>
+      return <div></div>
     }
   }
 
   render() {
     return (
       <div>
-        <h1>Welcome to Grimoire!</h1>
-        <div>
-          <this.signedIn />
+        <img id="banner" src="app/images/banner.jpg" alt="banner" />
+        <div className="container">
+          <div className="row">
+            <div className="four columns intro-column">
+              Track your sci-fi and fantasy reading.
+            </div>
+            <div className="four columns intro-column">
+              View analysis of your progress and something else stupid.
+            </div>
+            <div className="four columns intro-column">
+              Discuss your favorite books with other fans.
+            </div>
+          </div>
+          <div>
+            <this.signedIn />
+          </div>
         </div>
       </div>
     );

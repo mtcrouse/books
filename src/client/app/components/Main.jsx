@@ -7,6 +7,8 @@ import Books from './Books.jsx';
 import AddBooks from './AddBooks.jsx';
 import Analysis from './Analysis.jsx';
 import NotFound from './NotFound.jsx';
+import Header from './layout/Header.jsx';
+import Footer from './layout/Footer.jsx';
 import axios from 'axios';
 
 class Main extends React.Component {
@@ -64,36 +66,40 @@ class Main extends React.Component {
 
   render() {
     return (
-      <main>
-        <Match pattern="/" exactly render={ () =>
-          <Intro
-            { ...this.state }
-          /> } />
-        <Match pattern="/signin" exactly render={ () =>
-          <SignIn
-            { ...this.state }
-          /> } />
-        <Match pattern="/profile"  render={ () =>
-          <Profile
-            { ...this.state }
-            signOut={this.signOut}
-            getBooks={this.getBooks}
-          /> } />
-        <Match pattern="/books"  render={ () =>
-          <Books
-            { ...this.state }
-          /> } />
-        <Match pattern="/addbooks"  render={ () =>
-          <AddBooks
-            { ...this.state }
-            addBook={this.addBook}
-          /> } />
-        <Match pattern="/analysis"  render={ () =>
-          <Analysis
-            { ...this.state }
-          /> } />
-        <Miss component={NotFound} />
-      </main>
+      <div>
+        <Header isLoggedIn={this.state.isLoggedIn} />
+        <main>
+          <Match pattern="/" exactly render={ () =>
+            <Intro
+              { ...this.state }
+            /> } />
+          <Match pattern="/signin" exactly render={ () =>
+            <SignIn
+              { ...this.state }
+            /> } />
+          <Match pattern="/profile"  render={ () =>
+            <Profile
+              { ...this.state }
+              signOut={this.signOut}
+              getBooks={this.getBooks}
+            /> } />
+          <Match pattern="/books"  render={ () =>
+            <Books
+              { ...this.state }
+            /> } />
+          <Match pattern="/addbooks"  render={ () =>
+            <AddBooks
+              { ...this.state }
+              addBook={this.addBook}
+            /> } />
+          <Match pattern="/analysis"  render={ () =>
+            <Analysis
+              { ...this.state }
+            /> } />
+          <Miss component={NotFound} />
+        </main>
+        <Footer />
+      </div>
     );
   }
 }
