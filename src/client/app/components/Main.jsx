@@ -67,7 +67,7 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-        <Header isLoggedIn={this.state.isLoggedIn} />
+        <Header isLoggedIn={this.state.isLoggedIn} signOut={this.signOut} />
         <main>
           <Match pattern="/" exactly render={ () =>
             <Intro

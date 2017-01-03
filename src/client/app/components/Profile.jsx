@@ -4,13 +4,9 @@ import { Link, Redirect } from 'react-router';
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-    this.signOut = this.signOut.bind(this);
+
     this.checkIfSignedOut = this.checkIfSignedOut.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
-  }
-
-  signOut() {
-    this.props.signOut();
   }
 
   checkIfSignedOut() {
@@ -37,9 +33,6 @@ class Profile extends React.Component {
           </div>
           <div className="four columns">
             <Link to="/addbooks"><button>Add A Book</button></Link>
-          </div>
-          <div className="four columns">
-            <button onClick={this.signOut}>Sign Out</button>
           </div>
         </div>
         <div className="row">
