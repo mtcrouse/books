@@ -94,7 +94,7 @@ class Books extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="" id="book-table">
+          <div className="" id="book-table">  
             <table>
               <thead>
                 <tr>

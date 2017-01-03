@@ -1,4 +1,5 @@
 import React from 'react';
+import AwardsTable from './AwardsTable.jsx';
 
 class Nebula extends React.Component {
 
@@ -9,8 +10,12 @@ class Nebula extends React.Component {
 
   render() {
     return (
-      <div>
-        Neeebula.
+      <div className="container">
+        <div className="row">
+          <div className="">
+            <AwardsTable award="nebula" />
+          </div>
+        </div>
       </div>
     );
   }
