@@ -12,25 +12,26 @@ class SearchResult extends React.Component {
   }
 
   addBook() {
-    // let title = this.props.book.volumeInfo.title;
-    // let author = this.props.book.volumeInfo.authors.join(', ');
-    // let subtitle = this.props.book.volumeInfo.subtitle;
-    // let genre = this.props.book.volumeInfo.categories.join(', ');
-    // let language = this.props.book.volumeInfo.language;
+    let title = this.props.book.volumeInfo.title;
+    let author = this.props.book.volumeInfo.authors.join(', ');
+    let subtitle = this.props.book.volumeInfo.subtitle;
+    let genre = this.props.book.volumeInfo.categories.join(', ');
+    let language = this.props.book.volumeInfo.language;
+    let originalLanguage = null;
     // let publicationYear = this.props.book.volumeInfo.publishedDate;
-    //
-    // let data = {
-    //   title,
-    //   subtitle,
-    //   author,
-    //   genre,
-    //   language,
-    //   originalLanguage,
-    //   publicationYear
-    // }
+    let publicationYear = 1000;
 
-    console.log(this.props.book);
-    console.log(this.props.book.volumeInfo);
+    let data = {
+      title,
+      subtitle,
+      author,
+      genre,
+      language,
+      originalLanguage,
+      publicationYear
+    }
+
+    this.props.addBook(data);
   }
 
   createModal() {
@@ -64,7 +65,12 @@ class SearchResult extends React.Component {
             <button onClick={this.createModal}>More Information</button>
           </div>
           <div className="six columns">
-            <button onClick={this.addBook}>Add Book</button>
+            <select name="shelf-selector" defaultValue="read" onChange={this.handleChange}>
+              <option value="read">Read</option>
+              <option value="reading">Reading</option>
+              <option value="to-read">To Read</option>
+            </select>
+            <button onClick={this.addBook}>Add Book to Shelf</button>
           </div>
         </div>
         <div id="modal-x-holder"></div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import AddBook from './AddBook.jsx';
+import SearchBook from './SearchBook.jsx';
 import SearchResult from './SearchResult.jsx';
 
 class AddBooks extends React.Component {
@@ -13,17 +13,7 @@ class AddBooks extends React.Component {
   }
 
   addBook(data) {
-    const book = {
-      title: data.title,
-      author: data.author,
-      subtitle: null,
-      genre: 'fiction',
-      publicationYear: 2000,
-      language: 'English',
-      originalLanguage: 'English'
-    }
-
-    axios.post('/books', book)
+    axios.post('/books', data)
       .then((res) => {
         const newBooks = this.props.books.concat([res.data]);
         this.props.addBook(newBooks);
@@ -42,7 +32,7 @@ class AddBooks extends React.Component {
       <div className="container">
         <div className="row">
           <div className="six columns">
-            <AddBook addBook={this.addBook} addSearchResults={this.addSearchResults} />
+            <SearchBook addSearchResults={this.addSearchResults} />
           </div>
           <div className="six columns">
             Put something here.
@@ -50,7 +40,7 @@ class AddBooks extends React.Component {
         </div>
         <div className="row">
           {this.state.searchResults.map((book,index) => {
-            return <SearchResult key={index} book={book} />;
+            return <SearchResult key={index} book={book} addBook={this.addBook} />;
           })}
         </div>
       </div>

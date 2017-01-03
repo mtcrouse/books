@@ -1,12 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 
-class AddBook extends React.Component {
+class SearchBook extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
 
-    this.addBook = this.addBook.bind(this);
+    this.searchBook = this.searchBook.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
 
@@ -202,7 +202,7 @@ class AddBook extends React.Component {
     this.setState({[event.target.name]: event.target.value});
   }
 
-  addBook(event) {
+  searchBook(event) {
     event.preventDefault();
     this.props.addSearchResults([]);
 
@@ -291,7 +291,7 @@ class AddBook extends React.Component {
 
     return (
       <div className="row">
-        <form onSubmit={this.addBook}>
+        <form onSubmit={this.searchBook}>
           <input type="text" placeholder="title" name="title" onChange={this.handleChange} />
           <input type="text" placeholder="author" name="author" onChange={this.handleChange} />
           <input type="number" placeholder="year" name="year" onChange={this.handleChange} />
@@ -303,4 +303,4 @@ class AddBook extends React.Component {
   }
 }
 
-export default AddBook;
+export default SearchBook;
