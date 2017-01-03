@@ -10,7 +10,7 @@ class Lists extends React.Component {
   render() {
     return (
       <div className="container">
-        
+        Hello, lists.
       </div>
     );
   }

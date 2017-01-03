@@ -34,9 +34,9 @@ class Profile extends React.Component {
           <div className="four columns">
             <Link to="/addbooks"><button>Add A Book</button></Link>
           </div>
-        </div>
-        <div className="row">
-          <Link to="/lists"><button>Lists</button></Link>
+          <div className="four columns">
+            <Link to="/lists"><button>Lists</button></Link>
+          </div>
         </div>
         <this.checkIfSignedOut />
       </div>
