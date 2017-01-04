@@ -94,6 +94,33 @@ exports.seed = function(knex) {
         shelf: 'reading',
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 11,
+        user_id: 1,
+        book_id: 11,
+        date_read: '',
+        shelf: 'to-read',
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 12,
+        user_id: 1,
+        book_id: 25,
+        date_read: '',
+        shelf: 'reading',
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 13,
+        user_id: 1,
+        book_id: 49,
+        date_read: '',
+        shelf: 'read',
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
       }
     ]);
     })

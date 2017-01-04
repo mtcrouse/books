@@ -56,6 +56,18 @@ td, th {
   text-align: center;
 }
 
+.tr-completed {
+  background-color: green;
+}
+
+.tr-in-progress {
+  background-color: yellow;
+}
+
+.tr-pending {
+  background-color: orange;
+}
+
 .search-result {
   border: 1px solid black;
 }
