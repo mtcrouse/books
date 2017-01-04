@@ -27,13 +27,13 @@ class Profile extends React.Component {
         <div className="row">
           <h3 className="u-pull-left cormorant">Metta's Profile</h3>
         </div>
-        <div className="row">
+        <div className="row left-align">
             Books read: {this.props.books.length}
         </div>
-        <div className="row">
+        <div className="row left-align">
             Member since: December 2016
         </div>
-        <div className="row">
+        <div className="row left-align">
             List progress: :(
         </div>
         <this.checkIfSignedOut />

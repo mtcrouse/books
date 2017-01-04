@@ -1,30 +1,26 @@
 import React from 'react';
+import axios from 'axios';
 
 class AwardBook extends React.Component {
   constructor(props) {
     super(props);
 
-    this.addBook = this.addBook.bind(this);
+    this.changeStatus = this.changeStatus.bind(this);
   }
 
-  addBook() {
-    console.log('fake adding book...');
+  changeStatus(event) {
+    console.log(event.target.value);
   }
 
   render() {
-    let status;
+    let status = this.props.book.shelf;
     let rowClass;
     if (this.props.book.shelf === 'read') {
-      status = 'Read';
       rowClass = 'tr-completed';
     } else if (this.props.book.shelf === 'reading') {
-      status = 'Reading';
       rowClass= 'tr-in-progress';
     } else if (this.props.book.shelf === 'to-read') {
-      status = 'To Read';
       rowClass = 'tr-pending';
-    } else {
-      status = null;
     }
 
     return (
@@ -33,9 +29,23 @@ class AwardBook extends React.Component {
         <td>{this.props.book.title}</td>
         <td>{this.props.book.author}</td>
         { status === null ? (
-          <td onClick={this.addBook}>Add Book</td>
+          <td>
+            <select defaultValue="none" onChange={this.changeStatus}>
+              <option value="none">None</option>
+              <option value="read">Read</option>
+              <option value="reading">Reading</option>
+              <option value="to-read">To Read</option>
+            </select>
+          </td>
         ) : (
-          <td>{status}</td>
+          <td>
+            <select defaultValue={status} onChange={this.changeStatus}>
+              <option value="none">None</option>
+              <option value="read">Read</option>
+              <option value="reading">Reading</option>
+              <option value="to-read">To Read</option>
+            </select>
+          </td>
         )}
       </tr>
     );

@@ -33,7 +33,7 @@ class Nebula extends React.Component {
           <h3 className="cormorant u-pull-left">Nebula Award for Best Novel</h3>
         </div>
         <div className="row">
-          <p className="u-pull-left">
+          <p className="left-align">
             The Nebula Awards are given each year by the Science Fiction and
             Fantasy Writers of America (SFWA) for the best science fiction or
             fantasy fiction published in the United States during the previous

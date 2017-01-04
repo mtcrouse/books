@@ -18,7 +18,7 @@ import axios from 'axios';
 class Main extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLoggedIn: false, books: [] };
+    this.state = { isLoggedIn: true, books: [] };
 
     this.componentDidMount = this.componentDidMount.bind(this);
     this.signOut = this.signOut.bind(this);

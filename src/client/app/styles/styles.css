@@ -4,30 +4,30 @@
 }
 
 a {
-  color: black;
+  color: #000;
 }
 
 footer {
-  background: black;
+  background: #000;
   padding: 10px;
   margin-top: 30px;
   position: fixed;
   bottom: 0;
   right: 0;
   left: 0;
-  color: white;
+  color: #FFF;
 }
 
 header {
-  background: black;
-  color: white;
+  background: #000;
+  color: #FFF;
   font-size: 1em;
   height: 60px;
   margin-bottom: 30px;
 }
 
 header a {
-  color: white;
+  color: #FFF;
   text-decoration: none;
 }
 
@@ -52,29 +52,33 @@ td, th {
   padding-bottom: 50px;
 }
 
+.left-align {
+  text-align: left;
+}
+
 .link-option {
   text-align: center;
 }
 
 .tr-completed {
-  background-color: green;
+  background-color: #7CFC00;
 }
 
 .tr-in-progress {
-  background-color: yellow;
+  background-color: #FFFF00;
 }
 
 .tr-pending {
-  background-color: orange;
+  background-color: #FFA500;
 }
 
 .search-result {
-  border: 1px solid black;
+  border: 1px solid #000;
 }
 
 .selected-shelf, .selected-shelf:hover, .selected-shelf:focus {
-  background: black;
-  color: white;
+  background: #000;
+  color: #FFF;
 }
 
 .header-item {
@@ -83,7 +87,6 @@ td, th {
 
 #banner {
   width: 100%;
-  /*height: 400px;*/
   margin-top: -30px;
 }
 
@@ -104,19 +107,19 @@ td, th {
   bottom: 100px;
   left: 100px;
   z-index: 1;
-  border: 10px solid black;
-  background: white;
+  border: 10px solid #000;
+  background: #FFF;
   overflow-y: scroll;
 }
 
 #modal table {
-  color: black;
+  color: #000;
   margin: 0 auto;
   max-width: 70%;
 }
 
 #modal-x {
-  color: black;
+  color: #000;
   font-weight: bolder;
   position: absolute;
   top: 15px;
