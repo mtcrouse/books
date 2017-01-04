@@ -27,6 +27,7 @@ const authorize = function(req, res, next) {
   });
 };
 
+// Get all books regardless of user
 router.get('/books/allbooks', (req, res, next) => {
   knex('books')
     .orderBy('id')
@@ -40,6 +41,7 @@ router.get('/books/allbooks', (req, res, next) => {
     });
 });
 
+// Get all books from a particular list
 router.get('/books/awards/:awardId', authorize, (req, res, next) => {
   const { awardId } = req.params;
   const { userId } = req.token;
@@ -61,6 +63,7 @@ router.get('/books/awards/:awardId', authorize, (req, res, next) => {
     });
 });
 
+// Get all books from the current user
 router.get('/books', authorize, (req, res, next) => {
   const { userId } = req.token;
 
@@ -77,6 +80,7 @@ router.get('/books', authorize, (req, res, next) => {
     });
 });
 
+// Post a book that is not already in the books table
 router.post('/books', authorize, (req, res, next) => {
   const { userId } = req.token;
   const { title, subtitle, author, genre, language, originalLanguage, publicationYear, series, volume } = req.body;
@@ -115,6 +119,7 @@ router.post('/books', authorize, (req, res, next) => {
     });
 });
 
+// Post a book that is ALREADY in the books table to the books_users table
 router.post('/books/books_users', authorize, (req, res, next) => {
   const { userId } = req.token;
   const { bookId } = req.body;
@@ -128,11 +133,15 @@ router.post('/books/books_users', authorize, (req, res, next) => {
 
   knex('books_users')
     .insert(decamelizeKeys(insertUserBook), '*')
+    .then((rows) => {
+      res.send(rows);
+    })
     .catch((err) => {
       next(err);
     });
 });
 
+// Route to patch shelf
 router.patch('/books/:bookId', authorize, (req, res, next) => {
   const { userId } = req.token;
   const { bookId } = req.params;

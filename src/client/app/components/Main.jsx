@@ -9,7 +9,6 @@ import NotFound from './NotFound.jsx';
 import Header from './layout/Header.jsx';
 import Footer from './layout/Footer.jsx';
 import Nebula from './Nebula.jsx';
-import NPR from './NPR.jsx';
 import Lists from './Lists.jsx';
 import axios from 'axios';
 
@@ -63,7 +62,7 @@ class Main extends React.Component {
   }
 
   addBook(newBooks) {
-    console.log('hey');
+    console.log('addBook from Main.jsx');
     this.setState( { books: newBooks } );
   }
 
@@ -105,10 +104,6 @@ class Main extends React.Component {
               { ...this.state }
               getBooks={this.getBooks}
               addBook={this.addBook}
-            /> } />
-          <Match pattern="/npr" exactly render={ () =>
-            <NPR
-              { ...this.state }
             /> } />
           <Miss component={NotFound} />
         </main>

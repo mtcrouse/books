@@ -41,7 +41,7 @@ class Nebula extends React.Component {
             toReadCount += 1;
           }
         }
-        console.log(res.data);
+
         this.setState( { readCount, readingCount, toReadCount });
       })
       .catch((err) => {

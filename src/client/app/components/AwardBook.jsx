@@ -15,21 +15,22 @@ class AwardBook extends React.Component {
       let shelf = event.target.value;
       let data = { bookId: this.props.book.bookId, shelf };
 
-      this.setState( { status: shelf });
-
       axios.post('/books/books_users', data)
         .then(res => {
           console.log('done posting to books_users');
+          this.setState( { status: shelf });
         })
         .catch(err => {
           console.log(err);
         });
+
     } else {
       let shelf = event.target.value;
-      this.setState( { status: shelf });
+
       axios.patch(`/books/${this.props.book.bookId}`, { shelf })
         .then(res => {
           console.log('done patching');
+          this.setState( { status: shelf });
         })
         .catch(err => {
           console.log(err);
