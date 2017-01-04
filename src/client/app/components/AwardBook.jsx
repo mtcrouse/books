@@ -6,6 +6,7 @@ class AwardBook extends React.Component {
   }
 
   render() {
+    console.log(this.props.book);
     return (
       <tr>
         <td>{this.props.book.awardYear}</td>

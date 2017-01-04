@@ -46,6 +46,7 @@ router.get('/books/awards/:awardId', (req, res, next) => {
   knex('awards_books')
     .where('award_id', awardId)
     .innerJoin('books', 'books.id', 'awards_books.book_id')
+    .leftJoin('books_users', 'books.id', 'books_users.book_id')
     .orderBy('books.id')
     .then((rows) => {
       const books = camelizeKeys(rows);

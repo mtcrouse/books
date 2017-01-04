@@ -16,7 +16,7 @@ class AwardsTable extends React.Component {
             <th>Award Year</th>
             <th>Title</th>
             <th>Author</th>
-            <th>Add Book</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
