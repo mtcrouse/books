@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-class SearchBook extends React.Component {
+class SearchForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -303,4 +303,4 @@ class SearchBook extends React.Component {
   }
 }
 
-export default SearchBook;
+export default SearchForm;

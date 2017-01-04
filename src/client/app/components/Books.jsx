@@ -65,34 +65,28 @@ class Books extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="row">
-            <div className="three columns">
-              Choose a shelf:
-            </div>
-            <div className="three columns">
-              { this.state.bookshelf === 'read' ? (
-                <button id="read" className="selected-shelf" onClick={this.switchShelf}>Read</button>
-              ) : (
-                <button id="read" className="" onClick={this.switchShelf}>Read</button>
-              )
-              }
-            </div>
-            <div className="three columns">
-              { this.state.bookshelf === 'reading' ? (
-                <button id="reading" className="selected-shelf" onClick={this.switchShelf}>Reading</button>
-              ) : (
-                <button id="reading" className="" onClick={this.switchShelf}>Reading</button>
-              )
-              }
-            </div>
-            <div className="three columns">
-              { this.state.bookshelf === 'to-read' ? (
-                <button id="to-read" className="selected-shelf" onClick={this.switchShelf}>To Read</button>
-              ) : (
-                <button id="to-read" className="" onClick={this.switchShelf}>To Read</button>
-              )
-              }
-            </div>
+          <div className="five columns">
+            <h3 className="cormorant left-align">Your Books</h3>
+          </div>
+          <div className="seven columns">
+            { this.state.bookshelf === 'read' ? (
+              <button id="read" className="selected-shelf shelf-button" onClick={this.switchShelf}>Read</button>
+            ) : (
+              <button id="read" className="shelf-button" onClick={this.switchShelf}>Read</button>
+            )
+            }
+            { this.state.bookshelf === 'reading' ? (
+              <button id="reading" className="selected-shelf shelf-button" onClick={this.switchShelf}>Reading</button>
+            ) : (
+              <button id="reading" className="shelf-button" onClick={this.switchShelf}>Reading</button>
+            )
+            }
+            { this.state.bookshelf === 'to-read' ? (
+              <button id="to-read" className="selected-shelf shelf-button" onClick={this.switchShelf}>To Read</button>
+            ) : (
+              <button id="to-read" className="shelf-button" onClick={this.switchShelf}>To Read</button>
+            )
+            }
           </div>
         </div>
         <div className="row">

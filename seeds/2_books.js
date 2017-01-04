@@ -106,7 +106,7 @@ exports.seed = function(knex) {
         title: 'The Giving Tree',
         subtitle: null,
         author: 'Shel Silverstein',
-        genre: 'juvenile fiction',
+        genre: 'fiction',
         language: 'English',
         original_language: 'English',
         publication_year: 1964,

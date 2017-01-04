@@ -23,7 +23,7 @@ class Header extends React.Component {
               <Link to="/books" className="u-pull-right header-item cormorant">Your Books</Link>
               <Link to="/lists" className="u-pull-right header-item cormorant">Lists</Link>
               <Link to="/profile" className="u-pull-right header-item cormorant">Profile</Link>
-              <Link to="/addbooks" className="u-pull-right header-item cormorant">Search</Link>
+              <Link to="/search" className="u-pull-right header-item cormorant">Search</Link>
             </div>
           ) : (
             <Link to="/signin" className="u-pull-right header-item cormorant">Sign In</Link>

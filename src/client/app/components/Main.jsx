@@ -4,7 +4,7 @@ import Profile from './Profile.jsx';
 import Intro from './Intro.jsx';
 import SignIn from './SignIn.jsx';
 import Books from './Books.jsx';
-import AddBooks from './AddBooks.jsx';
+import Search from './Search.jsx';
 import NotFound from './NotFound.jsx';
 import Header from './layout/Header.jsx';
 import Footer from './layout/Footer.jsx';
@@ -91,8 +91,8 @@ class Main extends React.Component {
               { ...this.state }
               getBooks={this.getBooks}
             /> } />
-          <Match pattern="/addbooks"  render={ () =>
-            <AddBooks
+          <Match pattern="/search"  render={ () =>
+            <Search
               { ...this.state }
               addBook={this.addBook}
             /> } />

@@ -12,11 +12,14 @@ class Lists extends React.Component {
     return (
       <div className="container">
         <div className="row">
+          <h3 className="cormorant left-align">Lists</h3>
+        </div>
+        <div className="row left-align">
           <Link to="/nebula">Nebula Award for Best Novel</Link>
         </div>
-        <div className="row">
+        {/* <div className="row">
           <Link to="/npr">NPR Top 100 Science Fiction and Fantasy Books</Link>
-        </div>
+        </div> */}
       </div>
     );
   }

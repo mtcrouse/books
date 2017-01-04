@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import SearchBook from './SearchBook.jsx';
+import SearchForm from './SearchForm.jsx';
 import SearchResult from './SearchResult.jsx';
 
-class AddBooks extends React.Component {
+class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = { searchResults: [] };
@@ -31,8 +31,11 @@ class AddBooks extends React.Component {
     return (
       <div className="container">
         <div className="row">
+          <h3 className="cormorant left-align">Book Search</h3>
+        </div>
+        <div className="row">
           <div className="six columns">
-            <SearchBook addSearchResults={this.addSearchResults} />
+            <SearchForm addSearchResults={this.addSearchResults} />
           </div>
           <div className="six columns">
             Put something here.
@@ -48,4 +51,4 @@ class AddBooks extends React.Component {
   }
 }
 
-export default AddBooks;
+export default Search;

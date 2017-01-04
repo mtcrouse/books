@@ -39,6 +39,10 @@ td, th {
   text-align: center;
 }
 
+select {
+  margin-right: 20px;
+}
+
 .container {
   margin-bottom: 40px;
 }
@@ -60,6 +64,19 @@ td, th {
   text-align: center;
 }
 
+.search-result {
+  border: 1px solid #000;
+}
+
+.selected-shelf, .selected-shelf:hover, .selected-shelf:focus {
+  background: #000;
+  color: #FFF;
+}
+
+.shelf-button {
+  margin-left: 20px;
+}
+
 .tr-completed {
   background-color: #7CFC00;
 }
@@ -70,15 +87,6 @@ td, th {
 
 .tr-pending {
   background-color: #FFA500;
-}
-
-.search-result {
-  border: 1px solid #000;
-}
-
-.selected-shelf, .selected-shelf:hover, .selected-shelf:focus {
-  background: #000;
-  color: #FFF;
 }
 
 .header-item {

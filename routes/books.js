@@ -40,8 +40,9 @@ router.get('/books/allbooks', (req, res, next) => {
     });
 });
 
-router.get('/books/awards/:awardId', (req, res, next) => {
+router.get('/books/awards/:awardId', authorize, (req, res, next) => {
   const { awardId } = req.params;
+  const { userId } = req.token;
 
   knex('awards_books')
     .where('award_id', awardId)

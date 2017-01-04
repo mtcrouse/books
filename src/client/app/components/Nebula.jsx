@@ -8,10 +8,11 @@ class Nebula extends React.Component {
     super(props);
     this.state = { awardBooks: [], readCount: 0, readingCount: 0, toReadCount: 0 };
 
+    this.addBook = this.addBook.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.getAwardBooks = this.getAwardBooks.bind(this);
     this.getBooks = this.getBooks.bind(this);
-    this.addBook = this.addBook.bind(this);
+    this.incrementCount = this.incrementCount.bind(this);
   }
 
   addBook() {
@@ -52,6 +53,10 @@ class Nebula extends React.Component {
     this.props.getBooks();
   }
 
+  incrementCount(countType) {
+
+  }
+
   render() {
     return (
       <div className="container">
@@ -69,6 +74,13 @@ class Nebula extends React.Component {
           </p>
         </div>
         <div className="row">
+          <p className="left-align">
+            Read: {this.state.readCount} <br />
+            Reading: {this.state.readingCount} <br />
+            To Read: {this.state.toReadCount}
+          </p>
+        </div>
+        <div className="row">
           <div className="">
             <AwardsTable
               award="nebula"
@@ -76,6 +88,7 @@ class Nebula extends React.Component {
               getBooks={this.getBooks}
               addBook={this.addBook}
               getAwardBooks={this.getAwardBooks}
+              incrementCount={this.incrementCount}
             />
           </div>
         </div>
