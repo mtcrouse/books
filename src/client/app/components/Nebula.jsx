@@ -10,6 +10,12 @@ class Nebula extends React.Component {
 
     this.componentDidMount = this.componentDidMount.bind(this);
     this.getAwardBooks = this.getAwardBooks.bind(this);
+    this.getBooks = this.getBooks.bind(this);
+    this.addBook = this.addBook.bind(this);
+  }
+
+  addBook() {
+    this.props.addBook();
   }
 
   componentDidMount() {
@@ -24,6 +30,10 @@ class Nebula extends React.Component {
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  getBooks() {
+    this.props.getBooks();
   }
 
   render() {
@@ -44,7 +54,12 @@ class Nebula extends React.Component {
         </div>
         <div className="row">
           <div className="">
-            <AwardsTable award="nebula" books={this.state.awardBooks} />
+            <AwardsTable
+              award="nebula"
+              books={this.state.awardBooks}
+              getBooks={this.getBooks}
+              addBook={this.addBook}
+            />
           </div>
         </div>
       </div>

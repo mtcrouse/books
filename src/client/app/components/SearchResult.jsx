@@ -6,7 +6,7 @@ class SearchResult extends React.Component {
     super(props);
     this.state = { modal: false, selectedShelf: 'read' };
 
-    this.addBook = this.addBook.bind(this);
+    this.postBook = this.postBook.bind(this);
     this.createModal = this.createModal.bind(this);
     this.destroyModal = this.destroyModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -16,14 +16,13 @@ class SearchResult extends React.Component {
     this.setState({ selectedShelf: event.target.value });
   }
 
-  addBook() {
+  postBook() {
     let title = this.props.book.volumeInfo.title;
     let author = this.props.book.volumeInfo.authors.join(', ');
     let subtitle = this.props.book.volumeInfo.subtitle;
     let genre = this.props.book.volumeInfo.categories.join(', ');
     let language = this.props.book.volumeInfo.language;
     let originalLanguage = null;
-    // let publicationYear = this.props.book.volumeInfo.publishedDate;
     let publicationYear = 1000;
     let shelf = this.state.selectedShelf;
 
@@ -38,7 +37,7 @@ class SearchResult extends React.Component {
       shelf
     }
 
-    this.props.addBook(data);
+    this.props.postBook(data);
   }
 
   createModal() {
@@ -77,7 +76,7 @@ class SearchResult extends React.Component {
               <option value="reading">Reading</option>
               <option value="to-read">To Read</option>
             </select>
-            <button onClick={this.addBook}>Add Book to Shelf</button>
+            <button onClick={this.postBook}>Add Book to Shelf</button>
           </div>
         </div>
         <div id="modal-x-holder"></div>

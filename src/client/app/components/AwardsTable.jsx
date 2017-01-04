@@ -6,6 +6,17 @@ class AwardsTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+
+    this.getBooks = this.getBooks.bind(this);
+    this.addBook = this.addBook.bind(this);
+  }
+
+  getBooks() {
+    this.props.getBooks();
+  }
+
+  addBook() {
+    this.props.addBook();
   }
 
   render() {
@@ -21,7 +32,12 @@ class AwardsTable extends React.Component {
         </thead>
         <tbody>
           {this.props.books.map((book,index) => {
-            return <AwardBook key={index} book={book} />;
+            return <AwardBook
+              key={index}
+              book={book}
+              getBooks={this.getBooks}
+              addBook={this.addBook}
+             />;
           })}
         </tbody>
       </table>

@@ -8,19 +8,19 @@ class AddBooks extends React.Component {
     super(props);
     this.state = { searchResults: [] };
 
-    this.addBook = this.addBook.bind(this);
+    this.postBook = this.postBook.bind(this);
     this.addSearchResults = this.addSearchResults.bind(this);
   }
 
-  addBook(data) {
-    axios.post('/books', data)
-      .then((res) => {
-        const newBooks = this.props.books.concat([res.data]);
-        this.props.addBook(newBooks);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  postBook(data) {
+    // axios.post('/books', data)
+    //   .then((res) => {
+    //     const newBooks = this.props.books.concat([res.data]);
+    //     this.props.addBook(newBooks);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   }
 
   addSearchResults(results) {
@@ -40,7 +40,7 @@ class AddBooks extends React.Component {
         </div>
         <div className="row">
           {this.state.searchResults.map((book,index) => {
-            return <SearchResult key={index} book={book} addBook={this.addBook} />;
+            return <SearchResult key={index} book={book} postBook={this.postBook} />;
           })}
         </div>
       </div>

@@ -46,8 +46,10 @@ router.get('/books/awards/:awardId', (req, res, next) => {
   knex('awards_books')
     .where('award_id', awardId)
     .innerJoin('books', 'books.id', 'awards_books.book_id')
-    .leftJoin('books_users', 'books.id', 'books_users.book_id')
-    .orderBy('books.id')
+    .select('*')
+    .leftJoin('books_users', 'books_users.book_id', 'books.id')
+    .select('author', 'title', 'award_year', 'awards_books.book_id', 'shelf', 'date_read')
+    .orderBy('award_year', 'ASC')
     .then((rows) => {
       const books = camelizeKeys(rows);
 
@@ -76,20 +78,21 @@ router.get('/books', authorize, (req, res, next) => {
 
 router.post('/books', authorize, (req, res, next) => {
   const { userId } = req.token;
-  const { title, subtitle, author, genre, language, originalLanguage, publicationYear } = req.body;
+  const { title, subtitle, author, genre, language, originalLanguage, publicationYear, series, volume } = req.body;
   const insertBook = {
-    title, subtitle, author, genre, language, originalLanguage, publicationYear
+    title, subtitle, author, genre, language, originalLanguage, publicationYear, series, volume
   }
+  const { bookId } = req.body;
   const { shelf } = req.body;
 
   knex('books')
-    .where('title', title)
+    .where('id', bookId)
     .first()
-    // .then((row) => {
-    //   if (row) {
-    //     return next(boom.create(400, 'Book already exists'));
-    //   }
-    // })
+    .then((row) => {
+      if (row) {
+        return next(boom.create(400, 'Book already exists'));
+      }
+    })
     .then(() => {
       return knex('books').insert(decamelizeKeys(insertBook), '*');
     })
@@ -105,8 +108,29 @@ router.post('/books', authorize, (req, res, next) => {
       return knex('books_users').insert(decamelizeKeys(insertUserBook), '*');
     })
     .then((rows) => {
+      console.log('a');
+      // res.send('book');
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
 
-      res.send('book');
+router.patch('/books/:bookId', authorize, (req, res, next) => {
+  const { userId } = req.token;
+  const { bookId } = req.params;
+  const { shelf } = req.body;
+
+  console.log(userId, bookId, shelf);
+
+  knex('books_users')
+    .where('user_id', userId)
+    .where('book_id', bookId)
+    .update({
+      shelf
+    })
+    .then(() => {
+      res.sendStatus(200);
     })
     .catch((err) => {
       next(err);

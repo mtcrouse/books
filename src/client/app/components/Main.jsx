@@ -5,11 +5,9 @@ import Intro from './Intro.jsx';
 import SignIn from './SignIn.jsx';
 import Books from './Books.jsx';
 import AddBooks from './AddBooks.jsx';
-import Analysis from './Analysis.jsx';
 import NotFound from './NotFound.jsx';
 import Header from './layout/Header.jsx';
 import Footer from './layout/Footer.jsx';
-import Hugo from './Hugo.jsx';
 import Nebula from './Nebula.jsx';
 import NPR from './NPR.jsx';
 import Lists from './Lists.jsx';
@@ -96,21 +94,15 @@ class Main extends React.Component {
               { ...this.state }
               addBook={this.addBook}
             /> } />
-          <Match pattern="/analysis"  render={ () =>
-            <Analysis
-              { ...this.state }
-            /> } />
           <Match pattern="/lists"  render={ () =>
             <Lists
-              { ...this.state }
-            /> } />
-          <Match pattern="/hugo" exactly render={ () =>
-            <Hugo
               { ...this.state }
             /> } />
           <Match pattern="/nebula" exactly render={ () =>
             <Nebula
               { ...this.state }
+              getBooks={this.getBooks}
+              addBook={this.addBook}
             /> } />
           <Match pattern="/npr" exactly render={ () =>
             <NPR
