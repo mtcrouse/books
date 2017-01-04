@@ -102,14 +102,6 @@ exports.seed = function(knex) {
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
       {
-        id: 12,
-        book_id: 22,
-        award_id: 1,
-        award_year: 1976,
-        created_at: new Date('2016-12-07 16:17:12 UTC'),
-        updated_at: new Date('2016-12-07 16:17:12 UTC')
-      },
-      {
         id: 13,
         book_id: 23,
         award_id: 1,
@@ -426,6 +418,158 @@ exports.seed = function(knex) {
         book_id: 62,
         award_id: 1,
         award_year: 2016,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 53,
+        book_id: 63,
+        award_id: 2,
+        rank: 1,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 54,
+        book_id: 64,
+        award_id: 2,
+        rank: 1,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 55,
+        book_id: 65,
+        award_id: 2,
+        rank: 1,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 56,
+        book_id: 66,
+        award_id: 2,
+        rank: 2,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 57,
+        book_id: 32,
+        award_id: 2,
+        rank: 3,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 58,
+        book_id: 11,
+        award_id: 2,
+        rank: 4,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 59,
+        book_id: 67,
+        award_id: 2,
+        rank: 5,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 60,
+        book_id: 68,
+        award_id: 2,
+        rank: 5,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 61,
+        book_id: 69,
+        award_id: 2,
+        rank: 5,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 62,
+        book_id: 70,
+        award_id: 2,
+        rank: 5,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 63,
+        book_id: 71,
+        award_id: 2,
+        rank: 5,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 64,
+        book_id: 72,
+        award_id: 2,
+        rank: 6,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 65,
+        book_id: 73,
+        award_id: 2,
+        rank: 7,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 66,
+        book_id: 74,
+        award_id: 2,
+        rank: 8,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 67,
+        book_id: 75,
+        award_id: 2,
+        rank: 8,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 68,
+        book_id: 76,
+        award_id: 2,
+        rank: 8,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 69,
+        book_id: 77,
+        award_id: 2,
+        rank: 9,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 70,
+        book_id: 49,
+        award_id: 2,
+        rank: 10,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 71,
+        book_id: 78,
+        award_id: 2,
+        rank: 11,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       }]);

@@ -15,7 +15,8 @@ exports.up = function(knex) {
       .inTable('books')
       .onDelete('CASCADE')
       .index();
-    table.integer('award_year');
+    table.integer('award_year').defaultTo(null);
+    table.integer('rank').defaultTo(null);
     table.timestamps(true, true);
   });
 };

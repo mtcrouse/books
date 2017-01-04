@@ -10,6 +10,12 @@ exports.seed = function(knex) {
         award_name: 'Nebula Award for Best Novel',
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 2,
+        award_name: 'NPR Top 100 Science Fiction and Fantasy Novels',
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
       }]);
     })
     .then(() => {

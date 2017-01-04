@@ -5,6 +5,8 @@ exports.up = function(knex) {
     table.increments();
     table.string('title').notNullable();
     table.string('subtitle');
+    table.string('series').defaultTo(null);
+    table.integer('volume').defaultTo(null);
     table.string('author');
     table.string('genre');
     table.string('language');
