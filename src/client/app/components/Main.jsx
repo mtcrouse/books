@@ -89,6 +89,7 @@ class Main extends React.Component {
           <Match pattern="/books"  render={ () =>
             <Books
               { ...this.state }
+              getBooks={this.getBooks}
             /> } />
           <Match pattern="/addbooks"  render={ () =>
             <AddBooks

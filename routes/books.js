@@ -126,6 +126,14 @@ router.post('/books/books_users', authorize, (req, res, next) => {
   }
 
   knex('books_users')
+    .where('user_id', userId)
+    .where('book_id', bookId)
+    .first()
+    .then((row) => {
+      if (row) {
+        return next(boom.create(400, 'Book already exists'));
+      }
+    })
     .insert(decamelizeKeys(insertUserBook), '*')
     .catch((err) => {
       next(err);

@@ -18,10 +18,10 @@ class AwardBook extends React.Component {
       this.setState( { status: shelf });
 
       axios.post('/books/books_users', data)
-        .then((res) => {
-          console.log('done');
+        .then(res => {
+          console.log('done posting to books_users');
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
         });
     } else {
@@ -29,7 +29,7 @@ class AwardBook extends React.Component {
       this.setState( { status: shelf });
       axios.patch(`/books/${this.props.book.bookId}`, { shelf })
         .then(res => {
-          this.props.getBooks();
+          console.log('done patching');
         })
         .catch(err => {
           console.log(err);

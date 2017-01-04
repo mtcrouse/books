@@ -33,9 +33,6 @@ class Profile extends React.Component {
         <div className="row left-align">
             Member since: December 2016
         </div>
-        <div className="row left-align">
-            List progress: :(
-        </div>
         <this.checkIfSignedOut />
       </div>
     );

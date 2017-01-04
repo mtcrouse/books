@@ -3,7 +3,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable('awards', (table) => {
     table.increments();
-    table.string('award_name');
+    table.string('award_name').notNullable();
     table.timestamps(true, true);
   });
 };

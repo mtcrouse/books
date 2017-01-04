@@ -10,6 +10,11 @@ class Books extends React.Component {
     this.sortedBooks = this.sortedBooks.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.switchShelf = this.switchShelf.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.getBooks();
   }
 
   handleClick(event) {

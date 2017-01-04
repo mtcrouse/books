@@ -6,7 +6,7 @@ class Nebula extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { awardBooks: [] };
+    this.state = { awardBooks: [], readCount: 0, readingCount: 0, toReadCount: 0 };
 
     this.componentDidMount = this.componentDidMount.bind(this);
     this.getAwardBooks = this.getAwardBooks.bind(this);
@@ -26,6 +26,22 @@ class Nebula extends React.Component {
     axios.get('/books/awards/1')
       .then((res) => {
         this.setState( { awardBooks: res.data } );
+
+        let readCount = this.state.readCount;
+        let readingCount = this.state.readingCount;
+        let toReadCount = this.state.toReadCount;
+
+        for (let book of res.data) {
+          if (book.shelf === 'read') {
+            readCount += 1;
+          } else if (book.shelf === 'reading') {
+            readingCount += 1;
+          } else if (book.shelf === 'to-read') {
+            toReadCount += 1;
+          }
+        }
+        console.log(res.data);
+        this.setState( { readCount, readingCount, toReadCount });
       })
       .catch((err) => {
         console.log(err);
@@ -59,6 +75,7 @@ class Nebula extends React.Component {
               books={this.state.awardBooks}
               getBooks={this.getBooks}
               addBook={this.addBook}
+              getAwardBooks={this.getAwardBooks}
             />
           </div>
         </div>
