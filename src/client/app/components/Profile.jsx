@@ -22,16 +22,34 @@ class Profile extends React.Component {
   }
 
   render() {
+    let booksRead = this.props.books.filter((book) => {
+      return book.shelf === 'read';
+    });
+
+    let currentlyReading = this.props.books.filter((book) => {
+      return book.shelf === 'reading';
+    });
+
     return (
       <div className="container">
         <div className="row">
           <h3 className="u-pull-left cormorant">Metta's Profile</h3>
         </div>
         <div className="row left-align">
-            Books read: {this.props.books.length}
+            Books read: {booksRead.length}
         </div>
         <div className="row left-align">
-            Member since: December 2016
+          <div className="three columns left-align">
+            Currently reading:
+          </div>
+          <div className="nine columns">
+            {currentlyReading.map((book,index) => {
+              console.log(book);
+              return <div key={index} className="row left-align">
+                {book.title} by {book.author} ({book.publicationYear})
+              </div>;
+            })}
+          </div>
         </div>
         <this.checkIfSignedOut />
       </div>
