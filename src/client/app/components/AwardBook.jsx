@@ -10,15 +10,16 @@ class AwardBook extends React.Component {
   }
 
   changeStatus(event) {
+    console.log(this.props.book);
     if (this.props.book.shelf === null) {
       let shelf = event.target.value;
+      let data = { bookId: this.props.book.bookId, shelf };
+
       this.setState( { status: shelf });
-      let { title, author, subtitle, genre, language, originalLanguage, publicationYear, series, volume, bookId, shelf } = this.props.book;
-      let data = { title, author, subtitle, genre, language, originalLanguage, publicationYear, series, volume, bookId, shelf };
-      axios.post('/books', data)
+
+      axios.post('/books/books_users', data)
         .then((res) => {
-          const newBooks = this.props.books.concat([res.data]);
-          this.props.addBook(newBooks);
+          console.log('done');
         })
         .catch((err) => {
           console.log(err);
@@ -48,8 +49,6 @@ class AwardBook extends React.Component {
     } else {
       status = 'none';
     }
-
-    console.log(this.props.book);
 
     return (
       <tr className={rowClass}>

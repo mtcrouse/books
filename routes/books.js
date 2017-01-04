@@ -94,23 +94,39 @@ router.post('/books', authorize, (req, res, next) => {
       }
     })
     .then(() => {
-      return knex('books').insert(decamelizeKeys(insertBook), '*');
-    })
-    .then((rows) => {
-      const bookId = camelizeKeys(rows)[0].id;
-      const insertUserBook = {
-        bookId,
-        userId,
-        dateRead: null,
-        shelf
-      }
+      return knex('books').insert(decamelizeKeys(insertBook), '*')
+        .then(() => {
+          const insertUserBook = {
+            bookId,
+            userId,
+            dateRead: null,
+            shelf
+          }
 
-      return knex('books_users').insert(decamelizeKeys(insertUserBook), '*');
+          knex('books_users').insert(decamelizeKeys(insertUserBook), '*');
+        })
+        .catch((err) => {
+          next(err);
+        });
     })
-    .then((rows) => {
-      console.log('a');
-      // res.send('book');
-    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+router.post('/books/books_users', authorize, (req, res, next) => {
+  const { userId } = req.token;
+  const { bookId } = req.body;
+  const { shelf } = req.body;
+  const insertUserBook = {
+    bookId,
+    userId,
+    dateRead: null,
+    shelf
+  }
+
+  knex('books_users')
+    .insert(decamelizeKeys(insertUserBook), '*')
     .catch((err) => {
       next(err);
     });
@@ -120,8 +136,6 @@ router.patch('/books/:bookId', authorize, (req, res, next) => {
   const { userId } = req.token;
   const { bookId } = req.params;
   const { shelf } = req.body;
-
-  console.log(userId, bookId, shelf);
 
   knex('books_users')
     .where('user_id', userId)

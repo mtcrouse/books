@@ -16,7 +16,7 @@ import axios from 'axios';
 class Main extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLoggedIn: true, books: [] };
+    this.state = { isLoggedIn: false, books: [] };
 
     this.componentDidMount = this.componentDidMount.bind(this);
     this.signOut = this.signOut.bind(this);
@@ -63,6 +63,7 @@ class Main extends React.Component {
   }
 
   addBook(newBooks) {
+    console.log('hey');
     this.setState( { books: newBooks } );
   }
 

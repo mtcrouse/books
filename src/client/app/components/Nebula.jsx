@@ -40,7 +40,7 @@ class Nebula extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <h3 className="cormorant u-pull-left">Nebula Award for Best Novel</h3>
+          <h3 className="cormorant left-align">Nebula Award for Best Novel</h3>
         </div>
         <div className="row">
           <p className="left-align">

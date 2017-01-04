@@ -145,7 +145,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1966,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -157,7 +157,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1966,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -169,7 +169,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1967,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -181,7 +181,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1968,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -193,7 +193,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1969,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -205,7 +205,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1970,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -217,7 +217,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1971,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -229,7 +229,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1972,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -241,7 +241,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1973,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -253,7 +253,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1974,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -265,7 +265,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1974,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -277,7 +277,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1976,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -289,7 +289,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1977,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -301,7 +301,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1978,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -313,7 +313,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1979,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -325,7 +325,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1980,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -337,7 +337,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1981,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -349,7 +349,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1982,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -361,7 +361,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1983,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -373,7 +373,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1984,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -385,7 +385,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1985,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -397,7 +397,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1986,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -409,7 +409,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1986,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -421,7 +421,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1988,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -433,7 +433,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1988,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -441,11 +441,13 @@ exports.seed = function(knex) {
         id: 37,
         title: 'Tehanu',
         subtitle: 'The Last Book of Earthsea',
+        series: 'Earthsea',
+        volume: null,
         author: 'Ursula K. Le Guin',
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1990,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -459,7 +461,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1991,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -473,7 +475,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1992,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -487,7 +489,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1993,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -501,7 +503,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1993,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -515,7 +517,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1995,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -529,7 +531,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1995,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -543,7 +545,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1997,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -557,7 +559,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1997,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -571,7 +573,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1998,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -585,7 +587,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 1999,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -599,7 +601,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 2000,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -613,13 +615,13 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 2001,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
       {
         id: 50,
-        title: 'The Speed of Dark',
+        title: 'Speed of Dark',
         subtitle: null,
         series: null,
         volume: null,
@@ -627,7 +629,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 2002,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -641,7 +643,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 2003,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -655,7 +657,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 2004,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -669,7 +671,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 2005,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -683,7 +685,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 2007,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -697,7 +699,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 2007,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -711,7 +713,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 2009,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -725,7 +727,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 2010,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -739,7 +741,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 2011,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -753,7 +755,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 2012,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -767,7 +769,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 2013,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -781,7 +783,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 2014,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -795,7 +797,7 @@ exports.seed = function(knex) {
         genre: 'fiction',
         language: 'English',
         original_language: 'English',
-        publication_year: null,
+        publication_year: 2015,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
