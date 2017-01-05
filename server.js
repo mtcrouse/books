@@ -19,6 +19,7 @@ app.use(cookieParser());
 app.use(morgan('short'));
 
 const authFacebook = require('./routes/auth_facebook');
+const authLinkedin = require('./routes/auth_linkedin');
 const users = require('./routes/users');
 const token = require('./routes/token');
 const books = require('./routes/books');
@@ -34,6 +35,7 @@ passport.deserializeUser(function(user, done) {
 });
 
 app.use('/auth_facebook', authFacebook);
+app.use('/auth_linkedin', authLinkedin);
 app.use(users);
 app.use(token);
 app.use(books);

@@ -17,7 +17,7 @@ class SignIn extends React.Component {
           sign in with their Google accounts, as well.
         </p>
         <div className="row">
-          <button><a href="/auth/linkedin">Sign in with LinkedIn</a></button>
+          <button><a href="/auth_linkedin/linkedin">Sign in with LinkedIn</a></button>
         </div>
         <div className="row">
           <button><a href="/auth_facebook/api/facebook">Sign in with Facebook</a></button>

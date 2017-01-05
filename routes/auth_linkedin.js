@@ -16,7 +16,7 @@ const strategy = new OAuth2Strategy({
   tokenURL: 'https://www.linkedin.com/oauth/v2/accessToken',
   clientID: process.env.LINKEDIN_CLIENT_ID,
   clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
-  callbackURL: 'http://localhost:8000/auth/linkedin/callback'
+  callbackURL: 'http://localhost:8000/auth_linkedin/linkedin/callback'
 }, (accessToken, refreshToken, profile, done) => {
   let liProfile = null;
 

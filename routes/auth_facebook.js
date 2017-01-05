@@ -14,11 +14,10 @@ passport.use(new FacebookStrategy({
   clientID: process.env.FACEBOOK_APP_ID,
   clientSecret: process.env.FACEBOOK_APP_SECRET,
   callbackURL: 'http://localhost:8000/auth_facebook/api/facebook/callback',
-  profileFields: ['name', 'photos']
+  profileFields: ['name', 'email']
   },
   function(accessToken, refreshToken, profile, done) {
     let fbProfile = null;
-    console.log(profile);
 
     request({
       url: `http://graph.facebook.com/${profile.id}/picture?type=large&redirect=false&width=480&height=480`
@@ -38,12 +37,11 @@ passport.use(new FacebookStrategy({
       return knex('users')
       .insert(decamelizeKeys({
         firstName: profile.name.givenName,
-        email: 'fakeemail@email.com',
-        linkedinToken: accessToken
+        facebookId: profile.id
       }), '*');
     })
     .then((user) => {
-      done(null, camelizeKeys(user));
+      done(null, user);
     })
     .catch((err) => {
       done(err);
