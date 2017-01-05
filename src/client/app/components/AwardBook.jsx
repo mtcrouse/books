@@ -6,6 +6,12 @@ class AwardBook extends React.Component {
     super(props);
 
     this.changeStatus = this.changeStatus.bind(this);
+
+    if (this.props.awardName === 'nebula') {
+      this.awardId = 1;
+    } else if (this.props.awardName === 'npr') {
+      this.awardId = 2;
+    }
   }
 
   changeStatus(event) {
@@ -16,8 +22,7 @@ class AwardBook extends React.Component {
       axios.post('/books/books_users', data)
         .then(res => {
           this.props.getBooks();
-          this.props.getNebulaBooks();
-          this.props.getNPRBooks();
+          this.props.getAwardBooks(this.awardId);
         })
         .catch(err => {
           console.log(err);
@@ -33,8 +38,7 @@ class AwardBook extends React.Component {
           .then(res => {
             console.log('done patching');
             this.props.getBooks();
-            this.props.getNebulaBooks();
-            this.props.getNPRBooks();
+            this.props.getAwardBooks(this.awardId);
           })
           .catch(err => {
             console.log(err);
@@ -49,8 +53,7 @@ class AwardBook extends React.Component {
     axios.delete(`/books/books_users/${bookId}`)
       .then(res => {
         this.props.getBooks();
-        this.props.getNebulaBooks();
-        this.props.getNPRBooks();
+        this.props.getAwardBooks(this.awardId);
       })
       .catch(err => {
         console.log(err);
@@ -72,7 +75,7 @@ class AwardBook extends React.Component {
 
     return (
       <tr className={rowClass}>
-        { this.props.award === 'nebula' ? (
+        { this.props.awardName === 'nebula' ? (
           <td>{this.props.book.awardYear}</td>
         ) : (
           <td>{this.props.book.rank}</td>

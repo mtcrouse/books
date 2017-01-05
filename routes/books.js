@@ -46,21 +46,39 @@ router.get('/books/awards/:awardId', authorize, (req, res, next) => {
   const { awardId } = req.params;
   const { userId } = req.token;
 
-  knex('awards_books')
-    .where('award_id', awardId)
-    .innerJoin('books', 'books.id', 'awards_books.book_id')
-    .select('*')
-    .leftJoin('books_users', 'books_users.book_id', 'books.id')
-    .select('author', 'title', 'award_year', 'awards_books.book_id', 'shelf', 'date_read')
-    .orderBy('award_year', 'ASC')
-    .then((rows) => {
-      const books = camelizeKeys(rows);
+  if (awardId == 1) {
+    knex('awards_books')
+      .where('award_id', awardId)
+      .innerJoin('books', 'books.id', 'awards_books.book_id')
+      .select('*')
+      .leftJoin('books_users', 'books_users.book_id', 'books.id')
+      .select('author', 'title', 'award_year', 'awards_books.book_id', 'shelf', 'date_read')
+      .orderBy('award_year', 'ASC')
+      .then((rows) => {
+        const books = camelizeKeys(rows);
 
-      res.send(books);
-    })
-    .catch((err) => {
-      next(err);
-    });
+        res.send(books);
+      })
+      .catch((err) => {
+        next(err);
+      });
+  } else if (awardId == 2) {
+    knex('awards_books')
+      .where('award_id', awardId)
+      .innerJoin('books', 'books.id', 'awards_books.book_id')
+      .select('*')
+      .leftJoin('books_users', 'books_users.book_id', 'books.id')
+      .select('author', 'title', 'award_year', 'awards_books.book_id', 'shelf', 'date_read')
+      .orderBy('rank', 'ASC')
+      .then((rows) => {
+        const books = camelizeKeys(rows);
+
+        res.send(books);
+      })
+      .catch((err) => {
+        next(err);
+      });
+  }
 });
 
 // Get all books from the current user

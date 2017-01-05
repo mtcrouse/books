@@ -7,20 +7,15 @@ class AwardsTable extends React.Component {
     super(props);
 
     this.getBooks = this.getBooks.bind(this);
-    this.getNebulaBooks = this.getNebulaBooks.bind(this);
-    this.getNPRBooks = this.getNPRBooks.bind(this);
+    this.getAwardBooks = this.getAwardBooks.bind(this);
   }
 
   getBooks() {
     this.props.getBooks();
   }
 
-  getNebulaBooks() {
-    this.props.getNebulaBooks();
-  }
-
-  getNPRBooks() {
-    this.props.getNPRBooks();
+  getAwardBooks(awardId) {
+    this.props.getAwardBooks(awardId);
   }
 
   render() {
@@ -28,7 +23,7 @@ class AwardsTable extends React.Component {
       <table>
         <thead>
           <tr>
-            { this.props.award === 'nebula' ? (
+            { this.props.awardName === 'nebula' ? (
               <th>Award Year</th>
             ) : (
               <th>Rank</th>
@@ -41,12 +36,11 @@ class AwardsTable extends React.Component {
         <tbody>
           {this.props.books.map((book,index) => {
             return <AwardBook
-              award={this.props.award}
+              awardName={this.props.awardName}
               key={index}
               book={book}
               getBooks={this.getBooks}
-              getNebulaBooks={this.getNebulaBooks}
-              getNPRBooks={this.getNPRBooks}
+              getAwardBooks={this.getAwardBooks}
              />;
           })}
         </tbody>

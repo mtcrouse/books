@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-class Lists extends React.Component {
+class ListMenu extends React.Component {
 
   constructor(props) {
     super(props);
@@ -26,4 +26,4 @@ class Lists extends React.Component {
 
 }
 
-export default Lists;
+export default ListMenu;

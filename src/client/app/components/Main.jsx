@@ -8,9 +8,8 @@ import Search from './Search.jsx';
 import NotFound from './NotFound.jsx';
 import Header from './layout/Header.jsx';
 import Footer from './layout/Footer.jsx';
-import Nebula from './Nebula.jsx';
-import NPR from './NPR.jsx';
-import Lists from './Lists.jsx';
+import ListMenu from './ListMenu.jsx';
+import Awards from './Awards.jsx';
 import axios from 'axios';
 
 class Main extends React.Component {
@@ -19,15 +18,13 @@ class Main extends React.Component {
     this.state = {
       isLoggedIn: false,
       books: [],
-      nebulaBooks: [],
-      nprBooks: []
+      awardBooks: []
     };
 
     this.componentDidMount = this.componentDidMount.bind(this);
     this.signOut = this.signOut.bind(this);
     this.getBooks = this.getBooks.bind(this);
-    this.getNebulaBooks = this.getNebulaBooks.bind(this);
-    this.getNPRBooks = this.getNPRBooks.bind(this);
+    this.getAwardBooks = this.getAwardBooks.bind(this);
   }
 
   componentDidMount() {
@@ -37,8 +34,6 @@ class Main extends React.Component {
         if (isLoggedIn) {
           this.setState({ isLoggedIn: true });
           this.getBooks();
-          this.getNebulaBooks();
-          this.getNPRBooks();
         } else {
           this.setState({ isLoggedIn: false });
         }
@@ -59,52 +54,26 @@ class Main extends React.Component {
       });
   }
 
-  getNebulaBooks() {
-    axios.get('/books/awards/1')
+  getAwardBooks(awardId) {
+    axios.get(`/books/awards/${awardId}`)
       .then((res) => {
-        this.setState( { nebulaBooks: res.data } );
+        this.setState( { awardBooks: res.data } );
 
-        let nebulaReadCount = 0;
-        let nebulaReadingCount = 0;
-        let nebulaToReadCount = 0;
+        let awardReadCount = 0;
+        let awardReadingCount = 0;
+        let awardToReadCount = 0;
 
         for (let book of res.data) {
           if (book.shelf === 'read') {
-            nebulaReadCount += 1;
+            awardReadCount += 1;
           } else if (book.shelf === 'reading') {
-            nebulaReadingCount += 1;
+            awardReadingCount += 1;
           } else if (book.shelf === 'to-read') {
-            nebulaToReadCount += 1;
+            awardToReadCount += 1;
           }
         }
 
-        this.setState( { nebulaReadCount, nebulaReadingCount, nebulaToReadCount });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
-  getNPRBooks() {
-    axios.get('/books/awards/2')
-      .then((res) => {
-        this.setState( { nprBooks: res.data } );
-
-        let nprReadCount = 0;
-        let nprReadingCount = 0;
-        let nprToReadCount = 0;
-
-        for (let book of res.data) {
-          if (book.shelf === 'read') {
-            nprReadCount += 1;
-          } else if (book.shelf === 'reading') {
-            nprReadingCount += 1;
-          } else if (book.shelf === 'to-read') {
-            nprToReadCount += 1;
-          }
-        }
-
-        this.setState( { nprReadCount, nprReadingCount, nprToReadCount });
+        this.setState( { awardReadCount, awardReadingCount, awardToReadCount });
       })
       .catch((err) => {
         console.log(err);
@@ -133,41 +102,43 @@ class Main extends React.Component {
               <Intro
                 { ...this.state }
               /> } />
+            <Match pattern="/books" exactly render={ () =>
+              <Books
+                { ...this.state }
+                getBooks={this.getBooks}
+                getAwardBooks={this.getAwardBooks}
+              /> } />
+            <Match pattern="/lists" exactly render={ () =>
+              <ListMenu
+                { ...this.state }
+              /> } />
+            <Match pattern="/nebula" exactly render={ () =>
+              <Awards
+                { ...this.state }
+                awardName="nebula"
+                getBooks={this.getBooks}
+                getAwardBooks={this.getAwardBooks}
+              /> } />
+            <Match pattern="/npr" exactly render={ () =>
+              <Awards
+                { ...this.state }
+                awardName="npr"
+                getBooks={this.getBooks}
+                getAwardBooks={this.getAwardBooks}
+              /> } />
             <Match pattern="/signin" exactly render={ () =>
               <SignIn
                 { ...this.state }
               /> } />
-            <Match pattern="/profile"  render={ () =>
+            <Match pattern="/profile" exactly render={ () =>
               <Profile
                 { ...this.state }
                 signOut={this.signOut}
                 getBooks={this.getBooks}
               /> } />
-            <Match pattern="/books"  render={ () =>
-              <Books
-                { ...this.state }
-                getBooks={this.getBooks}
-                getNebulaBooks={this.getNebulaBooks}
-              /> } />
-            <Match pattern="/search"  render={ () =>
+            <Match pattern="/search" exactly render={ () =>
               <Search
                 { ...this.state }
-              /> } />
-            <Match pattern="/lists"  render={ () =>
-              <Lists
-                { ...this.state }
-              /> } />
-            <Match pattern="/nebula" exactly render={ () =>
-              <Nebula
-                { ...this.state }
-                getBooks={this.getBooks}
-                getNebulaBooks={this.getNebulaBooks}
-              /> } />
-            <Match pattern="/npr" exactly render={ () =>
-              <NPR
-                { ...this.state }
-                getBooks={this.getBooks}
-                getNPRBooks={this.getNPRBooks}
               /> } />
             <Miss component={NotFound} />
           </main>
