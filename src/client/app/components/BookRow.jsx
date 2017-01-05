@@ -48,7 +48,7 @@ class BookRow extends React.Component {
         <td>{this.props.book.genre}</td>
         <td>{this.props.book.publicationYear}</td>
         <td>
-          <select defaultValue={status} onChange={this.changeStatus}>
+          <select value={status} onChange={this.changeStatus}>
             <option value="delete">Delete</option>
             <option value="read">Read</option>
             <option value="reading">Reading</option>

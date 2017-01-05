@@ -24,7 +24,6 @@ class Books extends React.Component {
 
   getBooks() {
     this.props.getBooks();
-    this.props.getNebulaBooks();
   }
 
   handleClick(event) {
