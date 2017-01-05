@@ -120,7 +120,6 @@ class Books extends React.Component {
                 <tr>
                   <th id="th-title" onClick={this.handleClick}>Title</th>
                   <th id="th-author" onClick={this.handleClick}>Author</th>
-                  <th id="th-genre" onClick={this.handleClick}>Genre</th>
                   <th id="th-year" onClick={this.handleClick}>Year</th>
                   <th id="th-shelf">Status</th>
                 </tr>

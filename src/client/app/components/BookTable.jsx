@@ -21,14 +21,6 @@ class BookTable extends React.Component {
           ) : (
             <tr></tr>
           )}
-          {this.props.content.categories ? (
-            <tr>
-              <th>Genre</th>
-              <td>{this.props.content.categories.join(', ')}</td>
-            </tr>
-          ) : (
-            <tr></tr>
-          )}
           {this.props.content.publishedDate ? (
             <tr>
               <th>Year</th>

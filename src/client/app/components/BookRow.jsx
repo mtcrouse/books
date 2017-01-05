@@ -55,7 +55,6 @@ class BookRow extends React.Component {
           </Link>
         </td>
         <td>{this.props.book.author}</td>
-        <td>{this.props.book.genre}</td>
         <td>{this.props.book.publicationYear}</td>
         <td>
           <select value={status} onChange={this.changeStatus}>

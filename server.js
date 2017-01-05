@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const path = require('path');
+const passport = require('passport');
 
 app.disable('x-powered-by');
 
@@ -17,12 +18,22 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(morgan('short'));
 
-const auth = require('./routes/auth');
+const authFacebook = require('./routes/auth_facebook');
 const users = require('./routes/users');
 const token = require('./routes/token');
 const books = require('./routes/books');
 
-app.use('/auth', auth);
+app.use(passport.initialize());
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+app.use('/auth_facebook', authFacebook);
 app.use(users);
 app.use(token);
 app.use(books);

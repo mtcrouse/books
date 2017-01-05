@@ -6,10 +6,15 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
 
+    this.changeBookOverview = this.changeBookOverview.bind(this);
     this.changeStatus = this.changeStatus.bind(this);
     this.checkIfSignedOut = this.checkIfSignedOut.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.deleteBook = this.deleteBook.bind(this);
+  }
+
+  changeBookOverview(event) {
+    console.log(event.target);
   }
 
   changeStatus(event) {
@@ -77,7 +82,6 @@ class Profile extends React.Component {
         <div className="row left-align">
           <div className="nine columns offset-by-one">
             {currentlyReading.map((book,index) => {
-              console.log(book);
               return <div key={index} className="row left-align">
                 {book.title} by {book.author} ({book.publicationYear})
                 <select value="reading" onChange={this.changeStatus} name={book.bookId}>
@@ -90,6 +94,13 @@ class Profile extends React.Component {
             })}
           </div>
         </div>
+        { this.props.bookOverview ? (
+          <div className="row left-align">
+            Recently viewed: {this.props.bookOverview.title} by {this.props.bookOverview.author} ({this.props.bookOverview.publicationYear})
+          </div>
+        ) : (
+          <div className="empty-div"></div>
+        )}
         <this.checkIfSignedOut />
       </div>
     );

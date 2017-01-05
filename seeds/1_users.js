@@ -10,6 +10,7 @@ exports.seed = function(knex) {
         first_name: 'metta',
         email: 'mettacrouse@gmail.com',
         linkedin_token: 'AQVpBXBMKEvbHJ2cAvp9aW5bo6xZ32SsO-LckwcCbrDPf7MgMlNj7cCI8GRnkE7WnnidNwmSNywck2eLP7Nr6xTeHomLjQXiv5zXRRO7MjYSVMqql6fMM0hVRmnolWp7pKuMScmExV_DSsOeWIm5UuHcpCt4OjGo8s0Tixu6dwFZcm3N-ko',
+        facebook_id: 'abcde',
         created_at: new Date('2016-11-25 16:17:12 UTC'),
         updated_at: new Date('2016-11-25 16:17:12 UTC')
       },
@@ -18,6 +19,7 @@ exports.seed = function(knex) {
         first_name: 'finley',
         email: 'finley@gmail.com',
         linkedin_token: 'FINpBXBMKEvbHJ2cAvp9aW5bo6xZ32SsO-LckwcCbrDPf7MgMlNj7cCI8GRnkE7WnnidNwmSNywck2eLP7Nr6xTeHomLjQXiv5zXRRO7MjYSVMqql6fMM0hVRmnolWp7pKuMScmExV_DSsOeWIm5UuHcpCt4OjGo8s0Tixu6dwFZcm3N-ko',
+        facebook_id: 'abcde',
         created_at: new Date('2016-11-25 16:17:12 UTC'),
         updated_at: new Date('2016-11-25 16:17:12 UTC')
       }]);
