@@ -96,44 +96,46 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-        <Header isLoggedIn={this.state.isLoggedIn} signOut={this.signOut} />
-        <main>
-          <Match pattern="/" exactly render={ () =>
-            <Intro
-              { ...this.state }
-            /> } />
-          <Match pattern="/signin" exactly render={ () =>
-            <SignIn
-              { ...this.state }
-            /> } />
-          <Match pattern="/profile"  render={ () =>
-            <Profile
-              { ...this.state }
-              signOut={this.signOut}
-              getBooks={this.getBooks}
-            /> } />
-          <Match pattern="/books"  render={ () =>
-            <Books
-              { ...this.state }
-              getBooks={this.getBooks}
-              getNebulaBooks={this.getNebulaBooks}
-            /> } />
-          <Match pattern="/search"  render={ () =>
-            <Search
-              { ...this.state }
-            /> } />
-          <Match pattern="/lists"  render={ () =>
-            <Lists
-              { ...this.state }
-            /> } />
-          <Match pattern="/nebula" exactly render={ () =>
-            <Nebula
-              { ...this.state }
-              getBooks={this.getBooks}
-              getNebulaBooks={this.getNebulaBooks}
-            /> } />
-          <Miss component={NotFound} />
-        </main>
+        <div id="page-wrapper">
+          <Header isLoggedIn={this.state.isLoggedIn} signOut={this.signOut} />
+          <main>
+            <Match pattern="/" exactly render={ () =>
+              <Intro
+                { ...this.state }
+              /> } />
+            <Match pattern="/signin" exactly render={ () =>
+              <SignIn
+                { ...this.state }
+              /> } />
+            <Match pattern="/profile"  render={ () =>
+              <Profile
+                { ...this.state }
+                signOut={this.signOut}
+                getBooks={this.getBooks}
+              /> } />
+            <Match pattern="/books"  render={ () =>
+              <Books
+                { ...this.state }
+                getBooks={this.getBooks}
+                getNebulaBooks={this.getNebulaBooks}
+              /> } />
+            <Match pattern="/search"  render={ () =>
+              <Search
+                { ...this.state }
+              /> } />
+            <Match pattern="/lists"  render={ () =>
+              <Lists
+                { ...this.state }
+              /> } />
+            <Match pattern="/nebula" exactly render={ () =>
+              <Nebula
+                { ...this.state }
+                getBooks={this.getBooks}
+                getNebulaBooks={this.getNebulaBooks}
+              /> } />
+            <Miss component={NotFound} />
+          </main>
+        </div>
         <Footer />
       </div>
     );

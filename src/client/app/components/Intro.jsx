@@ -28,7 +28,7 @@ class Intro extends React.Component {
             </div>
             <div className="four columns intro-column">
               Join a community of readers passionate about other worlds. From
-              the vast expanse of outer space to the fantastic worlds of Middle-Earth
+              the vast expanse of outer space to the fantastic worlds of Middle-earth
               or Westeros, get lost in a book today.
             </div>
           </div>
@@ -36,7 +36,7 @@ class Intro extends React.Component {
         <div id="banner2" className="row">
           <div id="banner2-content">
             <p className="tagline">Start reading science fiction and fantasy today</p>
-            <button>Sign Up</button>
+            <Link to="/signin"><button>Sign Up</button></Link>
           </div>
         </div>
         { this.props.isLoggedIn === true ? (
