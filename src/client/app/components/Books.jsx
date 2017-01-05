@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import Book from './Book.jsx';
 
 class Books extends React.Component {
   constructor(props) {
@@ -103,7 +102,13 @@ class Books extends React.Component {
               </thead>
               <tbody id="book-table-body">
                 {this.state.sortedBooks.map((book,index) => {
-                  return <Book key={index} book={book} />;
+                  return <tr key={index}>
+                    <td>{book.title}</td>
+                    <td>{book.author}</td>
+                    <td>{book.genre}</td>
+                    <td>{book.publicationYear}</td>
+                    <td>{book.shelf}</td>
+                  </tr>;
                 })}
               </tbody>
             </table>
