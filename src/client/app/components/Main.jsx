@@ -126,6 +126,7 @@ class Main extends React.Component {
               <Awards
                 { ...this.state }
                 awardName="nebula"
+                changeBookOverview={this.changeBookOverview}
                 getBooks={this.getBooks}
                 getAwardBooks={this.getAwardBooks}
               /> } />
@@ -133,6 +134,7 @@ class Main extends React.Component {
               <Awards
                 { ...this.state }
                 awardName="npr"
+                changeBookOverview={this.changeBookOverview}
                 getBooks={this.getBooks}
                 getAwardBooks={this.getAwardBooks}
               /> } />

@@ -55,8 +55,14 @@ router.get('/api/facebook/callback', passport.authenticate('facebook', {
   session: false,
   failureRedirect: '/'
 }), (req, res) => {
+  let userId;
+  if (req.user.id) {
+    userId = req.user.id;
+  } else {
+    userId = req.user[0].id;
+  }
   const expiry = new Date(Date.now() + 1000 * 60 * 60 * 24 * 60);
-  const token = jwt.sign({ userId: req.user[0].id }, process.env.JWT_SECRET, {
+  const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
     expiresIn: '60d'
   });
 

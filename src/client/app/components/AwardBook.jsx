@@ -1,10 +1,12 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router';
 
 class AwardBook extends React.Component {
   constructor(props) {
     super(props);
 
+    this.changeBookOverview = this.changeBookOverview.bind(this);
     this.changeStatus = this.changeStatus.bind(this);
 
     if (this.props.awardName === 'nebula') {
@@ -12,6 +14,10 @@ class AwardBook extends React.Component {
     } else if (this.props.awardName === 'npr') {
       this.awardId = 2;
     }
+  }
+
+  changeBookOverview() {
+    this.props.changeBookOverview(this.props.book);
   }
 
   changeStatus(event) {
@@ -80,7 +86,11 @@ class AwardBook extends React.Component {
         ) : (
           <td>{this.props.book.rank}</td>
         )}
-        <td>{this.props.book.title}</td>
+        <td>
+          <Link to="/bookoverview">
+            <span onClick={this.changeBookOverview}>{this.props.book.title}</span>
+          </Link>
+        </td>
         <td>{this.props.book.author}</td>
         <td>
           <select value={status} onChange={this.changeStatus}>

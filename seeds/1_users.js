@@ -8,9 +8,9 @@ exports.seed = function(knex) {
       return knex('users').insert([{
         id: 1,
         first_name: 'metta',
-        email: 'mettacrouse2@gmail.com',
-        facebook_id: '12291538198',
-        facebook_token: '1',
+        email: 'mettacrouse@gmail.com',
+        facebook_id: '122974351538198',
+        facebook_token: 'EAAKLpHw6ef0BANfOc9d9S88vRdg87dxZCpxaMwCZByFXYZCr0GtHnk4DV4pk0ZCxOVDgPxexhKGZC5mLZBkgcOWIrX0L00YnkOa6RRYLZBFAmBZA3tNFkGFkx2yQDyr4tHG5ZATNvzVhSvSt3nqN41P9qtu4IBZAZAlQ6Qbd9dRe7M8MQZDZD',
         created_at: new Date('2016-11-25 16:17:12 UTC'),
         updated_at: new Date('2016-11-25 16:17:12 UTC')
       },
@@ -18,7 +18,7 @@ exports.seed = function(knex) {
         id: 2,
         first_name: 'finley',
         email: 'finley@gmail.com',
-        facebook_id: '122974351538199',
+        facebook_id: '1',
         facebook_token: '2',
         created_at: new Date('2016-11-25 16:17:12 UTC'),
         updated_at: new Date('2016-11-25 16:17:12 UTC')

@@ -6,6 +6,7 @@ class Awards extends React.Component {
   constructor(props) {
     super(props);
 
+    this.changeBookOverview = this.changeBookOverview.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.blurb = this.blurb.bind(this);
     this.getAwardBooks = this.getAwardBooks.bind(this);
@@ -37,6 +38,10 @@ class Awards extends React.Component {
         written for adults were considered.
       </p>
     }
+  }
+
+  changeBookOverview(book) {
+    this.props.changeBookOverview(book);
   }
 
   componentDidMount() {
@@ -79,6 +84,7 @@ class Awards extends React.Component {
           <AwardsTable
             awardName={this.props.awardName}
             books={this.props.awardBooks}
+            changeBookOverview={this.changeBookOverview}
             getBooks={this.getBooks}
             getAwardBooks={this.getAwardBooks}
           />

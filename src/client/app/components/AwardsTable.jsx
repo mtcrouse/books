@@ -6,8 +6,13 @@ class AwardsTable extends React.Component {
   constructor(props) {
     super(props);
 
+    this.changeBookOverview = this.changeBookOverview.bind(this);
     this.getBooks = this.getBooks.bind(this);
     this.getAwardBooks = this.getAwardBooks.bind(this);
+  }
+
+  changeBookOverview(book) {
+    this.props.changeBookOverview(book);
   }
 
   getBooks() {
@@ -39,6 +44,7 @@ class AwardsTable extends React.Component {
               awardName={this.props.awardName}
               key={index}
               book={book}
+              changeBookOverview={this.changeBookOverview}
               getBooks={this.getBooks}
               getAwardBooks={this.getAwardBooks}
              />;

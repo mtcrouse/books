@@ -15,7 +15,7 @@ class SignIn extends React.Component {
           sign in with your Facebook and we'll remember all of your reading progress!
         </p>
         <div className="row">
-          <button><a href="/auth/api/facebook">Sign in with Facebook</a></button>
+          <a href="/auth/api/facebook"><button>Sign in with Facebook</button></a>
         </div>
       </div>
     );
