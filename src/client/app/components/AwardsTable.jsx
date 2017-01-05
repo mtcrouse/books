@@ -7,15 +7,15 @@ class AwardsTable extends React.Component {
     super(props);
 
     this.getBooks = this.getBooks.bind(this);
-    this.getAwardBooks = this.getAwardBooks.bind(this);
+    this.getNebulaBooks = this.getNebulaBooks.bind(this);
   }
 
   getBooks() {
     this.props.getBooks();
   }
 
-  getAwardBooks() {
-    this.props.getAwardBooks();
+  getNebulaBooks() {
+    this.props.getNebulaBooks();
   }
 
   render() {
@@ -35,7 +35,7 @@ class AwardsTable extends React.Component {
               key={index}
               book={book}
               getBooks={this.getBooks}
-              getAwardBooks={this.getAwardBooks}
+              getNebulaBooks={this.getNebulaBooks}
              />;
           })}
         </tbody>

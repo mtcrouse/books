@@ -34,6 +34,7 @@ class Main extends React.Component {
         if (isLoggedIn) {
           this.setState({ isLoggedIn: true });
           this.getBooks();
+          this.getNebulaBooks();
         } else {
           this.setState({ isLoggedIn: false });
         }
@@ -65,11 +66,11 @@ class Main extends React.Component {
 
         for (let book of res.data) {
           if (book.shelf === 'read') {
-            readCount += 1;
+            nebulaReadCount += 1;
           } else if (book.shelf === 'reading') {
-            readingCount += 1;
+            nebulaReadingCount += 1;
           } else if (book.shelf === 'to-read') {
-            toReadCount += 1;
+            nebulaToReadCount += 1;
           }
         }
 
@@ -128,6 +129,7 @@ class Main extends React.Component {
             <Nebula
               { ...this.state }
               getBooks={this.getBooks}
+              getNebulaBooks={this.getNebulaBooks}
             /> } />
           <Miss component={NotFound} />
         </main>

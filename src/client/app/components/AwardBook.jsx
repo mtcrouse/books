@@ -16,7 +16,7 @@ class AwardBook extends React.Component {
       axios.post('/books/books_users', data)
         .then(res => {
           this.props.getBooks();
-          this.props.getAwardBooks();
+          this.props.getNebulaBooks();
         })
         .catch(err => {
           console.log(err);
@@ -32,7 +32,7 @@ class AwardBook extends React.Component {
           .then(res => {
             console.log('done patching');
             this.props.getBooks();
-            this.props.getAwardBooks();
+            this.props.getNebulaBooks();
           })
           .catch(err => {
             console.log(err);
@@ -47,7 +47,7 @@ class AwardBook extends React.Component {
     axios.delete(`/books/books_users/${bookId}`)
       .then(res => {
         this.props.getBooks();
-        this.props.getAwardBooks();
+        this.props.getNebulaBooks();
       })
       .catch(err => {
         console.log(err);

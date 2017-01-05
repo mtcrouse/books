@@ -6,45 +6,17 @@ class Nebula extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { awardBooks: [] };
 
-    this.componentDidMount = this.componentDidMount.bind(this);
-    this.getAwardBooks = this.getAwardBooks.bind(this);
+    this.getNebulaBooks = this.getNebulaBooks.bind(this);
     this.getBooks = this.getBooks.bind(this);
-  }
-
-  componentDidMount() {
-    this.getAwardBooks();
-  }
-
-  getAwardBooks() {
-    axios.get('/books/awards/1')
-      .then((res) => {
-        this.setState( { awardBooks: res.data } );
-
-        let readCount = 0;
-        let readingCount = 0;
-        let toReadCount = 0;
-
-        for (let book of res.data) {
-          if (book.shelf === 'read') {
-            readCount += 1;
-          } else if (book.shelf === 'reading') {
-            readingCount += 1;
-          } else if (book.shelf === 'to-read') {
-            toReadCount += 1;
-          }
-        }
-
-        this.setState( { readCount, readingCount, toReadCount });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   }
 
   getBooks() {
     this.props.getBooks();
+  }
+
+  getNebulaBooks() {
+    this.props.getNebulaBooks();
   }
 
   render() {
@@ -65,18 +37,18 @@ class Nebula extends React.Component {
         </div>
         <div className="row">
           <p className="left-align">
-            Read: {this.state.readCount} <br />
-            Reading: {this.state.readingCount} <br />
-            To Read: {this.state.toReadCount}
+            Read: {this.props.nebulaReadCount} <br />
+            Reading: {this.props.nebulaReadingCount} <br />
+            To Read: {this.props.nebulaToReadCount}
           </p>
         </div>
         <div className="row">
           <div className="">
             <AwardsTable
               award="nebula"
-              books={this.state.awardBooks}
+              books={this.props.nebulaBooks}
               getBooks={this.getBooks}
-              getAwardBooks={this.getAwardBooks}
+              getNebulaBooks={this.getNebulaBooks}
             />
           </div>
         </div>
