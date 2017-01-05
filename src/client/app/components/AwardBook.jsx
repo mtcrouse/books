@@ -9,14 +9,12 @@ class AwardBook extends React.Component {
   }
 
   changeStatus(event) {
-    console.log(this.props.book);
     if (this.props.book.shelf === null) {
       let shelf = event.target.value;
       let data = { bookId: this.props.book.bookId, shelf };
 
       axios.post('/books/books_users', data)
         .then(res => {
-          console.log('done posting to books_users');
           this.props.getBooks();
           this.props.getAwardBooks();
         })
@@ -27,16 +25,33 @@ class AwardBook extends React.Component {
     } else {
       let shelf = event.target.value;
 
-      axios.patch(`/books/${this.props.book.bookId}`, { shelf })
-        .then(res => {
-          console.log('done patching');
-          this.props.getBooks();
-          this.props.getAwardBooks();
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      if (shelf === 'none') {
+        this.deleteBook();
+      } else {
+        axios.patch(`/books/${this.props.book.bookId}`, { shelf })
+          .then(res => {
+            console.log('done patching');
+            this.props.getBooks();
+            this.props.getAwardBooks();
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
     }
+  }
+
+  deleteBook() {
+    let bookId = this.props.book.bookId;
+
+    axios.delete(`/books/books_users/${bookId}`)
+      .then(res => {
+        this.props.getBooks();
+        this.props.getAwardBooks();
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {

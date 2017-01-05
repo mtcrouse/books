@@ -161,4 +161,22 @@ router.patch('/books/:bookId', authorize, (req, res, next) => {
     });
 });
 
+// Delete a book from books_users
+router.delete('/books/books_users/:bookId', authorize, (req, res, next) => {
+  const { userId } = req.token;
+  const { bookId } = req.params;
+
+  knex('books_users')
+    .where('user_id', userId)
+    .where('book_id', bookId)
+    .select('*')
+    .del()
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 module.exports = router;

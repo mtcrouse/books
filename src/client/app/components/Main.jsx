@@ -15,11 +15,16 @@ import axios from 'axios';
 class Main extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLoggedIn: false, books: [] };
+    this.state = {
+      isLoggedIn: false,
+      books: [],
+      nebulaBooks: []
+    };
 
     this.componentDidMount = this.componentDidMount.bind(this);
     this.signOut = this.signOut.bind(this);
     this.getBooks = this.getBooks.bind(this);
+    this.getNebulaBooks = this.getNebulaBooks.bind(this);
   }
 
   componentDidMount() {
@@ -38,6 +43,43 @@ class Main extends React.Component {
       });
   }
 
+  getBooks() {
+    axios.get('/books')
+      .then((res) => {
+        console.log('getBooks from Main.jsx');
+        this.setState( { books: res.data } );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  getNebulaBooks() {
+    axios.get('/books/awards/1')
+      .then((res) => {
+        this.setState( { nebulaBooks: res.data } );
+
+        let nebulaReadCount = 0;
+        let nebulaReadingCount = 0;
+        let nebulaToReadCount = 0;
+
+        for (let book of res.data) {
+          if (book.shelf === 'read') {
+            readCount += 1;
+          } else if (book.shelf === 'reading') {
+            readingCount += 1;
+          } else if (book.shelf === 'to-read') {
+            toReadCount += 1;
+          }
+        }
+
+        this.setState( { nebulaReadCount, nebulaReadingCount, nebulaToReadCount });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   signOut() {
     axios.delete('/token')
       .then(res => {
@@ -47,17 +89,6 @@ class Main extends React.Component {
       })
       .catch(err => {
         console.error(err);
-      });
-  }
-
-  getBooks() {
-    axios.get('/books')
-      .then((res) => {
-        console.log('getBooks from Main.jsx');
-        this.setState( { books: res.data } );
-      })
-      .catch((err) => {
-        console.log(err);
       });
   }
 
