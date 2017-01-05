@@ -4,7 +4,6 @@ import axios from 'axios';
 class AwardBook extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { status: this.props.book.shelf };
 
     this.changeStatus = this.changeStatus.bind(this);
   }
@@ -18,7 +17,8 @@ class AwardBook extends React.Component {
       axios.post('/books/books_users', data)
         .then(res => {
           console.log('done posting to books_users');
-          this.setState( { status: shelf });
+          this.props.getBooks();
+          this.props.getAwardBooks();
         })
         .catch(err => {
           console.log(err);
@@ -30,7 +30,8 @@ class AwardBook extends React.Component {
       axios.patch(`/books/${this.props.book.bookId}`, { shelf })
         .then(res => {
           console.log('done patching');
-          this.setState( { status: shelf });
+          this.props.getBooks();
+          this.props.getAwardBooks();
         })
         .catch(err => {
           console.log(err);
@@ -39,7 +40,7 @@ class AwardBook extends React.Component {
   }
 
   render() {
-    let status = this.state.status;
+    let status = this.props.book.shelf;
     let rowClass;
     if (status === 'read') {
       rowClass = 'tr-completed';

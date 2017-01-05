@@ -19,7 +19,6 @@ class Main extends React.Component {
 
     this.componentDidMount = this.componentDidMount.bind(this);
     this.signOut = this.signOut.bind(this);
-    this.addBook = this.addBook.bind(this);
     this.getBooks = this.getBooks.bind(this);
   }
 
@@ -54,16 +53,12 @@ class Main extends React.Component {
   getBooks() {
     axios.get('/books')
       .then((res) => {
+        console.log('getBooks from Main.jsx');
         this.setState( { books: res.data } );
       })
       .catch((err) => {
         console.log(err);
       });
-  }
-
-  addBook(newBooks) {
-    console.log('addBook from Main.jsx');
-    this.setState( { books: newBooks } );
   }
 
   render() {
@@ -93,7 +88,6 @@ class Main extends React.Component {
           <Match pattern="/search"  render={ () =>
             <Search
               { ...this.state }
-              addBook={this.addBook}
             /> } />
           <Match pattern="/lists"  render={ () =>
             <Lists
@@ -103,7 +97,6 @@ class Main extends React.Component {
             <Nebula
               { ...this.state }
               getBooks={this.getBooks}
-              addBook={this.addBook}
             /> } />
           <Miss component={NotFound} />
         </main>

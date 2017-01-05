@@ -5,13 +5,13 @@ class AwardsTable extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
 
-    this.addBook = this.addBook.bind(this);
+    this.getBooks = this.getBooks.bind(this);
+    this.getAwardBooks = this.getAwardBooks.bind(this);
   }
 
-  addBook() {
-    this.props.addBook();
+  getBooks() {
+    this.props.getBooks();
   }
 
   getAwardBooks() {
@@ -34,7 +34,7 @@ class AwardsTable extends React.Component {
             return <AwardBook
               key={index}
               book={book}
-              addBook={this.addBook}
+              getBooks={this.getBooks}
               getAwardBooks={this.getAwardBooks}
              />;
           })}
