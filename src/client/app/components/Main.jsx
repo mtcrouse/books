@@ -147,6 +147,7 @@ class Main extends React.Component {
                 { ...this.state }
                 signOut={this.signOut}
                 getBooks={this.getBooks}
+                changeBookOverview={this.changeBookOverview}
               /> } />
             <Match pattern="/search" exactly render={ () =>
               <Search

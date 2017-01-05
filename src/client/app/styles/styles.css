@@ -88,16 +88,18 @@ table {
   font-size: 2.5rem;
 }
 
-.tr-completed {
-  background-color: #7CFC00;
+.tr-completed select {
+  background-color: #4fad06;
+  color: white;
 }
 
-.tr-in-progress {
-  background-color: #FFFF00;
+.tr-in-progress select {
+  background-color: #e8ed61;
 }
 
-.tr-pending {
-  background-color: #FFA500;
+.tr-pending select {
+  background-color: #b74503;
+  color: white;
 }
 
 #banner {

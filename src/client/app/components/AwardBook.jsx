@@ -69,6 +69,7 @@ class AwardBook extends React.Component {
   render() {
     let status = this.props.book.shelf;
     let rowClass;
+
     if (status === 'read') {
       rowClass = 'tr-completed';
     } else if (status === 'reading') {

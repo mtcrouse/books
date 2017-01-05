@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router';
 import axios from 'axios';
+import BookRow from './BookRow.jsx';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -13,8 +14,8 @@ class Profile extends React.Component {
     this.deleteBook = this.deleteBook.bind(this);
   }
 
-  changeBookOverview(event) {
-    console.log(event.target);
+  changeBookOverview(book) {
+    this.props.changeBookOverview(book);
   }
 
   changeStatus(event) {
@@ -81,17 +82,26 @@ class Profile extends React.Component {
         </div>
         <div className="row left-align">
           <div className="nine columns offset-by-one">
-            {currentlyReading.map((book,index) => {
-              return <div key={index} className="row left-align">
-                {book.title} by {book.author} ({book.publicationYear})
-                <select value="reading" onChange={this.changeStatus} name={book.bookId}>
-                  <option value="delete">Delete</option>
-                  <option value="read">Read</option>
-                  <option value="reading">Reading</option>
-                  <option value="to-read">To Read</option>
-                </select>
-              </div>;
-            })}
+            <table>
+              <thead>
+                <tr>
+                  <th id="th-title" onClick={this.handleClick}>Title</th>
+                  <th id="th-author" onClick={this.handleClick}>Author</th>
+                  <th id="th-year" onClick={this.handleClick}>Year</th>
+                  <th id="th-shelf">Change Status</th>
+                </tr>
+              </thead>
+              <tbody id="book-table-body">
+                {currentlyReading.map((book, index) => {
+                  return <BookRow
+                    key={index}
+                    book={book}
+                    getBooks={this.props.getBooks}
+                    changeBookOverview={this.changeBookOverview}
+                  />;
+                })}
+              </tbody>
+            </table>
           </div>
         </div>
         { this.props.bookOverview ? (

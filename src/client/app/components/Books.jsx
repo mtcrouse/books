@@ -8,11 +8,12 @@ class Books extends React.Component {
     this.state = {
       sortOrder: '',
       currentBooks: [],
-      currentBookshelf: ''
+      currentBookshelf: 'read'
     };
 
     this.changeBookOverview = this.changeBookOverview.bind(this);
     this.getBooks = this.getBooks.bind(this);
+    this.getCurrentBooks = this.getCurrentBooks.bind(this);
     this.sortedBooks = this.sortedBooks.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.switchShelf = this.switchShelf.bind(this);
@@ -24,21 +25,23 @@ class Books extends React.Component {
   }
 
   componentDidMount() {
+    this.getCurrentBooks();
+  }
+
+  getBooks() {
+    this.props.getBooks();
+  }
+
+  getCurrentBooks() {
     let currentBooks = [];
 
-    this.setState( { currentBookshelf: 'read' });
-
     for (let i = 0; i < this.props.books.length; i++) {
-      if (this.props.books[i].shelf === 'read') {
+      if (this.props.books[i].shelf === this.state.currentBookshelf) {
         currentBooks.push(this.props.books[i]);
       }
 
       this.setState( { currentBooks } );
     }
-  }
-
-  getBooks() {
-    this.props.getBooks();
   }
 
   handleClick(event) {
@@ -114,7 +117,7 @@ class Books extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="" id="book-table">
+          <div className="twelve columns" id="book-table">
             <table>
               <thead>
                 <tr>
@@ -130,6 +133,7 @@ class Books extends React.Component {
                     key={index}
                     book={book}
                     getBooks={this.getBooks}
+                    getCurrentBooks={this.getCurrentBooks}
                     changeBookOverview={this.changeBookOverview}
                   />;
                 })}

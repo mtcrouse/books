@@ -26,6 +26,9 @@ class BookRow extends React.Component {
           console.log('done patching');
           this.props.getBooks();
         })
+        .then(res => {
+          this.props.getCurrentBooks();
+        })
         .catch(err => {
           console.log(err);
         });
@@ -39,6 +42,9 @@ class BookRow extends React.Component {
       .then(res => {
         this.props.getBooks();
       })
+      .then(res => {
+        this.props.getCurrentBooks();
+      })
       .catch(err => {
         console.log(err);
       });
@@ -47,8 +53,19 @@ class BookRow extends React.Component {
   render() {
     let status = this.props.book.shelf;
 
+    let rowClass;
+    if (status === 'read') {
+      rowClass = 'tr-completed';
+    } else if (status === 'reading') {
+      rowClass = 'tr-in-progress';
+    } else if (status === 'to-read') {
+      rowClass = 'tr-pending';
+    } else {
+      status = 'none';
+    }
+
     return (
-      <tr>
+      <tr className={rowClass}>
         <td>
           <Link to="/bookoverview">
             <span onClick={this.changeBookOverview}>{this.props.book.title}</span>
