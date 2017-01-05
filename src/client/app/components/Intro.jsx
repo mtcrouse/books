@@ -17,24 +17,34 @@ class Intro extends React.Component {
         <div className="container">
           <div className="row">
             <div className="four columns intro-column">
-              Track your sci-fi and fantasy reading
+              Build your knowledge of classic and contemporary science fiction
+              and fantasy novels and short stories. Grimoire shows you how many
+              books you've read from top lists like Nebula and Hugo award winners.
             </div>
             <div className="four columns intro-column">
-              See how many books you've read out of the most celebrated science
-              fiction and fantasy novels of all time
+              Grimoire provides a place for fans of fantasy and science fiction
+              to track their reading progress, but it uses the Google Books API
+              to enable the tracking of books of any genre.
             </div>
             <div className="four columns intro-column">
-              Discuss your favorite books with other fans and change this column
-              later
+              Join a community of readers passionate about other worlds. From
+              the vast expanse of outer space to the fantastic worlds of Middle-Earth
+              or Westeros, get lost in a book today.
             </div>
           </div>
-          { this.props.isLoggedIn === true ? (
-              <Redirect to="/profile" />
-            ) : (
-              <div></div>
-            )
-          }
         </div>
+        <div id="banner2" className="row">
+          <div id="banner2-content">
+            <p className="tagline">Start reading science fiction and fantasy today</p>
+            <button>Sign Up</button>
+          </div>
+        </div>
+        { this.props.isLoggedIn === true ? (
+            <Redirect to="/profile" />
+          ) : (
+            <div></div>
+          )
+        }
       </div>
     );
   }
