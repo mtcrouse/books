@@ -121,14 +121,14 @@ table {
   padding-top: 25%;
 }
 
-#banner2-content button {
+#banner2-content button, #map-content button {
   background: white;
   color: black;
   font-family: 'Cormorant Unicase';
   font-size: 2rem;
 }
 
-#banner2-content button:hover {
+#banner2-content button:hover, #map-content button:hover {
   background: grey;
   color: white;
 }
@@ -146,6 +146,19 @@ table {
   padding: 10px;
   padding-left: 20px;
   font-size: 1.5em;
+}
+
+#map {
+  background-image: url('../images/map.jpg');
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  color: white;
+  margin-top: -30px;
+}
+
+#map-content {
+  padding-top: 17%;
 }
 
 #modal {

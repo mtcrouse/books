@@ -40,6 +40,10 @@ app.use(books);
 
 app.use(express.static(path.join('src/client')));
 
+app.get('*', function (request, response){
+  response.sendFile(path.resolve(__dirname, 'src/client', 'index.html'))
+})
+
 app.use((_req, res) => {
   res.sendStatus(404);
 });

@@ -9,9 +9,11 @@ class NotFound extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>We couldn't find what you were looking for!</p>
-        <Link to="/">Home</Link>
+      <div id="map" className="row">
+        <div id="map-content">
+          <p className="tagline">Sorry, we couldn't find what you were looking for</p>
+          <Link to="/"><button>Home</button></Link>
+        </div>
       </div>
     );
   }
