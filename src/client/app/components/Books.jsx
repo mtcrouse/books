@@ -6,20 +6,29 @@ class Books extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // sortedBooks: this.props.books,
-      // sortOrder: '',
+      sortOrder: '',
       currentBooks: [],
       currentBookshelf: '' };
 
     this.getBooks = this.getBooks.bind(this);
-    // this.sortedBooks = this.sortedBooks.bind(this);
+    this.sortedBooks = this.sortedBooks.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.switchShelf = this.switchShelf.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   componentDidMount() {
-    this.props.getBooks();
+    let currentBooks = [];
+
+    this.setState( { currentBookshelf: 'read' });
+
+    for (let i = 0; i < this.props.books.length; i++) {
+      if (this.props.books[i].shelf === 'read') {
+        currentBooks.push(this.props.books[i]);
+      }
+
+      this.setState( { currentBooks } );
+    }
   }
 
   getBooks() {
@@ -27,31 +36,31 @@ class Books extends React.Component {
   }
 
   handleClick(event) {
-    // return this.sortedBooks(this.state.sortedBooks, event.target.id);
+    return this.sortedBooks(this.state.currentBooks, event.target.id);
   }
 
-  // sortedBooks(books, sortBy) {
-  //   sortBy = sortBy.slice(3);
-  //
-  //   const newSortedBooks = books.sort(function(a, b) {
-  //     if (a[sortBy] < b[sortBy]) {
-  //       return -1;
-  //     }
-  //     if (a[sortBy] > b[sortBy]) {
-  //       return 1;
-  //     }
-  //     return 0;
-  //   });
-  //
-  //   if (this.state.sortOrder === `${sortBy} ASC`) {
-  //     newSortedBooks.reverse();
-  //     this.setState({ sortOrder: `${sortBy} DESC` });
-  //   } else {
-  //     this.setState({ sortOrder: `${sortBy} ASC` });
-  //   }
-  //
-  //   this.setState({ sortedBooks: newSortedBooks });
-  // }
+  sortedBooks(books, sortBy) {
+    sortBy = sortBy.slice(3);
+
+    const newSortedBooks = books.sort(function(a, b) {
+      if (a[sortBy] < b[sortBy]) {
+        return -1;
+      }
+      if (a[sortBy] > b[sortBy]) {
+        return 1;
+      }
+      return 0;
+    });
+
+    if (this.state.sortOrder === `${sortBy} ASC`) {
+      newSortedBooks.reverse();
+      this.setState({ sortOrder: `${sortBy} DESC` });
+    } else {
+      this.setState({ sortOrder: `${sortBy} ASC` });
+    }
+
+    this.setState({ currentBooks: newSortedBooks });
+  }
 
   switchShelf(event) {
     let clickedShelf = event.target.id;
@@ -107,7 +116,7 @@ class Books extends React.Component {
                   <th id="th-author" onClick={this.handleClick}>Author</th>
                   <th id="th-genre" onClick={this.handleClick}>Genre</th>
                   <th id="th-year" onClick={this.handleClick}>Year</th>
-                  <th id="th-shelf" onClick={this.handleClick}>Status</th>
+                  <th id="th-shelf">Status</th>
                 </tr>
               </thead>
               <tbody id="book-table-body">
