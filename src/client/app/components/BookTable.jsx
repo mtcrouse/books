@@ -3,7 +3,6 @@ import React from 'react';
 class BookTable extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
   render() {

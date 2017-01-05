@@ -44,7 +44,6 @@ class Profile extends React.Component {
           </div>
           <div className="nine columns">
             {currentlyReading.map((book,index) => {
-              console.log(book);
               return <div key={index} className="row left-align">
                 {book.title} by {book.author} ({book.publicationYear})
               </div>;
