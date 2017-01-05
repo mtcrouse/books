@@ -1,12 +1,18 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router';
 
 class BookRow extends React.Component {
   constructor(props) {
     super(props);
 
+    this.changeBookOverview = this.changeBookOverview.bind(this);
     this.changeStatus = this.changeStatus.bind(this);
     this.deleteBook = this.deleteBook.bind(this);
+  }
+
+  changeBookOverview() {
+    this.props.changeBookOverview(this.props.book);
   }
 
   changeStatus(event) {
@@ -43,7 +49,11 @@ class BookRow extends React.Component {
 
     return (
       <tr>
-        <td>{this.props.book.title}</td>
+        <td>
+          <Link to="/bookoverview">
+            <span onClick={this.changeBookOverview}>{this.props.book.title}</span>
+          </Link>
+        </td>
         <td>{this.props.book.author}</td>
         <td>{this.props.book.genre}</td>
         <td>{this.props.book.publicationYear}</td>

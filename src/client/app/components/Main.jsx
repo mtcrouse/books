@@ -4,6 +4,7 @@ import Profile from './Profile.jsx';
 import Intro from './Intro.jsx';
 import SignIn from './SignIn.jsx';
 import Books from './Books.jsx';
+import BookOverview from './BookOverview.jsx';
 import Search from './Search.jsx';
 import NotFound from './NotFound.jsx';
 import Header from './layout/Header.jsx';
@@ -21,10 +22,15 @@ class Main extends React.Component {
       awardBooks: []
     };
 
+    this.changeBookOverview = this.changeBookOverview.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.signOut = this.signOut.bind(this);
     this.getBooks = this.getBooks.bind(this);
     this.getAwardBooks = this.getAwardBooks.bind(this);
+  }
+
+  changeBookOverview(book) {
+    this.setState( { bookOverview: book } );
   }
 
   componentDidMount() {
@@ -107,6 +113,11 @@ class Main extends React.Component {
                 { ...this.state }
                 getBooks={this.getBooks}
                 getAwardBooks={this.getAwardBooks}
+                changeBookOverview={this.changeBookOverview}
+              /> } />
+            <Match pattern="/bookoverview" exactly render={ () =>
+              <BookOverview
+                { ...this.state }
               /> } />
             <Match pattern="/lists" exactly render={ () =>
               <ListMenu
