@@ -2,7 +2,6 @@ import { Link } from 'react-router';
 import React from 'react';
 
 class Header extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -28,7 +27,6 @@ class Header extends React.Component {
           ) : (
             <Link to="/signin" className="u-pull-right header-item cormorant">Sign In</Link>
           )}
-
       </header>
     );
   }

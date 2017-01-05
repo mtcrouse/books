@@ -116,6 +116,7 @@ class Main extends React.Component {
             <Books
               { ...this.state }
               getBooks={this.getBooks}
+              getNebulaBooks={this.getNebulaBooks}
             /> } />
           <Match pattern="/search"  render={ () =>
             <Search

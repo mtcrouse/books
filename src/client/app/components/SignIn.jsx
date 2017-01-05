@@ -8,7 +8,7 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <a href="/auth/linkedin">Sign in with LinkedIn</a>
       </div>
     );

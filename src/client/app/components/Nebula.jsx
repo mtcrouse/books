@@ -3,7 +3,6 @@ import AwardsTable from './AwardsTable.jsx';
 import axios from 'axios';
 
 class Nebula extends React.Component {
-
   constructor(props) {
     super(props);
 
