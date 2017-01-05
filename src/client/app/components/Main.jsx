@@ -9,6 +9,7 @@ import NotFound from './NotFound.jsx';
 import Header from './layout/Header.jsx';
 import Footer from './layout/Footer.jsx';
 import Nebula from './Nebula.jsx';
+import NPR from './NPR.jsx';
 import Lists from './Lists.jsx';
 import axios from 'axios';
 
@@ -18,13 +19,15 @@ class Main extends React.Component {
     this.state = {
       isLoggedIn: false,
       books: [],
-      nebulaBooks: []
+      nebulaBooks: [],
+      nprBooks: []
     };
 
     this.componentDidMount = this.componentDidMount.bind(this);
     this.signOut = this.signOut.bind(this);
     this.getBooks = this.getBooks.bind(this);
     this.getNebulaBooks = this.getNebulaBooks.bind(this);
+    this.getNPRBooks = this.getNPRBooks.bind(this);
   }
 
   componentDidMount() {
@@ -35,6 +38,7 @@ class Main extends React.Component {
           this.setState({ isLoggedIn: true });
           this.getBooks();
           this.getNebulaBooks();
+          this.getNPRBooks();
         } else {
           this.setState({ isLoggedIn: false });
         }
@@ -75,6 +79,32 @@ class Main extends React.Component {
         }
 
         this.setState( { nebulaReadCount, nebulaReadingCount, nebulaToReadCount });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  getNPRBooks() {
+    axios.get('/books/awards/2')
+      .then((res) => {
+        this.setState( { nprBooks: res.data } );
+
+        let nprReadCount = 0;
+        let nprReadingCount = 0;
+        let nprToReadCount = 0;
+
+        for (let book of res.data) {
+          if (book.shelf === 'read') {
+            nprReadCount += 1;
+          } else if (book.shelf === 'reading') {
+            nprReadingCount += 1;
+          } else if (book.shelf === 'to-read') {
+            nprToReadCount += 1;
+          }
+        }
+
+        this.setState( { nprReadCount, nprReadingCount, nprToReadCount });
       })
       .catch((err) => {
         console.log(err);
@@ -132,6 +162,12 @@ class Main extends React.Component {
                 { ...this.state }
                 getBooks={this.getBooks}
                 getNebulaBooks={this.getNebulaBooks}
+              /> } />
+            <Match pattern="/npr" exactly render={ () =>
+              <NPR
+                { ...this.state }
+                getBooks={this.getBooks}
+                getNPRBooks={this.getNPRBooks}
               /> } />
             <Miss component={NotFound} />
           </main>

@@ -17,6 +17,7 @@ class AwardBook extends React.Component {
         .then(res => {
           this.props.getBooks();
           this.props.getNebulaBooks();
+          this.props.getNPRBooks();
         })
         .catch(err => {
           console.log(err);
@@ -33,6 +34,7 @@ class AwardBook extends React.Component {
             console.log('done patching');
             this.props.getBooks();
             this.props.getNebulaBooks();
+            this.props.getNPRBooks();
           })
           .catch(err => {
             console.log(err);
@@ -48,6 +50,7 @@ class AwardBook extends React.Component {
       .then(res => {
         this.props.getBooks();
         this.props.getNebulaBooks();
+        this.props.getNPRBooks();
       })
       .catch(err => {
         console.log(err);
@@ -69,7 +72,11 @@ class AwardBook extends React.Component {
 
     return (
       <tr className={rowClass}>
-        <td>{this.props.book.awardYear}</td>
+        { this.props.award === 'nebula' ? (
+          <td>{this.props.book.awardYear}</td>
+        ) : (
+          <td>{this.props.book.rank}</td>
+        )}
         <td>{this.props.book.title}</td>
         <td>{this.props.book.author}</td>
         <td>

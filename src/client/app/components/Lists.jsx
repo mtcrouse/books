@@ -17,9 +17,9 @@ class Lists extends React.Component {
         <div className="row left-align">
           <Link to="/nebula">Nebula Award for Best Novel</Link>
         </div>
-        {/* <div className="row">
+        <div className="row left-align">
           <Link to="/npr">NPR Top 100 Science Fiction and Fantasy Books</Link>
-        </div> */}
+        </div>
       </div>
     );
   }
