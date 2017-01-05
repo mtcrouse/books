@@ -51,7 +51,11 @@ router.get('/books/awards/:awardId', authorize, (req, res, next) => {
       .where('award_id', awardId)
       .innerJoin('books', 'books.id', 'awards_books.book_id')
       .select('*')
-      .leftJoin('books_users', 'books_users.book_id', 'books.id')
+      .leftJoin('books_users', function() {
+        this
+        .on('books_users.book_id', 'books.id')
+        .on('books_users.user_id', userId)
+      })
       .select('author', 'title', 'award_year', 'awards_books.book_id', 'shelf', 'date_read')
       .orderBy('award_year', 'ASC')
       .then((rows) => {
@@ -67,7 +71,11 @@ router.get('/books/awards/:awardId', authorize, (req, res, next) => {
       .where('award_id', awardId)
       .innerJoin('books', 'books.id', 'awards_books.book_id')
       .select('*')
-      .leftJoin('books_users', 'books_users.book_id', 'books.id')
+      .leftJoin('books_users', function() {
+        this
+        .on('books_users.book_id', 'books.id')
+        .on('books_users.user_id', userId)
+      })
       .select('author', 'title', 'award_year', 'awards_books.book_id', 'shelf', 'date_read')
       .orderBy('rank', 'ASC')
       .then((rows) => {

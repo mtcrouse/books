@@ -13,7 +13,7 @@ const router = express.Router();
 passport.use(new FacebookStrategy({
   clientID: process.env.FACEBOOK_APP_ID,
   clientSecret: process.env.FACEBOOK_APP_SECRET,
-  callbackURL: 'http://localhost:8000/auth_facebook/api/facebook/callback',
+  callbackURL: 'http://localhost:8000/auth/api/facebook/callback',
   profileFields: ['name', 'email']
   },
   function(accessToken, refreshToken, profile, done) {
@@ -37,11 +37,12 @@ passport.use(new FacebookStrategy({
       return knex('users')
       .insert(decamelizeKeys({
         firstName: profile.name.givenName,
-        facebookId: profile.id
+        facebookId: profile.id,
+        facebookToken: accessToken
       }), '*');
     })
     .then((user) => {
-      done(null, user);
+      done(null, camelizeKeys(user));
     })
     .catch((err) => {
       done(err);
@@ -55,7 +56,7 @@ router.get('/api/facebook/callback', passport.authenticate('facebook', {
   failureRedirect: '/'
 }), (req, res) => {
   const expiry = new Date(Date.now() + 1000 * 60 * 60 * 24 * 60);
-  const token = jwt.sign({ userId: req.user.id }, process.env.JWT_SECRET, {
+  const token = jwt.sign({ userId: req.user[0].id }, process.env.JWT_SECRET, {
     expiresIn: '60d'
   });
 
