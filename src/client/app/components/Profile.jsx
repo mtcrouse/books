@@ -1,12 +1,33 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router';
+import axios from 'axios';
 
 class Profile extends React.Component {
   constructor(props) {
     super(props);
 
+    this.changeStatus = this.changeStatus.bind(this);
     this.checkIfSignedOut = this.checkIfSignedOut.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.deleteBook = this.deleteBook.bind(this);
+  }
+
+  changeStatus(event) {
+    let shelf = event.target.value;
+    let bookId = Number(event.target.name);
+
+    if (shelf === 'delete') {
+      this.deleteBook(bookId);
+    } else {
+      axios.patch(`/books/${bookId}`, { shelf })
+        .then(res => {
+          console.log('done patching');
+          this.props.getBooks();
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }
 
   checkIfSignedOut() {
@@ -19,6 +40,16 @@ class Profile extends React.Component {
 
   componentDidMount() {
     this.props.getBooks();
+  }
+
+  deleteBook(bookId) {
+    axios.delete(`/books/books_users/${bookId}`)
+      .then(res => {
+        this.props.getBooks();
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {
@@ -36,16 +67,25 @@ class Profile extends React.Component {
           <h3 className="u-pull-left cormorant">Metta's Profile</h3>
         </div>
         <div className="row left-align">
-            Books read: {booksRead.length}
+            Total books read: {booksRead.length}
         </div>
         <div className="row left-align">
           <div className="three columns left-align">
             Currently reading:
           </div>
-          <div className="nine columns">
+        </div>
+        <div className="row left-align">
+          <div className="nine columns offset-by-one">
             {currentlyReading.map((book,index) => {
+              console.log(book);
               return <div key={index} className="row left-align">
                 {book.title} by {book.author} ({book.publicationYear})
+                <select value="reading" onChange={this.changeStatus} name={book.bookId}>
+                  <option value="delete">Delete</option>
+                  <option value="read">Read</option>
+                  <option value="reading">Reading</option>
+                  <option value="to-read">To Read</option>
+                </select>
               </div>;
             })}
           </div>

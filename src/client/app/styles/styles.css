@@ -79,7 +79,7 @@ table {
 }
 
 .shelf-button {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .tagline {
@@ -137,7 +137,7 @@ table {
 }
 
 #book-table {
-
+  margin: 0 auto;
 }
 
 #logo {

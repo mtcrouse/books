@@ -31,8 +31,10 @@ class Awards extends React.Component {
       </p>
     } else if (this.props.awardName === 'npr') {
       return <p className="left-align">
-        The NPR Top 100 Science Fiction and Fantasy Books was voted on by
-        NPR readers in 2011.
+        The NPR Top 100 Science Fiction and Fantasy Books was voted on by over
+        60,000 NPR readers in 2011. A panel reviewed the submissions to make
+        sure all books met the criteria: only science-fiction and fantasy novels
+        written for adults were considered.
       </p>
     }
   }
