@@ -13,14 +13,14 @@ class Search extends React.Component {
   }
 
   postBook(data) {
-    // axios.post('/books', data)
-    //   .then((res) => {
-    //     const newBooks = this.props.books.concat([res.data]);
-    //     this.props.addBook(newBooks);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    axios.post('/books', data)
+      .then((res) => {
+        const newBooks = this.props.books.concat([res.data]);
+        this.props.addBook(newBooks);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   addSearchResults(results) {

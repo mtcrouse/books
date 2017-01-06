@@ -17,25 +17,37 @@ class SearchResult extends React.Component {
   }
 
   postBook() {
-    let title = this.props.book.volumeInfo.title;
-    let author = this.props.book.volumeInfo.authors.join(', ');
-    let subtitle = this.props.book.volumeInfo.subtitle;
-    let genre = this.props.book.volumeInfo.categories.join(', ');
-    let language = this.props.book.volumeInfo.language;
-    let originalLanguage = null;
-    let publicationYear = 1000;
+    let { title } = this.props.book.volumeInfo;
     let shelf = this.state.selectedShelf;
 
-    let data = {
-      title,
-      subtitle,
-      author,
-      genre,
-      language,
-      originalLanguage,
-      publicationYear,
-      shelf
+    let data = { title, shelf };
+
+    if (this.props.book.volumeInfo.authors) {
+      data.author = this.props.book.volumeInfo.authors.join(', ');
+    } else {
+      console.log('no author information');
+      return;
     }
+
+    if (this.props.book.volumeInfo.subtitle) {
+      data.subtitle = subtitle;
+    }
+
+    if (this.props.book.volumeInfo.categories) {
+      data.genre = this.props.book.volumeInfo.categories.join(', ');;
+    }
+
+    if (this.props.book.volumeInfo.language) {
+      data.language = language;
+      data.originalLanguage = language;
+    }
+
+    if (this.props.book.volumeInfo.publishedDate) {
+      data.year = Number(String(this.props.book.volumeInfo.publishedDate.slice(0,4)));
+    }
+
+    console.log(data);
+    console.log(this.props.book);
 
     this.props.postBook(data);
   }

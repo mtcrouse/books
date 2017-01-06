@@ -109,15 +109,30 @@ router.get('/books', authorize, (req, res, next) => {
 // Post a book that is not already in the books table
 router.post('/books', authorize, (req, res, next) => {
   const { userId } = req.token;
-  const { title, subtitle, author, genre, language, originalLanguage, publicationYear, series, volume } = req.body;
-  const insertBook = {
-    title, subtitle, author, genre, language, originalLanguage, publicationYear, series, volume
-  }
-  const { bookId } = req.body;
+  const { title, subtitle, author, genre, language, originalLanguage, year } = req.body;
   const { shelf } = req.body;
+  let insertBook = { title, author };
+
+  if (subtitle) {
+    insertBook.subtitle = subtitle;
+  }
+
+  if (genre) {
+    insertBook.genre = genre;
+  }
+
+  if (language) {
+    insertBook.language = language;
+    insertBook.originalLanguage = language;
+  }
+
+  if (year) {
+    insertBook.publicationYear = year;
+  }
 
   knex('books')
-    .where('id', bookId)
+    .where('title', title)
+    .where('author', author)
     .first()
     .then((row) => {
       if (row) {
@@ -125,16 +140,25 @@ router.post('/books', authorize, (req, res, next) => {
       }
     })
     .then(() => {
-      return knex('books').insert(decamelizeKeys(insertBook), '*')
-        .then(() => {
+      knex('books').insert(decamelizeKeys(insertBook), '*')
+        .then((book) => {
+          console.log(book);
           const insertUserBook = {
-            bookId,
+            bookId: book[0].id,
             userId,
             dateRead: null,
             shelf
           }
 
-          knex('books_users').insert(decamelizeKeys(insertUserBook), '*');
+          console.log(insertUserBook);
+
+          return knex('books_users').insert(decamelizeKeys(insertUserBook), '*')
+            .then(res => {
+              console.log('posted to books_users');
+            })
+            .catch(err => {
+              console.log(err);
+            });
         })
         .catch((err) => {
           next(err);

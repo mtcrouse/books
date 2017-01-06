@@ -27,6 +27,7 @@ class Main extends React.Component {
     this.signOut = this.signOut.bind(this);
     this.getBooks = this.getBooks.bind(this);
     this.getAwardBooks = this.getAwardBooks.bind(this);
+    this.getCurrentUser = this.getCurrentUser.bind(this);
   }
 
   changeBookOverview(book) {
@@ -81,6 +82,16 @@ class Main extends React.Component {
         this.setState( { awardReadCount, awardReadingCount, awardToReadCount });
       })
       .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  getCurrentUser() {
+    axios.get('/users/currentuser')
+      .then(res => {
+        this.setState( { currentUser: res.data } );
+      })
+      .catch(err => {
         console.log(err);
       });
   }
@@ -148,6 +159,7 @@ class Main extends React.Component {
                 signOut={this.signOut}
                 getBooks={this.getBooks}
                 changeBookOverview={this.changeBookOverview}
+                getCurrentUser={this.getCurrentUser}
               /> } />
             <Match pattern="/search" exactly render={ () =>
               <Search

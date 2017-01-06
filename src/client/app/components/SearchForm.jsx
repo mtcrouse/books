@@ -224,8 +224,6 @@ class SearchForm extends React.Component {
       }
     }
 
-    console.log(this.language.value);
-
     if (this.language.value) {
       let language = this.language.value.charAt(0).toUpperCase() + this.language.value.slice(1);
       let languageCode;
@@ -257,8 +255,6 @@ class SearchForm extends React.Component {
     }
 
     query += `&maxResults=25&printType=books`;
-
-    console.log(query);
 
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
       .then(res => {

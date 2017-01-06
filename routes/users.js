@@ -47,6 +47,7 @@ router.get('/users/currentuser', authorize, (req, res, next) => {
       if (!row) {
         return next(boom.create(400, `No user at id ${userId}`));
       }
+
       res.send(camelizeKeys(row));
     })
     .catch((err) => {

@@ -46,6 +46,7 @@ class Profile extends React.Component {
 
   componentDidMount() {
     this.props.getBooks();
+    this.props.getCurrentUser();
   }
 
   deleteBook(bookId) {
@@ -70,7 +71,11 @@ class Profile extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <h3 className="u-pull-left cormorant">Metta's Profile</h3>
+          { this.props.currentUser === true ? (
+            <h3 className="u-pull-left cormorant">{this.state.currentUser.firstName}'s Profile</h3>
+          ) : (
+            <h3 className="u-pull-left cormorant">Your Profile</h3>
+          )}
         </div>
         <div className="row left-align">
             Total books read: {booksRead.length}
@@ -106,7 +111,28 @@ class Profile extends React.Component {
         </div>
         { this.props.bookOverview ? (
           <div className="row left-align">
-            Recently viewed: {this.props.bookOverview.title} by {this.props.bookOverview.author} ({this.props.bookOverview.publicationYear})
+            <div className="three columns left-align">
+              Last viewed:
+            </div>
+            <div className="nine columns offset-by-one">
+              <table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="book-table-body">
+                  <BookRow
+                    book={this.props.bookOverview}
+                    getBooks={this.props.getBooks}
+                    changeBookOverview={this.changeBookOverview}
+                  />
+                </tbody>
+              </table>
+            </div>
           </div>
         ) : (
           <div className="empty-div"></div>

@@ -37,6 +37,7 @@ input {
 
 td, th {
   text-align: center;
+  width: 200px;
 }
 
 select {

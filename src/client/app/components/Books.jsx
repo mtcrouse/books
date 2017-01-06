@@ -13,11 +13,11 @@ class Books extends React.Component {
 
     this.changeBookOverview = this.changeBookOverview.bind(this);
     this.getBooks = this.getBooks.bind(this);
-    this.getCurrentBooks = this.getCurrentBooks.bind(this);
     this.sortedBooks = this.sortedBooks.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.switchShelf = this.switchShelf.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
   }
 
   changeBookOverview(book) {
@@ -25,14 +25,14 @@ class Books extends React.Component {
   }
 
   componentDidMount() {
-    this.getCurrentBooks();
+    this.props.getBooks();
   }
 
   getBooks() {
     this.props.getBooks();
   }
 
-  getCurrentBooks() {
+  componentWillReceiveProps() {
     let currentBooks = [];
 
     for (let i = 0; i < this.props.books.length; i++) {
