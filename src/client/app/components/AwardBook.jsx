@@ -95,7 +95,7 @@ class AwardBook extends React.Component {
         <td>{this.props.book.author}</td>
         <td>
           <select value={status} onChange={this.changeStatus}>
-            <option value="none">None</option>
+            <option value="none">Uninterested</option>
             <option value="read">Read</option>
             <option value="reading">Reading</option>
             <option value="to-read">To Read</option>

@@ -73,7 +73,7 @@ class Awards extends React.Component {
         "Read",
         "Reading",
         "To Read",
-        "Other"
+        "Uninterested"
       ],
       datasets: [
         {
