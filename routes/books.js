@@ -109,8 +109,7 @@ router.get('/books', authorize, (req, res, next) => {
 // Post a book that is not already in the books table
 router.post('/books', authorize, (req, res, next) => {
   const { userId } = req.token;
-  const { title, subtitle, author, genre, language, originalLanguage, year } = req.body;
-  const { shelf } = req.body;
+  const { title, subtitle, author, genre, language, originalLanguage, year, googleDescription, googleImage, shelf } = req.body;
   let insertBook = { title, author };
 
   if (subtitle) {
@@ -119,6 +118,14 @@ router.post('/books', authorize, (req, res, next) => {
 
   if (genre) {
     insertBook.genre = genre;
+  }
+
+  if (googleDescription) {
+    insertBook.googleDescription = googleDescription;
+  }
+
+  if (googleImage) {
+    insertBook.googleImage = googleImage;
   }
 
   if (language) {

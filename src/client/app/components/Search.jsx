@@ -38,7 +38,9 @@ class Search extends React.Component {
             <SearchForm addSearchResults={this.addSearchResults} />
           </div>
           <div className="six columns">
-            Put something here.
+            <p>Search for some of your favorite books to start building your library!</p>
+            <p>For the most accurate results, include both the title and author
+              of the book that you want to search for.</p>
           </div>
         </div>
         <div className="row">

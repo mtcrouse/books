@@ -1,6 +1,7 @@
 import React from 'react';
 import AwardsTable from './AwardsTable.jsx';
 import axios from 'axios';
+import Chart from 'chart.js'
 
 class Awards extends React.Component {
   constructor(props) {
@@ -65,6 +66,41 @@ class Awards extends React.Component {
   }
 
   render() {
+    let unreadCount = this.props.awardBooks.length - this.props.awardReadCount - this.props.awardReadingCount - this.props.awardToReadCount;
+    console.log(unreadCount);
+    let data = {
+      labels: [
+        "Read",
+        "Reading",
+        "To Read",
+        "Other"
+      ],
+      datasets: [
+        {
+          data: [this.props.awardReadCount, this.props.awardReadingCount, this.props.awardToReadCount, unreadCount],
+          backgroundColor: [
+            "#4fad06",
+            "#e8ed61",
+            "#b74503",
+            "#9ca7ba"
+          ]
+          // hoverBackgroundColor: [
+          //   "#FF6384",
+          //   "#36A2EB",
+          //   "#FFCE56",
+          //   "#36A2EB"
+          // ]
+        }]
+    };
+
+    let myDoughnutChart = new Chart('myChart', {
+      type: 'doughnut',
+      data: data,
+      animation: {
+        animateScale:true
+      }
+    });
+
     return (
       <div className="container">
         <div className="row">
@@ -74,11 +110,9 @@ class Awards extends React.Component {
           <this.blurb />
         </div>
         <div className="row">
-          <p className="left-align">
-            Read: {this.props.awardReadCount} <br />
-            Reading: {this.props.awardReadingCount} <br />
-            To Read: {this.props.awardToReadCount}
-          </p>
+          <div className="six columns offset-by-three">
+            <canvas id="myChart" width="100" height="100"></canvas>
+          </div>
         </div>
         <div className="row">
           <AwardsTable

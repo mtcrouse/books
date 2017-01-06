@@ -22,6 +22,14 @@ class SearchResult extends React.Component {
 
     let data = { title, shelf };
 
+    if (this.props.book.volumeInfo.description) {
+      data.googleDescription = this.props.book.volumeInfo.description;
+    }
+
+    if (this.props.book.volumeInfo.imageLinks.thumbnail) {
+      data.googleImage = this.props.book.volumeInfo.imageLinks.thumbnail;
+    }
+
     if (this.props.book.volumeInfo.authors) {
       data.author = this.props.book.volumeInfo.authors.join(', ');
     } else {
@@ -35,11 +43,6 @@ class SearchResult extends React.Component {
 
     if (this.props.book.volumeInfo.categories) {
       data.genre = this.props.book.volumeInfo.categories.join(', ');;
-    }
-
-    if (this.props.book.volumeInfo.language) {
-      data.language = language;
-      data.originalLanguage = language;
     }
 
     if (this.props.book.volumeInfo.publishedDate) {
