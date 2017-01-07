@@ -67,18 +67,22 @@ class SearchResult extends React.Component {
     const title = this.props.book.volumeInfo.title;
     const authors = this.props.book.volumeInfo.authors;
     const genres = this.props.book.volumeInfo.categories;
+    const images = this.props.book.volumeInfo.imageLinks;
 
     return (
       <div className="search-result">
         <div className="row">
           <div className="four columns">
-            <p>{title ? title : 'NOT AVAILABLE'}</p>
+            { images ? (
+              <img src={images.thumbnail} alt="picture" />
+            ) : (
+              <div className="empty-div"></div>
+            )}
           </div>
-          <div className="four columns">
-            {authors ? authors.map((author,index) => {return <p key={index}>{author}</p>;}) : 'NOT AVAILABLE'}
-          </div>
-          <div className="four columns">
-            {genres ? genres.map((genre, index) => { return <p key={index}>{genre}</p>; }) : 'NOT AVAILABLE'}
+          <div className="eight columns">
+            {title ? <p>{title}</p> : <span className="no-title"></span>}
+            {authors ? <p>{authors.join(', ')}</p> : <span className="no-author"></span>}
+            {genres ? <p>{genres.join(', ')}</p> : <span className="no-genre"></span>}
           </div>
         </div>
         <div className="row">
@@ -101,7 +105,7 @@ class SearchResult extends React.Component {
             <div id="modal-x" onClick={this.destroyModal}>X</div>
           </div>
         ) : (
-          <div></div>
+          <div className="empty-div"></div>
         )}
       </div>
     );
