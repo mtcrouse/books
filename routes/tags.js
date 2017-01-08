@@ -45,7 +45,7 @@ router.get('/tags/:bookId', (req, res, next) => {
 
 router.post('/tags', authorize, (req, res, next) => {
   const { bookId, tag } = req.body;
-  const { userId } = req.params;
+  const { userId } = req.token;
   const insertTag = { bookId, userId, tag };
 
   knex('tags')

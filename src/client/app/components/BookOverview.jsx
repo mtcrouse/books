@@ -4,6 +4,33 @@ import axios from 'axios';
 class BookOverview extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {};
+    this.handleChange = this.handleChange.bind(this);
+    this.postTag = this.postTag.bind(this);
+  }
+
+  handleChange(event) {
+    const tagText = event.target.value;
+
+    this.setState( { tagText });
+  }
+
+  postTag(event) {
+    event.preventDefault();
+
+    const data = {
+      bookId: this.props.bookOverview.bookId,
+      tag: this.state.tagText
+    }
+
+    axios.post('/tags', data)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   render() {
@@ -31,6 +58,12 @@ class BookOverview extends React.Component {
               <p></p>
             )}
           </div>
+        </div>
+        <div className="row">
+          <form onSubmit={this.postTag}>
+            <input type="text" onChange={this.handleChange} />
+            <button type="submit">Submit tag</button>
+          </form>
         </div>
       </div>
     );

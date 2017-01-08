@@ -22,6 +22,7 @@ const auth = require('./routes/auth');
 const users = require('./routes/users');
 const token = require('./routes/token');
 const books = require('./routes/books');
+const tags = require('./routes/tags');
 
 app.use(passport.initialize());
 
@@ -37,6 +38,7 @@ app.use('/auth', auth);
 app.use(users);
 app.use(token);
 app.use(books);
+app.use(tags);
 
 app.use(express.static(path.join('src/client')));
 
