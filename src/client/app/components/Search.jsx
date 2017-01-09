@@ -11,13 +11,17 @@ class Search extends React.Component {
 
     this.postBook = this.postBook.bind(this);
     this.addSearchResults = this.addSearchResults.bind(this);
+
+    toastr.options = {
+      "positionClass": "toast-bottom-right",
+    }
   }
 
   postBook(data) {
     axios.post('/books', data)
       .then((res) => {
-        const newBooks = this.props.books.concat([res.data]);
-        this.props.addBook(newBooks);
+        toastr.success(`${data.title} was added to your ${data.shelf} shelf`, 'Success!');
+        this.props.getBooks();
       })
       .catch((err) => {
         toastr.error('There was a problem adding your book', 'Error');

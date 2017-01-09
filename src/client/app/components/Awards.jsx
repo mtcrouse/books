@@ -67,7 +67,6 @@ class Awards extends React.Component {
 
   render() {
     let unreadCount = this.props.awardBooks.length - this.props.awardReadCount - this.props.awardReadingCount - this.props.awardToReadCount;
-    console.log(unreadCount);
     let data = {
       labels: [
         "Read",
@@ -84,12 +83,6 @@ class Awards extends React.Component {
             "#b74503",
             "#9ca7ba"
           ]
-          // hoverBackgroundColor: [
-          //   "#FF6384",
-          //   "#36A2EB",
-          //   "#FFCE56",
-          //   "#36A2EB"
-          // ]
         }]
     };
 

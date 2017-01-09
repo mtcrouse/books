@@ -165,6 +165,7 @@ class Main extends React.Component {
             <Match pattern="/search" exactly render={ () =>
               <Search
                 { ...this.state }
+                getBooks={this.getBooks}
               /> } />
             <Match pattern="/tag" exactly render={ () =>
               <Tag

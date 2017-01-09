@@ -149,7 +149,6 @@ router.post('/books', authorize, (req, res, next) => {
     .then(() => {
       knex('books').insert(decamelizeKeys(insertBook), '*')
         .then((book) => {
-          console.log(book);
           const insertUserBook = {
             bookId: book[0].id,
             userId,
@@ -157,11 +156,9 @@ router.post('/books', authorize, (req, res, next) => {
             shelf
           }
 
-          console.log(insertUserBook);
-
-          return knex('books_users').insert(decamelizeKeys(insertUserBook), '*')
-            .then(res => {
-              console.log('posted to books_users');
+          knex('books_users').insert(decamelizeKeys(insertUserBook), '*')
+            .then(rows => {
+              res.send(rows);
             })
             .catch(err => {
               console.log(err);

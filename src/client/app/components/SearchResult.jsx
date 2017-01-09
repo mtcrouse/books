@@ -27,7 +27,7 @@ class SearchResult extends React.Component {
       data.googleDescription = this.props.book.volumeInfo.description;
     }
 
-    if (this.props.book.volumeInfo.imageLinks.thumbnail) {
+    if (this.props.book.volumeInfo.imageLinks) {
       data.googleImage = this.props.book.volumeInfo.imageLinks.thumbnail;
     }
 
@@ -39,7 +39,7 @@ class SearchResult extends React.Component {
     }
 
     if (this.props.book.volumeInfo.subtitle) {
-      data.subtitle = subtitle;
+      data.subtitle = this.props.book.volumeInfo.subtitle;
     }
 
     if (this.props.book.volumeInfo.categories) {

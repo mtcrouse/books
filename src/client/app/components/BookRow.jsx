@@ -44,7 +44,7 @@ class BookRow extends React.Component {
     axios.delete(`/books/books_users/${bookId}`)
       .then(res => {
         this.props.getBooks();
-        toastr.success(`${this.props.book.title} was deleted`);
+        toastr.success(`${this.props.book.title} was deleted from your library`);
       })
       .catch(err => {
         toastr.error(`There was an error deleting ${this.props.book.title}`, 'Error!');
