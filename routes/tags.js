@@ -49,14 +49,26 @@ router.post('/tags', authorize, (req, res, next) => {
   const insertTag = { bookId, userId, tag };
 
   knex('tags')
-    .insert(decamelizeKeys(insertTag))
-    .then((rows) => {
-      const tags = camelizeKeys(rows);
-      res.send(tags);
+    .where('user_id', userId)
+    .where('book_id', bookId)
+    .where('tag', tag)
+    .first()
+    .then((row) => {
+      if (row) {
+        return next(boom.create(400, 'Tag already exists from user'));
+      }
     })
-    .catch((err) => {
-      next(err);
-    })
+    .then(() => {
+      knex('tags')
+        .insert(decamelizeKeys(insertTag))
+        .then((rows) => {
+          const tags = camelizeKeys(rows);
+          res.send(tags);
+        })
+        .catch((err) => {
+          next(err);
+        });
+    });
 });
 
 module.exports = router;

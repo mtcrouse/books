@@ -19,8 +19,19 @@ class BookOverview extends React.Component {
   getTags() {
     axios.get(`/tags/${this.props.bookOverview.bookId}`)
       .then(res => {
+        const tagObj = {};
+
+        for (let tag of res.data) {
+          let tagName = tag.tag;
+          if (tagObj.hasOwnProperty(tagName) === false) {
+            tagObj[tagName] = 1;
+          } else {
+            tagObj[tagName] += 1;
+          }
+        }
         console.log(res.data);
-        this.setState( { tags: res.data });
+        console.log(tagObj);
+        this.setState( { tags: tagObj });
       })
       .catch(err => {
         console.log(err);
@@ -38,7 +49,7 @@ class BookOverview extends React.Component {
 
     const data = {
       bookId: this.props.bookOverview.bookId,
-      tag: this.state.tagText
+      tag: this.state.tagText.toLowerCase()
     }
 
     axios.post('/tags', data)
@@ -85,8 +96,10 @@ class BookOverview extends React.Component {
             </form>
           </div>
           <div className="four columns">
-            { tags.length > 0 ? (
-
+            { Object.keys(this.state.tags).length > 0 ? (
+              Object.keys(this.state.tags).map((tag, index) => {
+                return <p key={index}>{tag} ({this.state.tags[tag]})</p>;
+              })
             ) : (
               <div className="empty-div"></div>
             )}
