@@ -23,7 +23,6 @@ class BookRow extends React.Component {
     } else {
       axios.patch(`/books/${this.props.book.bookId}`, { shelf })
         .then(res => {
-          console.log('done patching');
           this.props.getBooks();
         })
         .catch(err => {

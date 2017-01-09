@@ -31,8 +31,7 @@ class BookOverview extends React.Component {
             tagObj[tagName] += 1;
           }
         }
-        console.log(res.data);
-        console.log(tagObj);
+
         this.setState( { tags: tagObj });
       })
       .catch(err => {
@@ -56,7 +55,6 @@ class BookOverview extends React.Component {
 
     axios.post('/tags', data)
       .then((res) => {
-        console.log(res.data);
         this.getTags();
       })
       .catch((err) => {

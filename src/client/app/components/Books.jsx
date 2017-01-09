@@ -30,7 +30,6 @@ class Books extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     let currentBooks = [];
-    console.log('will receive');
 
     for (let i = 0; i < nextProps.books.length; i++) {
       if (nextProps.books[i].shelf === this.state.currentBookshelf) {

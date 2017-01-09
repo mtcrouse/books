@@ -27,7 +27,6 @@ class Profile extends React.Component {
     } else {
       axios.patch(`/books/${bookId}`, { shelf })
         .then(res => {
-          console.log('done patching');
           this.props.getBooks();
         })
         .catch(err => {

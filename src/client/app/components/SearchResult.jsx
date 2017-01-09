@@ -49,9 +49,6 @@ class SearchResult extends React.Component {
       data.year = Number(String(this.props.book.volumeInfo.publishedDate.slice(0,4)));
     }
 
-    console.log(data);
-    console.log(this.props.book);
-
     this.props.postBook(data);
   }
 
