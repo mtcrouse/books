@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack -d --display-error-details",
     "knex": "knex",
-    "heroku-postbuild": "npm run build; knex migrate:latest",
+    "heroku-postbuild": "build; knex migrate:latest",
     "nf": "nf start",
     "test": "mocha",
     "start": "nodemon server.js"
