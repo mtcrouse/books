@@ -6,9 +6,19 @@ class Tag extends React.Component {
     super(props);
   }
 
-  // componentWillMount() {
-  //   this.getTags();
-  // }
+  componentWillMount() {
+    this.getTags();
+  }
+
+  getTags() {
+    axios.get(`/tags/tag/${this.props.currentTag}`)
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   render() {
     return (

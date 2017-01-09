@@ -25,23 +25,24 @@ class Books extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getBooks();
+    this.getBooks();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    let currentBooks = [];
+    console.log('will receive');
+
+    for (let i = 0; i < nextProps.books.length; i++) {
+      if (nextProps.books[i].shelf === this.state.currentBookshelf) {
+        currentBooks.push(nextProps.books[i]);
+      }
+    }
+
+    this.setState( { currentBooks } );
   }
 
   getBooks() {
     this.props.getBooks();
-  }
-
-  componentWillReceiveProps() {
-    let currentBooks = [];
-
-    for (let i = 0; i < this.props.books.length; i++) {
-      if (this.props.books[i].shelf === this.state.currentBookshelf) {
-        currentBooks.push(this.props.books[i]);
-      }
-
-      this.setState( { currentBooks } );
-    }
   }
 
   handleClick(event) {

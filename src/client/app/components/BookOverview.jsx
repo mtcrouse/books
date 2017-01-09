@@ -19,7 +19,7 @@ class BookOverview extends React.Component {
   }
 
   getTags() {
-    axios.get(`/tags/${this.props.bookOverview.bookId}`)
+    axios.get(`/tags/book/${this.props.bookOverview.bookId}`)
       .then(res => {
         const tagObj = {};
 

@@ -28,11 +28,27 @@ const authorize = function(req, res, next) {
 };
 
 // Get all tags of a book
-router.get('/tags/:bookId', (req, res, next) => {
+router.get('/tags/book/:bookId', (req, res, next) => {
   const { bookId } = req.params;
 
   knex('tags')
     .where('book_id', bookId)
+    .then((rows) => {
+      const tags = camelizeKeys(rows);
+
+      res.send(tags);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+// Get all books with a specific tag
+router.get('/tags/tag/:tag', (req, res, next) => {
+  const { tag } = req.params;
+
+  knex('tags')
+    .where('tag', tag)
     .then((rows) => {
       const tags = camelizeKeys(rows);
 
