@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack -d --display-error-details",
     "knex": "knex",
+    "heroku-postbuild": "webpack -p; knex migrate:latest",
     "nf": "nf start",
     "test": "mocha",
     "start": "nodemon server.js"
@@ -27,6 +28,7 @@
     "chai": "^3.5.0",
     "dotenv": "^2.0.0",
     "eslint": "^3.11.1",
+    "foreman": "^2.0.0",
     "mocha": "^3.2.0",
     "supertest": "^2.0.1"
   },
@@ -61,5 +63,8 @@
     "request-promise": "^4.1.1",
     "toastr": "^2.1.2",
     "webpack": "^1.13.3"
+  },
+  "engines": {
+    "node": "^7.1.0"
   }
 }
