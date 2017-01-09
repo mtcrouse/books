@@ -9,7 +9,7 @@ class Footer extends React.Component {
 
   render() {
     return (
-      <footer>
+      <footer className="left-align">
         &copy; Grimoire
       </footer>
     );

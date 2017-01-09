@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import axios from 'axios';
 
 class BookOverview extends React.Component {
@@ -10,6 +11,7 @@ class BookOverview extends React.Component {
     this.componentWillMount = this.componentWillMount.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.postTag = this.postTag.bind(this);
+    this.setTag = this.setTag.bind(this);
   }
 
   componentWillMount() {
@@ -62,6 +64,12 @@ class BookOverview extends React.Component {
       });
   }
 
+  setTag(event) {
+    const tag = event.target.id;
+
+    this.props.setTag(tag);
+  }
+
   render() {
     return (
       <div className="container">
@@ -95,10 +103,10 @@ class BookOverview extends React.Component {
               <button type="submit">Submit tag</button>
             </form>
           </div>
-          <div className="four columns">
+          <div className="eight columns">
             { Object.keys(this.state.tags).length > 0 ? (
               Object.keys(this.state.tags).map((tag, index) => {
-                return <p key={index}>{tag} ({this.state.tags[tag]})</p>;
+                return <Link to="/tag" key={index}><span className="tag-span" onClick={this.setTag} id={tag}>{tag} ({this.state.tags[tag]})</span></Link>;
               })
             ) : (
               <div className="empty-div"></div>

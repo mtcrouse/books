@@ -10,6 +10,7 @@ import Header from './layout/Header.jsx';
 import Footer from './layout/Footer.jsx';
 import ListMenu from './ListMenu.jsx';
 import Awards from './Awards.jsx';
+import Tag from './Tag.jsx';
 import axios from 'axios';
 
 class Main extends React.Component {
@@ -18,7 +19,9 @@ class Main extends React.Component {
     this.state = {
       isLoggedIn: false,
       books: [],
-      awardBooks: []
+      awardBooks: [],
+      currentTag: '',
+      bookOverview: {}
     };
 
     this.changeBookOverview = this.changeBookOverview.bind(this);
@@ -27,6 +30,7 @@ class Main extends React.Component {
     this.getBooks = this.getBooks.bind(this);
     this.getAwardBooks = this.getAwardBooks.bind(this);
     this.getCurrentUser = this.getCurrentUser.bind(this);
+    this.setTag = this.setTag.bind(this);
   }
 
   changeBookOverview(book) {
@@ -95,6 +99,10 @@ class Main extends React.Component {
       });
   }
 
+  setTag(tag) {
+    this.setState( { currentTag: tag } );
+  }
+
   signOut() {
     axios.delete('/token')
       .then(res => {
@@ -127,6 +135,7 @@ class Main extends React.Component {
             <Match pattern="/bookoverview" exactly render={ () =>
               <BookOverview
                 { ...this.state }
+                setTag={this.setTag}
               /> } />
             <Match pattern="/lists" exactly render={ () =>
               <ListMenu
@@ -155,6 +164,11 @@ class Main extends React.Component {
             <Match pattern="/search" exactly render={ () =>
               <Search
                 { ...this.state }
+              /> } />
+            <Match pattern="/tag" exactly render={ () =>
+              <Tag
+                { ...this.state }
+                setTag={this.setTag}
               /> } />
             <Miss component={NotFound} />
           </main>
