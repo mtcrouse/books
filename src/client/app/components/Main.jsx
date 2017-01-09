@@ -1,6 +1,5 @@
 import React from 'react';
 import { Match, Miss } from 'react-router';
-import Profile from './Profile.jsx';
 import Intro from './Intro.jsx';
 import SignIn from './SignIn.jsx';
 import Books from './Books.jsx';
@@ -152,14 +151,6 @@ class Main extends React.Component {
             <Match pattern="/signin" exactly render={ () =>
               <SignIn
                 { ...this.state }
-              /> } />
-            <Match pattern="/profile" exactly render={ () =>
-              <Profile
-                { ...this.state }
-                signOut={this.signOut}
-                getBooks={this.getBooks}
-                changeBookOverview={this.changeBookOverview}
-                getCurrentUser={this.getCurrentUser}
               /> } />
             <Match pattern="/search" exactly render={ () =>
               <Search

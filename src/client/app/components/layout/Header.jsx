@@ -21,7 +21,6 @@ class Header extends React.Component {
               <Link to="/" onClick={this.signOut} className="u-pull-right header-item cormorant">Sign Out</Link>
               <Link to="/books" className="u-pull-right header-item cormorant">Your Books</Link>
               <Link to="/lists" className="u-pull-right header-item cormorant">Lists</Link>
-              <Link to="/profile" className="u-pull-right header-item cormorant">Profile</Link>
               <Link to="/search" className="u-pull-right header-item cormorant">Search</Link>
             </div>
           ) : (

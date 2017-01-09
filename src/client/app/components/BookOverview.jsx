@@ -5,9 +5,26 @@ class BookOverview extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = { tags: [] };
+
+    this.componentWillMount = this.componentWillMount.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.postTag = this.postTag.bind(this);
+  }
+
+  componentWillMount() {
+    this.getTags();
+  }
+
+  getTags() {
+    axios.get(`/tags/${this.props.bookOverview.bookId}`)
+      .then(res => {
+        console.log(res.data);
+        this.setState( { tags: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   handleChange(event) {
@@ -27,6 +44,7 @@ class BookOverview extends React.Component {
     axios.post('/tags', data)
       .then((res) => {
         console.log(res.data);
+        this.getTags();
       })
       .catch((err) => {
         console.log(err);
@@ -60,10 +78,19 @@ class BookOverview extends React.Component {
           </div>
         </div>
         <div className="row">
-          <form onSubmit={this.postTag}>
-            <input type="text" onChange={this.handleChange} />
-            <button type="submit">Submit tag</button>
-          </form>
+          <div className="four columns">
+            <form onSubmit={this.postTag}>
+              <input type="text" onChange={this.handleChange} />
+              <button type="submit">Submit tag</button>
+            </form>
+          </div>
+          <div className="four columns">
+            { tags.length > 0 ? (
+
+            ) : (
+              <div className="empty-div"></div>
+            )}
+          </div>
         </div>
       </div>
     );
