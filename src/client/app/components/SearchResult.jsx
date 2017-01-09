@@ -1,5 +1,6 @@
 import React from 'react';
 import BookTable from './BookTable.jsx';
+import toastr from 'toastr';
 
 class SearchResult extends React.Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class SearchResult extends React.Component {
     if (this.props.book.volumeInfo.authors) {
       data.author = this.props.book.volumeInfo.authors.join(', ');
     } else {
-      console.log('no author information');
+      toastr.error('We were unable to add this book due to lack of author information', 'Error');
       return;
     }
 
@@ -71,15 +72,18 @@ class SearchResult extends React.Component {
         <div className="row">
           <div className="four columns">
             { images ? (
-              <img src={images.thumbnail} alt="picture" />
+              <div>
+                <img src={images.thumbnail} alt="picture" />
+                <br />
+                <br />
+              </div>
             ) : (
               <div className="empty-div"></div>
             )}
           </div>
           <div className="eight columns">
-            {title ? <p>{title}</p> : <span className="no-title"></span>}
-            {authors ? <p>{authors.join(', ')}</p> : <span className="no-author"></span>}
-            {genres ? <p>{genres.join(', ')}</p> : <span className="no-genre"></span>}
+            {title ? <p>Title: {title}</p> : <span className="no-title"></span>}
+            {authors ? <p>Author: {authors.join(', ')}</p> : <span className="no-author"></span>}
           </div>
         </div>
         <div className="row">

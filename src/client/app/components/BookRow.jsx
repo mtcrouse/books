@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router';
+import toastr from 'toastr';
 
 class BookRow extends React.Component {
   constructor(props) {
@@ -9,6 +10,10 @@ class BookRow extends React.Component {
     this.changeBookOverview = this.changeBookOverview.bind(this);
     this.changeStatus = this.changeStatus.bind(this);
     this.deleteBook = this.deleteBook.bind(this);
+
+    toastr.options = {
+      "positionClass": "toast-bottom-right",
+    }
   }
 
   changeBookOverview() {
@@ -24,8 +29,10 @@ class BookRow extends React.Component {
       axios.patch(`/books/${this.props.book.bookId}`, { shelf })
         .then(res => {
           this.props.getBooks();
+          toastr.success(`${this.props.book.title} was moved to your ${shelf} shelf`);
         })
         .catch(err => {
+          toastr.error(`There was an error moving ${this.props.book.title} to your ${shelf} shelf`, 'Error!');
           console.log(err);
         });
     }
@@ -37,8 +44,10 @@ class BookRow extends React.Component {
     axios.delete(`/books/books_users/${bookId}`)
       .then(res => {
         this.props.getBooks();
+        toastr.success(`${this.props.book.title} was deleted`);
       })
       .catch(err => {
+        toastr.error(`There was an error deleting ${this.props.book.title}`, 'Error!');
         console.log(err);
       });
   }

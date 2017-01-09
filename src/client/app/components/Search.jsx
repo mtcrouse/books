@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import SearchForm from './SearchForm.jsx';
 import SearchResult from './SearchResult.jsx';
+import toastr from 'toastr';
 
 class Search extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class Search extends React.Component {
         this.props.addBook(newBooks);
       })
       .catch((err) => {
+        toastr.error('There was a problem adding your book', 'Error');
         console.log(err);
       });
   }

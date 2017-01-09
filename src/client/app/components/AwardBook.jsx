@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router';
+import toastr from 'toastr';
 
 class AwardBook extends React.Component {
   constructor(props) {
@@ -13,6 +14,10 @@ class AwardBook extends React.Component {
       this.awardId = 1;
     } else if (this.props.awardName === 'npr') {
       this.awardId = 2;
+    }
+
+    toastr.options = {
+      "positionClass": "toast-bottom-right",
     }
   }
 
@@ -29,8 +34,10 @@ class AwardBook extends React.Component {
         .then(res => {
           this.props.getBooks();
           this.props.getAwardBooks(this.awardId);
+          toastr.success(`${this.props.book.title} was added to your ${shelf} shelf`);
         })
         .catch(err => {
+          toastr.error(`There was an error adding ${this.props.book.title} to your ${shelf} shelf`, 'Error!');
           console.log(err);
         });
 
@@ -42,11 +49,12 @@ class AwardBook extends React.Component {
       } else {
         axios.patch(`/books/${this.props.book.bookId}`, { shelf })
           .then(res => {
-            console.log('done patching');
             this.props.getBooks();
             this.props.getAwardBooks(this.awardId);
+            toastr.success(`${this.props.book.title} was moved to your ${shelf} shelf`);
           })
           .catch(err => {
+            toastr.error(`There was an error moving ${this.props.book.title} to your ${shelf} shelf`, 'Error!');
             console.log(err);
           });
       }
@@ -60,8 +68,10 @@ class AwardBook extends React.Component {
       .then(res => {
         this.props.getBooks();
         this.props.getAwardBooks(this.awardId);
+        toastr.success(`${this.props.book.title} was deleted from your library`);
       })
       .catch(err => {
+        toastr.error(`There was an error deleting ${this.props.book.title} from your library`, 'Error!');
         console.log(err);
       });
   }

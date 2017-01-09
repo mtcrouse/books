@@ -11,6 +11,7 @@ import Footer from './layout/Footer.jsx';
 import ListMenu from './ListMenu.jsx';
 import Awards from './Awards.jsx';
 import Tag from './Tag.jsx';
+import toastr from 'toastr';
 import axios from 'axios';
 
 class Main extends React.Component {
@@ -35,7 +36,6 @@ class Main extends React.Component {
 
   changeBookOverview(book) {
     this.setState( { bookOverview: book } );
-    toastr.success('I do not think that word means what you think it means.', 'Inconceivable!');
   }
 
   componentDidMount() {
