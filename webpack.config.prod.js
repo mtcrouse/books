@@ -7,11 +7,12 @@ var APP_DIR = path.resolve(__dirname, 'src/client/app');
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
-    APP_DIR + '/index.jsx',
+    APP_DIR + '/index',
   ],
   output: {
     path: BUILD_DIR,
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/src/client/public'
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -32,7 +33,16 @@ module.exports = {
     loaders: [{
       test: /\.js|\.jsx$/,
       loaders: ['babel-loader'],
-      include: APP_DIR
+      include: path.join(__dirname, 'src')
+    }, {
+      test: /\.json$/,
+      loader: "json-loader"
+    }, {
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      loaders: [
+        'file?hash=sha512&digest=hex&name=[hash].[ext]',
+        'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+      ]
     }]
   },
   node: {
