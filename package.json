@@ -7,7 +7,7 @@
     "build": "webpack --config webpack.config.dev.js -d --display-error-details",
     "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js -p --display-error-details",
     "knex": "knex",
-    "heroku-postbuild": "build:webpack; knex migrate:latest",
+    "heroku-postbuild": "npm run build:webpack; knex migrate:latest",
     "nf": "nf start",
     "test": "mocha",
     "start": "node server.js"
