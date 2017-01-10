@@ -44,11 +44,19 @@ router.get('/tags/book/:bookId', (req, res, next) => {
 });
 
 // Get all books with a specific tag
-router.get('/tags/tag/:tag', (req, res, next) => {
+router.get('/tags/tag/:tag', authorize, (req, res, next) => {
   const { tag } = req.params;
+  const { userId } = req.token;
 
   knex('tags')
     .where('tag', tag)
+    .innerJoin('books', 'books.id', 'tags.book_id')
+    .leftJoin('books_users', function() {
+      this
+      .on('books_users.book_id', 'books.id')
+      .on('books_users.user_id', userId)
+    })
+    .select('author', 'title', 'tag', 'tags.book_id', 'shelf', 'tags.user_id', 'publication_year')
     .then((rows) => {
       const tags = camelizeKeys(rows);
 

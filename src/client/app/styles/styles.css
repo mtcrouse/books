@@ -86,6 +86,10 @@ table {
   margin-left: 10px;
 }
 
+.tag-link {
+  text-decoration: none;
+}
+
 .tag-span {
   background-color: grey;
   color: white;
