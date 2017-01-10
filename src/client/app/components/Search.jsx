@@ -18,6 +18,7 @@ class Search extends React.Component {
   }
 
   postBook(data) {
+
     axios.post('/books', data)
       .then((res) => {
         toastr.success(`${data.title} was added to your ${data.shelf} shelf`, 'Success!');

@@ -7,7 +7,6 @@ import BookOverview from './BookOverview.jsx';
 import Search from './Search.jsx';
 import NotFound from './NotFound.jsx';
 import Header from './layout/Header.jsx';
-import Footer from './layout/Footer.jsx';
 import ListMenu from './ListMenu.jsx';
 import Awards from './Awards.jsx';
 import Tag from './Tag.jsx';
@@ -177,7 +176,6 @@ class Main extends React.Component {
             <Miss component={NotFound} />
           </main>
         </div>
-        <Footer />
       </div>
     );
   }

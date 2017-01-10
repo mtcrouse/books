@@ -56,7 +56,7 @@ router.get('/tags/tag/:tag', authorize, (req, res, next) => {
       .on('books_users.book_id', 'books.id')
       .on('books_users.user_id', userId)
     })
-    .select('author', 'title', 'tag', 'tags.book_id', 'shelf', 'tags.user_id', 'publication_year')
+    .select('author', 'title', 'tag', 'tags.book_id', 'shelf', 'tags.user_id', 'publication_year', 'google_description', 'google_image')
     .then((rows) => {
       const tags = camelizeKeys(rows);
 

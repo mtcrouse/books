@@ -144,29 +144,28 @@ router.post('/books', authorize, (req, res, next) => {
     .then((row) => {
       if (row) {
         return next(boom.create(400, 'Book already exists'));
-      }
-    })
-    .then(() => {
-      knex('books').insert(decamelizeKeys(insertBook), '*')
-        .then((book) => {
-          const insertUserBook = {
-            bookId: book[0].id,
-            userId,
-            dateRead: null,
-            shelf
-          }
+      } else {
+        knex('books').insert(decamelizeKeys(insertBook), '*')
+          .then((book) => {
+            const insertUserBook = {
+              bookId: book[0].id,
+              userId,
+              dateRead: null,
+              shelf
+            }
 
-          knex('books_users').insert(decamelizeKeys(insertUserBook), '*')
-            .then(rows => {
-              res.send(rows);
-            })
-            .catch(err => {
-              console.log(err);
-            });
-        })
-        .catch((err) => {
-          next(err);
-        });
+            knex('books_users').insert(decamelizeKeys(insertUserBook), '*')
+              .then(rows => {
+                res.send(rows);
+              })
+              .catch(err => {
+                console.log(err);
+              });
+          })
+          .catch((err) => {
+            next(err);
+          });
+      }
     })
     .catch((err) => {
       next(err);
