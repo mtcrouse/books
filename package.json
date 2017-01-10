@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.dev.js -d --display-error-details",
-    "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js --display-error-details",
+    "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js -p --display-error-details",
     "knex": "knex",
     "heroku-postbuild": "build:webpack; knex migrate:latest",
     "nf": "nf start",
