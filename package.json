@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack -d --display-error-details",
+    "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js --display-error-details",
     "knex": "knex",
-    "heroku-postbuild": "webpack -p; knex migrate:latest",
+    "heroku-postbuild": "npm run build:webpack; knex migrate:latest",
     "nf": "nf start",
     "test": "mocha",
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -44,6 +45,7 @@
     "boom": "^4.2.0",
     "chart.js": "^2.4.0",
     "cookie-parser": "^1.4.3",
+    "cross-env": "^3.1.4",
     "express": "^4.14.0",
     "express-validation": "^1.0.1",
     "humps": "^2.0.0",
