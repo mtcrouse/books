@@ -108,6 +108,30 @@ exports.seed = function(knex) {
         user_id: 2,
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 14,
+        tag: 'lord of the rings',
+        book_id: 65,
+        user_id: 3,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 15,
+        tag: 'lord of the rings',
+        book_id: 64,
+        user_id: 4,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
+      },
+      {
+        id: 16,
+        tag: 'lord of the rings',
+        book_id: 63,
+        user_id: 2,
+        created_at: new Date('2016-12-07 16:17:12 UTC'),
+        updated_at: new Date('2016-12-07 16:17:12 UTC')
       }]);
     })
     .then(() => {

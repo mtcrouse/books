@@ -38,7 +38,7 @@ class SearchForm extends React.Component {
     }
 
     event.target.reset();
-    this.setState( {} );
+    this.setState( { title: '', author: '' } );
 
     if (query === '') {
       toastr.error('Your search is empty!', 'Error');

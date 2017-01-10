@@ -11,6 +11,7 @@ class Search extends React.Component {
 
     this.postBook = this.postBook.bind(this);
     this.addSearchResults = this.addSearchResults.bind(this);
+    this.noResultsFound = this.noResultsFound.bind(this);
 
     toastr.options = {
       "positionClass": "toast-bottom-right",
@@ -34,6 +35,12 @@ class Search extends React.Component {
     this.setState( { searchResults: results });
   }
 
+  noResultsFound() {
+    toastr.error('No results found');
+
+    return <div className="empty-div"></div>;
+  }
+
   render() {
     return (
       <div className="container">
@@ -51,9 +58,13 @@ class Search extends React.Component {
           </div>
         </div>
         <div className="row">
-          {this.state.searchResults.map((book,index) => {
-            return <SearchResult key={index} book={book} postBook={this.postBook} />;
-          })}
+          {this.state.searchResults ? (
+            this.state.searchResults.map((book,index) => {
+              return <SearchResult key={index} book={book} postBook={this.postBook} />;
+            })
+          ) : (
+            <this.noResultsFound />
+          )}
         </div>
       </div>
     );

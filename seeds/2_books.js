@@ -14,6 +14,8 @@ exports.seed = function(knex) {
         language: 'Spanish',
         original_language: 'Spanish',
         publication_year: 1998,
+        google_description: 'Arturo Belano y Ulises Lima, los detectives salvajes, salen a buscar las huellas de Cesrea Tinajero, la misteriosa escritora desaparecida en Mxico en los aos inmediatamente posteriores a la Revolucin, y esa bsqueda - el viaje y sus consecuencias - se prolonga durante veinte aos, desde 1976 hasta 1996, el tiempo cannico de cualquier errancia, bifurcndose a travs de mltiples personajes y continentes, en una novela en donde hay de todo: amores y muertes, asesinatos y fugas tursticas, manicomios y universidades, desapariciones y apariciones.Sus escenarios son Mxico, Nicaragua, Estados Unidos, Francia, Espaa, Austria, Israel, frica, siempre al comps de los detectives salvajes - poetas \'desperados\', traficantes ocasionales -, Arturo Belano y Ulises Lima, los enigmticos protagonistas de este libro que puede leerse como un refinadsimo thriller wellesiano, atravesado por un humor iconoclasta y feroz. Entre los personajes destaca un fotgrafo espaol en el ltimo escaln de la desesperacin, un neonazi borderline, un torero mexicano jubilado que vive en el desierto, una estudiante francesa lectora de Sade, una prostituta adolescente en permanente huida, una prcer uruguaya en el 68 latinoamericano, un abogado gallego herido por la poesa, un editor mexicano al que persiguen unos pistoleros a sueldo.Una novela extraordinaria en todos los sentidos, que confirma la deslumbrante calidad literaria de Roberto Bolao, un autor que ha sido reconocido por la crtica ms exigente como una de las grandes revelaciones de la literatura latinoamericana de los aos noventa.',
+        google_image: '',
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -616,6 +618,8 @@ exports.seed = function(knex) {
         language: 'English',
         original_language: 'English',
         publication_year: 2001,
+        google_description: 'The storm was coming.... Shadow spent three years in prison, keeping his head down, doing his time. All he wanted was to get back to the loving arms of his wife and to stay out of trouble for the rest of his life. But days before his scheduled release, he learns that his wife has been killed in an accident, and his world becomes a colder place. On the plane ride home to the funeral, Shadow meets a grizzled man who calls himself Mr. Wednesday. A self-styled grifter and rogue, Wednesday offers Shadow a job. And Shadow, a man with nothing to lose, accepts. But working for the enigmatic Wednesday is not without its price, and Shadow soon learns that his role in Wednesday\'s schemes will be far more dangerous than he ever could have imagined. Entangled in a world of secrets, he embarks on a wild road trip and encounters, among others, the murderous Czernobog, the impish Mr. Nancy, and the beautiful Easter -- all of whom seem to know more about Shadow than he himself does. Shadow will learn that the past does not die, that everyone, including his late wife, had secrets, and that the stakes are higher than anyone could have imagined. All around them a storm of epic proportions threatens to break. Soon Shadow and Wednesday will be swept up into a conflict as old as humanity itself. For beneath the placid surface of everyday life a war is being fought -- and the prize is the very soul of America. As unsettling as it is exhilarating, American Gods is a dark and kaleidoscopic journey deep into myth and across an America at once eerily familiar and utterly alien. Magnificently told, this work of literary magic will haunt the reader far beyond the final page.',
+        google_image: 'http://books.google.com/books/content?id=Kasag4WdeM0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -812,6 +816,8 @@ exports.seed = function(knex) {
         language: 'English',
         original_language: 'English',
         publication_year: 1954,
+        google_description: 'The first volume in J.R.R. Tolkien\'s epic adventure THE LORD OF THE RINGS One Ring to rule them all, One Ring to find them, One Ring to bring them all and in the darkness bind them In ancient times the Rings of Power were crafted by the Elven-smiths, and Sauron, the Dark Lord, forged the One Ring, filling it with his own power so that he could rule all others. But the One Ring was taken from him, and though he sought it throughout Middle-earth, it remained lost to him. After many ages it fell into the hands of Bilbo Baggins, as told in The Hobbit. In a sleepy village in the Shire, young Frodo Baggins finds himself faced with an immense task, as his elderly cousin Bilbo entrusts the Ring to his care. Frodo must leave his home and make a perilous journey across Middle-earth to the Cracks of Doom, there to destroy the Ring and foil the Dark Lord in his evil purpose. “A unique, wholly realized other world, evoked from deep in the well of Time, massively detailed, absorbingly entertaining, profound in meaning.” – New York Times',
+        google_image: 'http://books.google.com/books/content?id=aWZzLPhY4o0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -826,6 +832,8 @@ exports.seed = function(knex) {
         language: 'English',
         original_language: 'English',
         publication_year: 1954,
+        google_description: 'The second volume in J.R.R. Tolkien\'s epic adventure THE LORD OF THE RINGS One Ring to rule them all, One Ring to find them, One Ring to bring them all and in the darkness bind them Frodo and his Companions of the Ring have been beset by danger during their quest to prevent the Ruling Ring from falling into the hands of the Dark Lord by destroying it in the Cracks of Doom. They have lost the wizard, Gandalf, in a battle in the Mines of Moria. And Boromir, seduced by the power of the Ring, tried to seize it by force. While Frodo and Sam made their escape, the rest of the company was attacked by Orcs. Now they continue the journey alone down the great River Anduin—alone, that is, save for the mysterious creeping figure that follows wherever they go. “Among the greatest works of imaginative fiction of the twentieth century. The book presents us with the richest profusion of new lands and creatures, from the beauty of Lothlórien to the horror of Mordor.” – Sunday Telegraph',
+        google_image: 'http://books.google.com/books/content?id=12e8PJ2T7sQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },
@@ -840,6 +848,8 @@ exports.seed = function(knex) {
         language: 'English',
         original_language: 'English',
         publication_year: 1955,
+        google_description: 'Concluding the story of The Hobbit, this is the final part of Tolkien\'s epic master piece. Impossible to describe in a few words, JRR Tolkien’s great work of imaginative fiction has been labelled both a heroic romance and a classic fantasy fiction. By turns comic and homely, epic and diabolic, the narrative moves through countless changes of scene and character in an imaginary world which is totally convincing in its detail. Tolkien created a vast new mythology in an invented world which has proved timeless in its appeal.',
+        google_image: 'http://books.google.com/books/content?id=a2uGDAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
       },

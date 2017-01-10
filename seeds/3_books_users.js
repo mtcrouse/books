@@ -8,8 +8,8 @@ exports.seed = function(knex) {
       return knex('books_users').insert([{
         id: 1,
         user_id: 1,
-        book_id: 1,
-        date_read: '2011',
+        book_id: 65,
+        date_read: '',
         shelf: 'read',
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
@@ -17,8 +17,8 @@ exports.seed = function(knex) {
       {
         id: 2,
         user_id: 1,
-        book_id: 2,
-        date_read: '2015',
+        book_id: 64,
+        date_read: '',
         shelf: 'read',
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
@@ -26,8 +26,8 @@ exports.seed = function(knex) {
       {
         id: 3,
         user_id: 2,
-        book_id: 2,
-        date_read: '2014',
+        book_id: 64,
+        date_read: '',
         shelf: 'read',
         created_at: new Date('2016-12-07 16:17:12 UTC'),
         updated_at: new Date('2016-12-07 16:17:12 UTC')
@@ -35,7 +35,7 @@ exports.seed = function(knex) {
       {
         id: 4,
         user_id: 1,
-        book_id: 4,
+        book_id: 77,
         date_read: '',
         shelf: 'reading',
         created_at: new Date('2016-12-07 16:17:12 UTC'),
