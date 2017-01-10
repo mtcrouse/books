@@ -105,13 +105,18 @@ class BookOverview extends React.Component {
             </form>
           </div>
           <div className="eight columns">
-            { Object.keys(this.state.tags).length > 0 ? (
-              Object.keys(this.state.tags).map((tag, index) => {
-                return <Link to="/tag" key={index} className="tag-link"><span className="tag-span" onClick={this.setTag} id={tag}>{tag} ({this.state.tags[tag]})</span></Link>;
-              })
-            ) : (
-              <div className="empty-div"></div>
-            )}
+            <div className="row">
+              <p>Click on any tag to see more books with that tag!</p>
+            </div>
+            <div className="row">
+              { Object.keys(this.state.tags).length > 0 ? (
+                Object.keys(this.state.tags).map((tag, index) => {
+                  return <Link to="/tag" key={index} className="tag-link"><span className="tag-span" onClick={this.setTag} id={tag}>{tag} ({this.state.tags[tag]})</span></Link>;
+                })
+              ) : (
+                <div className="empty-div"></div>
+              )}
+            </div>
           </div>
         </div>
       </div>
