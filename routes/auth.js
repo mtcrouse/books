@@ -13,7 +13,7 @@ const router = express.Router();
 passport.use(new FacebookStrategy({
   clientID: process.env.FACEBOOK_APP_ID,
   clientSecret: process.env.FACEBOOK_APP_SECRET,
-  callbackURL: 'http://localhost:8000/auth/api/facebook/callback',
+  callbackURL: 'https://mtcrouse-grimoire.herokuapp.com/auth/api/facebook/callback',
   profileFields: ['name', 'email']
   },
   function(accessToken, refreshToken, profile, done) {
