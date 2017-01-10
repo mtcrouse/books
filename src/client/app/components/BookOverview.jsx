@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
+import toastr from 'toastr';
 
 class BookOverview extends React.Component {
   constructor(props) {
@@ -56,8 +57,10 @@ class BookOverview extends React.Component {
     axios.post('/tags', data)
       .then((res) => {
         this.getTags();
+        toastr.success(`You posted the tag ${this.state.tagText.toLowerCase()}`);
       })
       .catch((err) => {
+        toastr.error(`Uh oh -- have you already added this tag?`);
         console.log(err);
       });
   }

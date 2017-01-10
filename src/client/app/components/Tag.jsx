@@ -9,6 +9,10 @@ class Tag extends React.Component {
     this.state = { taggedBooks: [] };
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.getTags();
+  }
+
   componentWillMount() {
     this.getTags();
   }
@@ -17,7 +21,17 @@ class Tag extends React.Component {
     axios.get(`/tags/tag/${this.props.currentTag}`)
       .then(res => {
         console.log(res.data);
-        this.setState( { taggedBooks: res.data } );
+        let alreadyAdded = {};
+        let taggedBooks = [];
+        for (let book of res.data) {
+          if (alreadyAdded.hasOwnProperty(book.bookId)) {
+            continue;
+          } else {
+            alreadyAdded[book.bookId] = true;
+            taggedBooks.push(book);
+          }
+        }
+        this.setState( { taggedBooks } );
       })
       .catch(err => {
         console.log(err);

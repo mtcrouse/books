@@ -57,7 +57,6 @@ class Main extends React.Component {
   getBooks() {
     axios.get('/books')
       .then((res) => {
-        console.log('got some books');
         this.setState( { books: res.data } );
       })
       .catch((err) => {

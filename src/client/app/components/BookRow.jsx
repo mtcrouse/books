@@ -25,6 +25,18 @@ class BookRow extends React.Component {
 
     if (shelf === 'delete') {
       this.deleteBook();
+    } else if (this.props.book.shelf === null) {
+      let data = { bookId: this.props.book.bookId, shelf };
+
+      axios.post('/books/books_users', data)
+        .then(res => {
+          this.props.getBooks();
+          toastr.success(`${this.props.book.title} was added to your ${shelf} shelf`);
+        })
+        .catch(err => {
+          toastr.error(`There was an error adding ${this.props.book.title} to your ${shelf} shelf`, 'Error!');
+          console.log(err);
+        });
     } else {
       axios.patch(`/books/${this.props.book.bookId}`, { shelf })
         .then(res => {
@@ -77,7 +89,7 @@ class BookRow extends React.Component {
         <td>{this.props.book.publicationYear}</td>
         <td>
           <select value={status} onChange={this.changeStatus}>
-            <option value="delete">Delete</option>
+            <option value="delete">Uninterested</option>
             <option value="read">Read</option>
             <option value="reading">Reading</option>
             <option value="to-read">To Read</option>
