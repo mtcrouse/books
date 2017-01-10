@@ -4,7 +4,7 @@
   "description": "book tracker",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -d --display-error-details",
+    "build": "webpack --config webpack.config.dev.js -d --display-error-details",
     "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js --display-error-details",
     "knex": "knex",
     "heroku-postbuild": "npm run build:webpack; knex migrate:latest",
@@ -51,6 +51,7 @@
     "humps": "^2.0.0",
     "joi": "^9.0.4",
     "jquery": "^3.1.1",
+    "json-loader": "^0.5.4",
     "jsonwebtoken": "^7.2.0",
     "knex": "^0.12.6",
     "lodash": "^4.17.2",
