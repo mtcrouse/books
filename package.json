@@ -10,7 +10,7 @@
     "heroku-postbuild": "npm run build:webpack; knex migrate:latest",
     "nf": "nf start",
     "test": "mocha",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
