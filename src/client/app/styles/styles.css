@@ -157,6 +157,10 @@ table {
   margin: 0 auto;
 }
 
+#choose-shelf {
+  max-width: 100%;
+}
+
 #logo {
   padding: 10px;
   padding-left: 20px;
@@ -212,4 +216,8 @@ table {
   content: "";
   display: block;
   height: 50px;
+}
+
+#sample-chart {
+  max-width: 100%;
 }

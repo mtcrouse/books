@@ -90,7 +90,7 @@ class Awards extends React.Component {
       type: 'doughnut',
       data: data,
       animation: {
-        animateScale:true
+        animateScale: true
       }
     });
 
