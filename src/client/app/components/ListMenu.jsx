@@ -39,7 +39,6 @@ class ListMenu extends React.Component {
           </div>
           <div className="four columns">
             <br />
-            <br />
             <p>Mark books as uninterested, read, reading, or to read. choose
             from some of the greatest science fiction and fantasy books ever
             written and watch as your progress is updated in real time.</p>

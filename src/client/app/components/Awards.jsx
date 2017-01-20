@@ -19,6 +19,9 @@ class Awards extends React.Component {
     } else if (this.props.awardName === 'npr') {
       this.awardId = 2;
     }
+
+    this.data;
+    this.doughnutChart;
   }
 
   blurb() {
@@ -47,6 +50,33 @@ class Awards extends React.Component {
 
   componentDidMount() {
     this.getAwardBooks(this.awardId);
+
+    this.data = {
+      labels: [
+        "Read",
+        "Reading",
+        "To Read",
+        "Uninterested"
+      ],
+      datasets: [
+        {
+          data: [0, 0, 0, 100],
+          backgroundColor: [
+            "#4fad06",
+            "#e8ed61",
+            "#b74503",
+            "#9ca7ba"
+          ]
+        }]
+    };
+
+    this.doughnutChart = new Chart('myChart', {
+      type: 'doughnut',
+      data: this.data,
+      animation: {
+        animateScale: true
+      }
+    });
   }
 
   getBooks() {
@@ -66,33 +96,29 @@ class Awards extends React.Component {
   }
 
   render() {
-    let unreadCount = this.props.awardBooks.length - this.props.awardReadCount - this.props.awardReadingCount - this.props.awardToReadCount;
-    let data = {
-      labels: [
-        "Read",
-        "Reading",
-        "To Read",
-        "Uninterested"
-      ],
-      datasets: [
-        {
-          data: [this.props.awardReadCount, this.props.awardReadingCount, this.props.awardToReadCount, unreadCount],
-          backgroundColor: [
-            "#4fad06",
-            "#e8ed61",
-            "#b74503",
-            "#9ca7ba"
-          ]
-        }]
-    };
+    if (this.doughnutChart) {
+      let unreadCount = this.props.awardBooks.length - this.props.awardReadCount - this.props.awardReadingCount - this.props.awardToReadCount;
+      this.doughnutChart.config.data = {
+        labels: [
+          "Read",
+          "Reading",
+          "To Read",
+          "Uninterested"
+        ],
+        datasets: [
+          {
+            data: [this.props.awardReadCount, this.props.awardReadingCount, this.props.awardToReadCount, unreadCount],
+            backgroundColor: [
+              "#4fad06",
+              "#e8ed61",
+              "#b74503",
+              "#9ca7ba"
+            ]
+          }]
+      };
 
-    let myDoughnutChart = new Chart('myChart', {
-      type: 'doughnut',
-      data: data,
-      animation: {
-        animateScale: true
-      }
-    });
+      this.doughnutChart.update();
+    }
 
     return (
       <div className="container">
