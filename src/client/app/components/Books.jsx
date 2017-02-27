@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import BookRow from './BookRow.jsx';
+import BookRow from './BookRow';
 
 class Books extends React.Component {
   constructor(props) {
@@ -8,7 +8,7 @@ class Books extends React.Component {
     this.state = {
       sortOrder: '',
       currentBooks: [],
-      currentBookshelf: 'read'
+      currentBookshelf: 'read',
     };
 
     this.changeBookOverview = this.changeBookOverview.bind(this);
@@ -29,15 +29,15 @@ class Books extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let currentBooks = [];
+    const currentBooks = [];
 
-    for (let i = 0; i < nextProps.books.length; i++) {
+    for (let i = 0; i < nextProps.books.length; i+= 1) {
       if (nextProps.books[i].shelf === this.state.currentBookshelf) {
         currentBooks.push(nextProps.books[i]);
       }
     }
 
-    this.setState( { currentBooks } );
+    this.setState({ currentBooks });
   }
 
   getBooks() {
@@ -72,11 +72,11 @@ class Books extends React.Component {
   }
 
   switchShelf(event) {
-    let clickedShelf = event.target.id;
-    let currentBooks = [];
+    const clickedShelf = event.target.id;
+    const currentBooks = [];
 
     if (this.state.bookshelf !== clickedShelf) {
-      this.setState( { currentBookshelf: clickedShelf });
+      this.setState({ currentBookshelf: clickedShelf });
 
       for (let i = 0; i < this.props.books.length; i++) {
         if (this.props.books[i].shelf === event.target.id) {
@@ -84,7 +84,7 @@ class Books extends React.Component {
         }
       }
 
-      this.setState( { currentBooks } );
+      this.setState({ currentBooks });
     }
   }
 
@@ -128,7 +128,7 @@ class Books extends React.Component {
                 </tr>
               </thead>
               <tbody id="book-table-body">
-                {this.state.currentBooks.map((book,index) => {
+                {this.state.currentBooks.map((book, index) => {
                   return <BookRow
                     key={index}
                     book={book}

@@ -12,7 +12,7 @@ class SearchForm extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value} );
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   searchBook(event) {
@@ -45,7 +45,7 @@ class SearchForm extends React.Component {
       return;
     }
 
-    query += `&maxResults=30&printType=books`;
+    query += '&maxResults=30&printType=books';
 
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
       .then(res => {

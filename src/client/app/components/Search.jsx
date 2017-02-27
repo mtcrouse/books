@@ -14,12 +14,11 @@ class Search extends React.Component {
     this.noResultsFound = this.noResultsFound.bind(this);
 
     toastr.options = {
-      "positionClass": "toast-bottom-right",
+      'positionClass': 'toast-bottom-right',
     }
   }
 
   postBook(data) {
-
     axios.post('/books', data)
       .then((res) => {
         toastr.success(`${data.title} was added to your ${data.shelf} shelf`, 'Success!');
@@ -59,7 +58,7 @@ class Search extends React.Component {
         </div>
         <div className="row">
           {this.state.searchResults ? (
-            this.state.searchResults.map((book,index) => {
+            this.state.searchResults.map((book, index) => {
               return <SearchResult key={index} book={book} postBook={this.postBook} />;
             })
           ) : (

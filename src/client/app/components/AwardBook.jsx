@@ -17,7 +17,7 @@ class AwardBook extends React.Component {
     }
 
     toastr.options = {
-      "positionClass": "toast-bottom-right",
+      'positionClass': 'toast-bottom-right',
     }
   }
 

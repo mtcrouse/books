@@ -1,17 +1,16 @@
 import React from 'react';
-import { Match, Miss } from 'react-router';
-import Intro from './Intro.jsx';
-import SignIn from './SignIn.jsx';
-import Books from './Books.jsx';
-import BookOverview from './BookOverview.jsx';
-import Search from './Search.jsx';
-import NotFound from './NotFound.jsx';
-import Header from './layout/Header.jsx';
-import ListMenu from './ListMenu.jsx';
-import Awards from './Awards.jsx';
-import Tag from './Tag.jsx';
-import toastr from 'toastr';
 import axios from 'axios';
+import { Match, Miss } from 'react-router';
+import Intro from './Intro';
+import SignIn from './SignIn';
+import Books from './Books';
+import BookOverview from './BookOverview';
+import Search from './Search';
+import NotFound from './NotFound';
+import Header from './layout/Header';
+import ListMenu from './ListMenu';
+import Awards from './Awards';
+import Tag from './Tag';
 
 class Main extends React.Component {
   constructor(props) {
@@ -21,7 +20,7 @@ class Main extends React.Component {
       books: [],
       awardBooks: [],
       currentTag: '',
-      bookOverview: {}
+      bookOverview: {},
     };
 
     this.changeBookOverview = this.changeBookOverview.bind(this);
@@ -34,13 +33,13 @@ class Main extends React.Component {
   }
 
   changeBookOverview(book) {
-    this.setState( { bookOverview: book } );
+    this.setState({ bookOverview: book });
   }
 
   componentDidMount() {
     axios.get('/token')
-      .then(res => {
-        let isLoggedIn = res.data;
+      .then((res) => {
+        const isLoggedIn = res.data;
         if (isLoggedIn) {
           this.setState({ isLoggedIn: true });
           this.getBooks();
@@ -48,7 +47,7 @@ class Main extends React.Component {
           this.setState({ isLoggedIn: false });
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
@@ -56,7 +55,7 @@ class Main extends React.Component {
   getBooks() {
     axios.get('/books')
       .then((res) => {
-        this.setState( { books: res.data } );
+        this.setState({ books: res.data });
       })
       .catch((err) => {
         console.log(err);
@@ -66,13 +65,13 @@ class Main extends React.Component {
   getAwardBooks(awardId) {
     axios.get(`/books/awards/${awardId}`)
       .then((res) => {
-        this.setState( { awardBooks: res.data } );
+        this.setState({ awardBooks: res.data });
 
         let awardReadCount = 0;
         let awardReadingCount = 0;
         let awardToReadCount = 0;
 
-        for (let book of res.data) {
+        for (const book of res.data) {
           if (book.shelf === 'read') {
             awardReadCount += 1;
           } else if (book.shelf === 'reading') {
@@ -82,7 +81,7 @@ class Main extends React.Component {
           }
         }
 
-        this.setState( { awardReadCount, awardReadingCount, awardToReadCount });
+        this.setState({ awardReadCount, awardReadingCount, awardToReadCount });
       })
       .catch((err) => {
         console.log(err);
@@ -91,26 +90,26 @@ class Main extends React.Component {
 
   getCurrentUser() {
     axios.get('/users/currentuser')
-      .then(res => {
-        this.setState( { currentUser: res.data } );
+      .then((res) => {
+        this.setState({ currentUser: res.data });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
 
   setTag(tag) {
-    this.setState( { currentTag: tag } );
+    this.setState({ currentTag: tag });
   }
 
   signOut() {
     axios.delete('/token')
-      .then(res => {
+      .then((res) => {
         this.setState({
-          isLoggedIn: false
+          isLoggedIn: false,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
       });
   }
@@ -121,58 +120,58 @@ class Main extends React.Component {
         <div id="page-wrapper">
           <Header isLoggedIn={this.state.isLoggedIn} signOut={this.signOut} />
           <main>
-            <Match pattern="/" exactly render={ () =>
+            <Match pattern="/" exactly render={() =>
               <Intro
-                { ...this.state }
-              /> } />
-            <Match pattern="/books" exactly render={ () =>
+                {...this.state}
+              />} />
+            <Match pattern="/books" exactly render={() =>
               <Books
-                { ...this.state }
+                {...this.state}
                 getBooks={this.getBooks}
                 getAwardBooks={this.getAwardBooks}
                 changeBookOverview={this.changeBookOverview}
-              /> } />
-            <Match pattern="/bookoverview" exactly render={ () =>
+              />} />
+            <Match pattern="/bookoverview" exactly render={() =>
               <BookOverview
-                { ...this.state }
+                {...this.state}
                 setTag={this.setTag}
-              /> } />
-            <Match pattern="/lists" exactly render={ () =>
+              />} />
+            <Match pattern="/lists" exactly render={() =>
               <ListMenu
-                { ...this.state }
-              /> } />
-            <Match pattern="/nebula" exactly render={ () =>
+                {...this.state}
+              />} />
+            <Match pattern="/nebula" exactly render={() =>
               <Awards
-                { ...this.state }
+                {...this.state}
                 awardName="nebula"
                 changeBookOverview={this.changeBookOverview}
                 getBooks={this.getBooks}
                 getAwardBooks={this.getAwardBooks}
-              /> } />
-            <Match pattern="/npr" exactly render={ () =>
+              />} />
+            <Match pattern="/npr" exactly render={() =>
               <Awards
-                { ...this.state }
+                {...this.state}
                 awardName="npr"
                 changeBookOverview={this.changeBookOverview}
                 getBooks={this.getBooks}
                 getAwardBooks={this.getAwardBooks}
-              /> } />
-            <Match pattern="/signin" exactly render={ () =>
+              />} />
+            <Match pattern="/signin" exactly render={() =>
               <SignIn
-                { ...this.state }
-              /> } />
-            <Match pattern="/search" exactly render={ () =>
+                {...this.state}
+              />} />
+            <Match pattern="/search" exactly render={() =>
               <Search
-                { ...this.state }
+                {...this.state}
                 getBooks={this.getBooks}
-              /> } />
-            <Match pattern="/tag" exactly render={ () =>
+              />} />
+            <Match pattern="/tag" exactly render={() =>
               <Tag
                 { ...this.state }
                 setTag={this.setTag}
                 changeBookOverview={this.changeBookOverview}
                 getBooks={this.getBooks}
-              /> } />
+              />} />
             <Miss component={NotFound} />
           </main>
         </div>

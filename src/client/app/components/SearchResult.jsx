@@ -1,5 +1,5 @@
 import React from 'react';
-import BookTable from './BookTable.jsx';
+import BookTable from './BookTable';
 import toastr from 'toastr';
 
 class SearchResult extends React.Component {
@@ -54,11 +54,11 @@ class SearchResult extends React.Component {
   }
 
   createModal() {
-    this.setState( { modal: true, modalContent: this.props.book.volumeInfo });
+    this.setState({ modal: true, modalContent: this.props.book.volumeInfo });
   }
 
   destroyModal() {
-    this.setState( { modal: false });
+    this.setState({ modal: false });
   }
 
   render() {
@@ -78,7 +78,7 @@ class SearchResult extends React.Component {
                 <br />
               </div>
             ) : (
-              <div className="empty-div"></div>
+              <div className="empty-div" />
             )}
           </div>
           <div className="eight columns">
@@ -99,7 +99,7 @@ class SearchResult extends React.Component {
             <button onClick={this.postBook}>Add Book to Shelf</button>
           </div>
         </div>
-        <div id="modal-x-holder"></div>
+        <div id="modal-x-holder" />
         {this.state.modal ? (
           <div id="modal">
             <BookTable content={this.state.modalContent} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import BookRow from './BookRow.jsx';
+import BookRow from './BookRow';
 
 class Tag extends React.Component {
   constructor(props) {
@@ -9,21 +9,21 @@ class Tag extends React.Component {
     this.state = { taggedBooks: [] };
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillMount() {
     this.getTags();
   }
 
-  componentWillMount() {
+  componentWillReceiveProps(nextProps) {
     this.getTags();
   }
 
   getTags() {
     axios.get(`/tags/tag/${this.props.currentTag}`)
-      .then(res => {
-        console.log(res.data);
-        let alreadyAdded = {};
-        let taggedBooks = [];
-        for (let book of res.data) {
+      .then((res) => {
+        const alreadyAdded = {};
+        const taggedBooks = [];
+
+        for (const book of res.data) {
           if (alreadyAdded.hasOwnProperty(book.bookId)) {
             continue;
           } else {
@@ -31,9 +31,9 @@ class Tag extends React.Component {
             taggedBooks.push(book);
           }
         }
-        this.setState( { taggedBooks } );
+        this.setState({ taggedBooks });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
@@ -72,5 +72,10 @@ class Tag extends React.Component {
     );
   }
 }
+
+Tag.propTypes = {
+  currentTag: React.PropTypes.string,
+  getBooks: React.PropTypes.func,
+};
 
 export default Tag;
