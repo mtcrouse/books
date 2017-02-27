@@ -10,7 +10,8 @@
     "heroku-postbuild": "npm run build:webpack; knex migrate:latest",
     "nf": "nf start",
     "test": "mocha",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "lint": "eslint src/client/app/* src/client/app/components/*; exit 0"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,11 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "dotenv": "^2.0.0",
-    "eslint": "^3.11.1",
+    "eslint": "^3.16.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
     "foreman": "^2.0.0",
     "mocha": "^3.2.0",
     "supertest": "^2.0.1"

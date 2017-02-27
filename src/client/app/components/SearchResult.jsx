@@ -43,7 +43,7 @@ class SearchResult extends React.Component {
     }
 
     if (this.props.book.volumeInfo.categories) {
-      data.genre = this.props.book.volumeInfo.categories.join(', ');;
+      data.genre = this.props.book.volumeInfo.categories.join(', ');
     }
 
     if (this.props.book.volumeInfo.publishedDate) {

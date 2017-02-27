@@ -56,7 +56,7 @@ class Tag extends React.Component {
                 </tr>
               </thead>
               <tbody id="book-table-body">
-                {this.state.taggedBooks.map((book,index) => {
+                {this.state.taggedBooks.map((book, index) => {
                   return <BookRow
                     key={index}
                     book={book}

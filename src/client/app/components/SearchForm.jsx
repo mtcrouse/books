@@ -12,7 +12,7 @@ class SearchForm extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({[event.target.name]: event.target.value});
+    this.setState({ [event.target.name]: event.target.value} );
   }
 
   searchBook(event) {
@@ -20,7 +20,7 @@ class SearchForm extends React.Component {
     this.props.addSearchResults([]);
 
     let data = { title: this.state.title,
-      author: this.state.author
+      author: this.state.author,
     };
 
     let query = '';
@@ -38,7 +38,7 @@ class SearchForm extends React.Component {
     }
 
     event.target.reset();
-    this.setState( { title: '', author: '' } );
+    this.setState({ title: '', author: '' });
 
     if (query === '') {
       toastr.error('Your search is empty!', 'Error');
