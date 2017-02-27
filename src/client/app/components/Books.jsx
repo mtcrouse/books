@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import BookRow from './BookRow';
 
 class Books extends React.Component {
@@ -51,7 +50,7 @@ class Books extends React.Component {
   sortedBooks(books, sortBy) {
     sortBy = sortBy.slice(3);
 
-    const newSortedBooks = books.sort(function(a, b) {
+    const newSortedBooks = books.sort(function (a, b) {
       if (a[sortBy] < b[sortBy]) {
         return -1;
       }
@@ -78,7 +77,7 @@ class Books extends React.Component {
     if (this.state.bookshelf !== clickedShelf) {
       this.setState({ currentBookshelf: clickedShelf });
 
-      for (let i = 0; i < this.props.books.length; i++) {
+      for (let i = 0; i < this.props.books.length; i += 1) {
         if (this.props.books[i].shelf === event.target.id) {
           currentBooks.push(this.props.books[i]);
         }
@@ -145,5 +144,11 @@ class Books extends React.Component {
     );
   }
 }
+
+Books.propTypes = {
+  books: React.PropTypes.object.isRequired,
+  changeBookOverview: React.PropTypes.func.isRequired,
+  getBooks: React.PropTypes.func.isRequired,
+};
 
 export default Books;

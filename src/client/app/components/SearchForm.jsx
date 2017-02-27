@@ -19,7 +19,7 @@ class SearchForm extends React.Component {
     event.preventDefault();
     this.props.addSearchResults([]);
 
-    let data = { title: this.state.title,
+    const data = { title: this.state.title,
       author: this.state.author,
     };
 
@@ -48,17 +48,16 @@ class SearchForm extends React.Component {
     query += '&maxResults=30&printType=books';
 
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
-      .then(res => {
+      .then((res) => {
         this.props.addSearchResults(res.data.items);
       })
-      .catch(err => {
+      .catch((err) => {
         toastr.error('There was a problem performing your search', 'Error');
         console.log(err);
       });
   }
 
   render() {
-
     return (
       <div className="row">
         <form onSubmit={this.searchBook}>
@@ -70,5 +69,9 @@ class SearchForm extends React.Component {
     );
   }
 }
+
+SearchForm.propTypes = {
+  addSearchResults: React.PropTypes.func.isRequired,
+};
 
 export default SearchForm;

@@ -11,7 +11,7 @@ class NotFound extends React.Component {
     return (
       <div id="map" className="row">
         <div id="map-content">
-          <p className="tagline">Sorry, we couldn't find what you were looking for</p>
+          <p className="tagline">Sorry, we couldn&apos;t find what you were looking for</p>
           <Link to="/"><button>Home</button></Link>
         </div>
       </div>

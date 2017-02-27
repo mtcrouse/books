@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router';
 import toastr from 'toastr';
+import { Link } from 'react-router';
 
 class BookRow extends React.Component {
   constructor(props) {
@@ -12,8 +12,8 @@ class BookRow extends React.Component {
     this.deleteBook = this.deleteBook.bind(this);
 
     toastr.options = {
-      "positionClass": "toast-bottom-right",
-    }
+      positionClass: 'toast-bottom-right',
+    };
   }
 
   changeBookOverview() {
@@ -21,29 +21,29 @@ class BookRow extends React.Component {
   }
 
   changeStatus(event) {
-    let shelf = event.target.value;
+    const shelf = event.target.value;
 
     if (shelf === 'delete') {
       this.deleteBook();
     } else if (this.props.book.shelf === null) {
-      let data = { bookId: this.props.book.bookId, shelf };
+      const data = { bookId: this.props.book.bookId, shelf };
 
       axios.post('/books/books_users', data)
-        .then(res => {
+        .then((_res) => {
           this.props.getBooks();
           toastr.success(`${this.props.book.title} was added to your ${shelf} shelf`);
         })
-        .catch(err => {
+        .catch((err) => {
           toastr.error(`There was an error adding ${this.props.book.title} to your ${shelf} shelf`, 'Error!');
           console.log(err);
         });
     } else {
       axios.patch(`/books/${this.props.book.bookId}`, { shelf })
-        .then(res => {
+        .then(() => {
           this.props.getBooks();
           toastr.success(`${this.props.book.title} was moved to your ${shelf} shelf`);
         })
-        .catch(err => {
+        .catch((err) => {
           toastr.error(`There was an error moving ${this.props.book.title} to your ${shelf} shelf`, 'Error!');
           console.log(err);
         });
@@ -51,14 +51,14 @@ class BookRow extends React.Component {
   }
 
   deleteBook() {
-    let bookId = this.props.book.bookId;
+    const bookId = this.props.book.bookId;
 
     axios.delete(`/books/books_users/${bookId}`)
-      .then(res => {
+      .then((_res) => {
         this.props.getBooks();
         toastr.success(`${this.props.book.title} was deleted from your library`);
       })
-      .catch(err => {
+      .catch((err) => {
         toastr.error(`There was an error deleting ${this.props.book.title}`, 'Error!');
         console.log(err);
       });
@@ -99,5 +99,11 @@ class BookRow extends React.Component {
     );
   }
 }
+
+BookRow.propTypes = {
+  book: React.PropTypes.object.isRequired,
+  changeBookOverview: React.PropType.func.isRequired,
+  getBooks: React.PropType.func.isRequired,
+};
 
 export default BookRow;

@@ -1,5 +1,5 @@
 import React from 'react';
-import AwardBook from './AwardBook.jsx';
+import AwardBook from './AwardBook';
 
 class AwardsTable extends React.Component {
 
@@ -39,7 +39,7 @@ class AwardsTable extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {this.props.books.map((book,index) => {
+          {this.props.books.map((book, index) => {
             return <AwardBook
               awardName={this.props.awardName}
               key={index}
@@ -53,7 +53,14 @@ class AwardsTable extends React.Component {
       </table>
     );
   }
-
 }
+
+AwardsTable.propTypes = {
+  awardName: React.PropTypes.object.isRequired,
+  books: React.PropTypes.any.isRequired,
+  changeBookOverview: React.PropTypes.func.isRequired,
+  getAwardBooks: React.PropTypes.func.isRequired,
+  getBooks: React.PropTypes.func.isRequired,
+};
 
 export default AwardsTable;

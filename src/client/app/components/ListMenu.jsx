@@ -47,7 +47,6 @@ class ListMenu extends React.Component {
             <img id="sample-chart" src="app/images/sample-chart.gif" alt="sample chart" />
           </div>
         </div>
-
       </div>
     );
   }

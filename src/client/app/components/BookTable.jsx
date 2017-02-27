@@ -1,10 +1,6 @@
 import React from 'react';
 
 class BookTable extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <table>
@@ -19,7 +15,7 @@ class BookTable extends React.Component {
               <td>{this.props.content.authors.join(', ')}</td>
             </tr>
           ) : (
-            <tr></tr>
+            <tr />
           )}
           {this.props.content.publishedDate ? (
             <tr>
@@ -27,7 +23,7 @@ class BookTable extends React.Component {
               <td>{this.props.content.publishedDate}</td>
             </tr>
           ) : (
-            <tr></tr>
+            <tr />
           )}
           {this.props.content.description ? (
             <tr>
@@ -35,12 +31,16 @@ class BookTable extends React.Component {
               <td>{this.props.content.description}</td>
             </tr>
           ) : (
-            <tr></tr>
+            <tr />
           )}
         </tbody>
       </table>
     );
   }
 }
+
+BookTable.propTypes = {
+  content: React.PropTypes.object.isRequired,
+};
 
 export default BookTable;

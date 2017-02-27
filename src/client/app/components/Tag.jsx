@@ -24,9 +24,7 @@ class Tag extends React.Component {
         const taggedBooks = [];
 
         for (const book of res.data) {
-          if (alreadyAdded.hasOwnProperty(book.bookId)) {
-            continue;
-          } else {
+          if (!alreadyAdded.hasOwnProperty(book.bookId)) {
             alreadyAdded[book.bookId] = true;
             taggedBooks.push(book);
           }
@@ -74,8 +72,9 @@ class Tag extends React.Component {
 }
 
 Tag.propTypes = {
-  currentTag: React.PropTypes.string,
-  getBooks: React.PropTypes.func,
+  changeBookOverview: React.PropTypes.func.isRequired,
+  currentTag: React.PropTypes.string.isRequired,
+  getBooks: React.PropTypes.func.isRequired,
 };
 
 export default Tag;

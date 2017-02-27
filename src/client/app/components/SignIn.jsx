@@ -11,8 +11,8 @@ class SignIn extends React.Component {
       <div className="container">
         <h3 className="cormorant left-align">Sign In</h3>
         <p className="left-align">
-          There's no need to make a new account in order to use Grimoire -- just
-          sign in with your Facebook and we'll remember all of your reading progress!
+          There&apos;s no need to make a new account in order to use Grimoire -- just
+          sign in with your Facebook and we&apos;ll remember all of your reading progress!
         </p>
         <div className="row">
           <a href="/auth/api/facebook"><button>Sign in with Facebook</button></a>

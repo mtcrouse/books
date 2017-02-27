@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import SearchForm from './SearchForm.jsx';
-import SearchResult from './SearchResult.jsx';
 import toastr from 'toastr';
+import SearchForm from './SearchForm';
+import SearchResult from './SearchResult';
 
 class Search extends React.Component {
   constructor(props) {
@@ -14,13 +14,13 @@ class Search extends React.Component {
     this.noResultsFound = this.noResultsFound.bind(this);
 
     toastr.options = {
-      'positionClass': 'toast-bottom-right',
-    }
+      positionClass: 'toast-bottom-right',
+    };
   }
 
   postBook(data) {
     axios.post('/books', data)
-      .then((res) => {
+      .then((_res) => {
         toastr.success(`${data.title} was added to your ${data.shelf} shelf`, 'Success!');
         this.props.getBooks();
       })
@@ -31,13 +31,13 @@ class Search extends React.Component {
   }
 
   addSearchResults(results) {
-    this.setState( { searchResults: results });
+    this.setState({ searchResults: results });
   }
 
   noResultsFound() {
     toastr.error('No results found');
 
-    return <div className="empty-div"></div>;
+    return <div className="empty-div" />;
   }
 
   render() {
@@ -69,5 +69,9 @@ class Search extends React.Component {
     );
   }
 }
+
+Search.propTypes = {
+  getBooks: React.PropTypes.func.isRequired,
+};
 
 export default Search;

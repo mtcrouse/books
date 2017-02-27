@@ -17,8 +17,8 @@ class AwardBook extends React.Component {
     }
 
     toastr.options = {
-      'positionClass': 'toast-bottom-right',
-    }
+      positionClass: 'toast-bottom-right',
+    };
   }
 
   changeBookOverview() {
@@ -27,33 +27,32 @@ class AwardBook extends React.Component {
 
   changeStatus(event) {
     if (this.props.book.shelf === null) {
-      let shelf = event.target.value;
-      let data = { bookId: this.props.book.bookId, shelf };
+      const shelf = event.target.value;
+      const data = { bookId: this.props.book.bookId, shelf };
 
       axios.post('/books/books_users', data)
-        .then(res => {
+        .then((_res) => {
           this.props.getBooks();
           this.props.getAwardBooks(this.awardId);
           toastr.success(`${this.props.book.title} was added to your ${shelf} shelf`);
         })
-        .catch(err => {
+        .catch((err) => {
           toastr.error(`There was an error adding ${this.props.book.title} to your ${shelf} shelf`, 'Error!');
           console.log(err);
         });
-
     } else {
-      let shelf = event.target.value;
+      const shelf = event.target.value;
 
       if (shelf === 'none') {
         this.deleteBook();
       } else {
         axios.patch(`/books/${this.props.book.bookId}`, { shelf })
-          .then(res => {
+          .then((_res) => {
             this.props.getBooks();
             this.props.getAwardBooks(this.awardId);
             toastr.success(`${this.props.book.title} was moved to your ${shelf} shelf`);
           })
-          .catch(err => {
+          .catch((err) => {
             toastr.error(`There was an error moving ${this.props.book.title} to your ${shelf} shelf`, 'Error!');
             console.log(err);
           });
@@ -62,15 +61,15 @@ class AwardBook extends React.Component {
   }
 
   deleteBook() {
-    let bookId = this.props.book.bookId;
+    const bookId = this.props.book.bookId;
 
     axios.delete(`/books/books_users/${bookId}`)
-      .then(res => {
+      .then((_res) => {
         this.props.getBooks();
         this.props.getAwardBooks(this.awardId);
         toastr.success(`${this.props.book.title} was deleted from your library`);
       })
-      .catch(err => {
+      .catch((err) => {
         toastr.error(`There was an error deleting ${this.props.book.title} from your library`, 'Error!');
         console.log(err);
       });
@@ -115,5 +114,13 @@ class AwardBook extends React.Component {
     );
   }
 }
+
+AwardBook.propTypes = {
+  awardName: React.PropTypes.string.isRequired,
+  book: React.PropTypes.object.isRequired,
+  changeBookOverview: React.PropTypes.func.isRequired,
+  getAwardBooks: React.PropTypes.func.isRequired,
+  getBooks: React.PropTypes.func.isRequired,
+};
 
 export default AwardBook;

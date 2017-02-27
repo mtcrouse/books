@@ -21,11 +21,11 @@ class BookOverview extends React.Component {
 
   getTags() {
     axios.get(`/tags/book/${this.props.bookOverview.bookId}`)
-      .then(res => {
+      .then((res) => {
         const tagObj = {};
 
-        for (let tag of res.data) {
-          let tagName = tag.tag;
+        for (const tag of res.data) {
+          const tagName = tag.tag;
           if (tagObj.hasOwnProperty(tagName) === false) {
             tagObj[tagName] = 1;
           } else {
@@ -33,9 +33,9 @@ class BookOverview extends React.Component {
           }
         }
 
-        this.setState( { tags: tagObj });
+        this.setState({ tags: tagObj });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
@@ -43,7 +43,7 @@ class BookOverview extends React.Component {
   handleChange(event) {
     const tagText = event.target.value;
 
-    this.setState( { tagText });
+    this.setState({ tagText });
   }
 
   postTag(event) {
@@ -51,16 +51,16 @@ class BookOverview extends React.Component {
 
     const data = {
       bookId: this.props.bookOverview.bookId,
-      tag: this.state.tagText.toLowerCase()
-    }
+      tag: this.state.tagText.toLowerCase(),
+    };
 
     axios.post('/tags', data)
-      .then((res) => {
+      .then((_res) => {
         this.getTags();
         toastr.success(`You posted the tag ${this.state.tagText.toLowerCase()}`);
       })
       .catch((err) => {
-        toastr.error(`Uh oh -- have you already added this tag?`);
+        toastr.error('Uh oh -- have you already added this tag?');
         console.log(err);
       });
   }
@@ -82,9 +82,9 @@ class BookOverview extends React.Component {
           </div>
           <div className="six columns">
             { this.props.bookOverview.googleImage ? (
-              <img className="book-thumbnail" src={this.props.bookOverview.googleImage} />
+              <img className="book-thumbnail" src={this.props.bookOverview.googleImage} alt="book thumbnail" />
             ) : (
-              <p></p>
+              <p />
             )}
           </div>
         </div>
@@ -93,7 +93,7 @@ class BookOverview extends React.Component {
             { this.props.bookOverview.googleDescription ? (
               <p>Description: {this.props.bookOverview.googleDescription}</p>
             ) : (
-              <p></p>
+              <p />
             )}
           </div>
         </div>
@@ -114,7 +114,7 @@ class BookOverview extends React.Component {
                   return <Link to="/tag" key={index} className="tag-link"><span className="tag-span" onClick={this.setTag} id={tag}>{tag} ({this.state.tags[tag]})</span></Link>;
                 })
               ) : (
-                <div className="empty-div"></div>
+                <div className="empty-div" />
               )}
             </div>
           </div>
@@ -123,5 +123,10 @@ class BookOverview extends React.Component {
     );
   }
 }
+
+BookOverview.propTypes = {
+  bookOverview: React.PropTypes.object.isRequired,
+  setTag: React.PropTypes.func.isRequired,
+};
 
 export default BookOverview;

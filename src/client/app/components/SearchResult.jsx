@@ -1,6 +1,6 @@
 import React from 'react';
-import BookTable from './BookTable';
 import toastr from 'toastr';
+import BookTable from './BookTable';
 
 class SearchResult extends React.Component {
   constructor(props) {
@@ -18,10 +18,9 @@ class SearchResult extends React.Component {
   }
 
   postBook() {
-    let { title } = this.props.book.volumeInfo;
-    let shelf = this.state.selectedShelf;
-
-    let data = { title, shelf };
+    const { title } = this.props.book.volumeInfo;
+    const shelf = this.state.selectedShelf;
+    const data = { title, shelf };
 
     if (this.props.book.volumeInfo.description) {
       data.googleDescription = this.props.book.volumeInfo.description;
@@ -47,7 +46,7 @@ class SearchResult extends React.Component {
     }
 
     if (this.props.book.volumeInfo.publishedDate) {
-      data.year = Number(String(this.props.book.volumeInfo.publishedDate.slice(0,4)));
+      data.year = Number(String(this.props.book.volumeInfo.publishedDate.slice(0, 4)));
     }
 
     this.props.postBook(data);
@@ -73,7 +72,7 @@ class SearchResult extends React.Component {
           <div className="four columns">
             { images ? (
               <div>
-                <img src={images.thumbnail} alt="picture" />
+                <img src={images.thumbnail} alt="book cover" />
                 <br />
                 <br />
               </div>
@@ -82,8 +81,8 @@ class SearchResult extends React.Component {
             )}
           </div>
           <div className="eight columns">
-            {title ? <p>Title: {title}</p> : <span className="no-title"></span>}
-            {authors ? <p>Author: {authors.join(', ')}</p> : <span className="no-author"></span>}
+            {title ? <p>Title: {title}</p> : <span className="no-title" />}
+            {authors ? <p>Author: {authors.join(', ')}</p> : <span className="no-author" />}
           </div>
         </div>
         <div className="row">
@@ -106,11 +105,16 @@ class SearchResult extends React.Component {
             <div id="modal-x" onClick={this.destroyModal}>X</div>
           </div>
         ) : (
-          <div className="empty-div"></div>
+          <div className="empty-div" />
         )}
       </div>
     );
   }
 }
+
+SearchResult.propTypes = {
+  book: React.PropTypes.object.isRequired,
+  postBook: React.PropTypes.func.isRequired,
+};
 
 export default SearchResult;

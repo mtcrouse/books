@@ -18,7 +18,7 @@ class Intro extends React.Component {
           <div className="row">
             <div className="four columns intro-column">
               Build your knowledge of both classic and contemporary works of science
-              fiction and fantasy. Grimoire shows you how many books you've read
+              fiction and fantasy. Grimoire shows you how many books you&apos;ve read
               from top lists like Nebula and Hugo award winners.
             </div>
             <div className="four columns intro-column">
@@ -49,5 +49,9 @@ class Intro extends React.Component {
     );
   }
 }
+
+Intro.propTypes = {
+  isLoggedIn: React.PropTypes.bool.isRequired,
+};
 
 export default Intro;
