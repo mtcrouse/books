@@ -5,8 +5,6 @@ exports.up = function(knex) {
     table.increments();
     table.string('first_name').notNullable();
     table.string('email').defaultTo(null);
-    table.string('facebook_id').notNullable();
-    table.string('facebook_token').notNullable();
     table.timestamps(true, true);
   });
 };
