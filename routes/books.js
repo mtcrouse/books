@@ -90,7 +90,7 @@ router.get('/books/awards/:awardId', authorize, (req, res, next) => {
 });
 
 // Get all books from the current user
-router.get('/books', authorize, (req, res, next) => {
+router.get('/books', /*authorize,*/ (req, res, next) => {
   const { userId } = req.token;
 
   knex('books_users')

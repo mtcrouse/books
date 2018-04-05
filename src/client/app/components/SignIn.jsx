@@ -14,7 +14,7 @@ class SignIn extends React.Component {
           Come on in!
         </p>
         <div className="row">
-          <a href="/auth/api/"><button>Sign in</button></a>
+          <a href="/auth/signin"><button>Sign in</button></a>
         </div>
       </div>
     );

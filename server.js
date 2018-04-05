@@ -10,7 +10,6 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const path = require('path');
-const passport = require('passport');
 
 app.disable('x-powered-by');
 
@@ -24,17 +23,7 @@ const token = require('./routes/token');
 const books = require('./routes/books');
 const tags = require('./routes/tags');
 
-app.use(passport.initialize());
-
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
-
-app.use('/auth', auth);
+app.use(auth);
 app.use(users);
 app.use(token);
 app.use(books);
