@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mtcrouse/books.git"
+    "url": "git+https://github.com/mtcrouse/grimoire.git"
   },
   "keywords": [
     "books"
@@ -23,9 +23,9 @@
   "author": "Metta Crouse <mettacrouse@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mtcrouse/books/issues"
+    "url": "https://github.com/mtcrouse/grimoire/issues"
   },
-  "homepage": "https://github.com/mtcrouse/books#readme",
+  "homepage": "https://github.com/mtcrouse/grimoire#readme",
   "devDependencies": {
     "chai": "^3.5.0",
     "dotenv": "^2.0.0",
