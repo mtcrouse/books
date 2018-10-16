@@ -7,43 +7,49 @@ exports.seed = function(knex) {
     .then(() => {
       return knex('users').insert([{
         id: 1,
-        first_name: 'metta',
+        username: 'metta',
         email: 'mettacrouse@gmail.com',
+        hashed_password: '$2b$12$iNstTBuIfbUbTo2yVFPU6O8zdfndOcJQpMJwKmLL3dkbomrKjsYJG',
         created_at: new Date('2016-11-25 16:17:12 UTC'),
         updated_at: new Date('2016-11-25 16:17:12 UTC')
       },
       {
         id: 2,
-        first_name: 'finley',
+        username: 'finley',
         email: 'finley@gmail.com',
+        hashed_password: '$2b$12$iNstTBuIfbUbTo2yVFPU6O8zdfndOcJQpMJwKmLL3dkbomrKjsYJG',
         created_at: new Date('2016-11-25 16:17:12 UTC'),
         updated_at: new Date('2016-11-25 16:17:12 UTC')
       },
       {
         id: 3,
-        first_name: 'oscar',
+        username: 'oscar',
         email: 'oscar@gmail.com',
+        hashed_password: '$2b$12$iNstTBuIfbUbTo2yVFPU6O8zdfndOcJQpMJwKmLL3dkbomrKjsYJG',
         created_at: new Date('2016-11-25 16:17:12 UTC'),
         updated_at: new Date('2016-11-25 16:17:12 UTC')
       },
       {
         id: 4,
-        first_name: 'squirrel',
+        username: 'squirrel',
         email: 'squirrel@gmail.com',
+        hashed_password: '$2b$12$iNstTBuIfbUbTo2yVFPU6O8zdfndOcJQpMJwKmLL3dkbomrKjsYJG',
         created_at: new Date('2016-11-25 16:17:12 UTC'),
         updated_at: new Date('2016-11-25 16:17:12 UTC')
       },
       {
         id: 5,
-        first_name: 'crystal',
+        username: 'crystal',
         email: 'crystal@gmail.com',
+        hashed_password: '$2b$12$iNstTBuIfbUbTo2yVFPU6O8zdfndOcJQpMJwKmLL3dkbomrKjsYJG',
         created_at: new Date('2016-11-25 16:17:12 UTC'),
         updated_at: new Date('2016-11-25 16:17:12 UTC')
       },
       {
         id: 6,
-        first_name: 'lucaya',
+        username: 'lucaya',
         email: 'lucaya@gmail.com',
+        hashed_password: '$2b$12$iNstTBuIfbUbTo2yVFPU6O8zdfndOcJQpMJwKmLL3dkbomrKjsYJG',
         created_at: new Date('2016-11-25 16:17:12 UTC'),
         updated_at: new Date('2016-11-25 16:17:12 UTC')
       }]);
