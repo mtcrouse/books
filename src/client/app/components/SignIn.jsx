@@ -65,6 +65,12 @@ class SignIn extends React.Component {
               <button type="submit">Create Account</button>
             </form>
           </div>
+          { this.props.isLoggedIn === true ? (
+            <Redirect to="/search" />
+            ) : (
+              <div />
+            )
+          }
         </div>
       </div>
     );

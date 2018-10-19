@@ -1,9 +1,8 @@
-import { BrowserRouter } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 import Main from './Main';
 
 class App extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {};

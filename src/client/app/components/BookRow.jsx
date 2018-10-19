@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import toastr from 'toastr';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class BookRow extends React.Component {
   constructor(props) {

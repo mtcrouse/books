@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Match, Miss } from 'react-router';
+import { Route, Switch } from 'react-router-dom';
 import Intro from './Intro';
 import SignIn from './SignIn';
 import Books from './Books';
@@ -120,97 +120,97 @@ class Main extends React.Component {
         <div id="page-wrapper">
           <Header isLoggedIn={this.state.isLoggedIn} signOut={this.signOut} />
           <main>
-            <Match
-              pattern="/"
-              exactly render={() =>
-                <Intro
-                  {...this.state}
-                />
-              }
-            />
-            <Match
-              pattern="/books"
-              exactly render={() =>
-                <Books
-                  {...this.state}
-                  getBooks={this.getBooks}
-                  getAwardBooks={this.getAwardBooks}
-                  changeBookOverview={this.changeBookOverview}
-                />
-              }
-            />
-            <Match
-              pattern="/bookoverview"
-              exactly render={() =>
-                <BookOverview
-                  {...this.state}
-                  setTag={this.setTag}
-                />
-              }
-            />
-            <Match
-              pattern="/lists"
-              exactly render={() =>
-                <ListMenu
-                  {...this.state}
-                />
-              }
-            />
-            <Match
-              pattern="/nebula"
-              exactly render={() =>
-                <Awards
-                  {...this.state}
-                  awardName="nebula"
-                  changeBookOverview={this.changeBookOverview}
-                  getBooks={this.getBooks}
-                  getAwardBooks={this.getAwardBooks}
-                />
-              }
-            />
-            <Match
-              pattern="/npr"
-              exactly render={() =>
-                <Awards
-                  {...this.state}
-                  awardName="npr"
-                  changeBookOverview={this.changeBookOverview}
-                  getBooks={this.getBooks}
-                  getAwardBooks={this.getAwardBooks}
-                />
-              }
-            />
-            <Match
-              pattern="/signin"
-              exactly render={() =>
-                <SignIn
-                  {...this.state}
-                />
-              }
-            />
-            <Match
-              pattern="/search"
-              exactly render={() =>
-                <Search
-                  {...this.state}
-                  getBooks={this.getBooks}
-                />
-              }
-            />
-            <Match
-              pattern="/tag"
-              exactly render={() =>
-                <Tag
-                  {...this.state}
-                  setTag={this.setTag}
-                  changeBookOverview={this.changeBookOverview}
-                  getBooks={this.getBooks}
-                />
-              }
-            />
-            <Miss
-              component={NotFound}
-            />
+            <Switch>
+              <Route
+                path="/"
+                exact render={() =>
+                  <Intro
+                    {...this.state}
+                  />
+                }
+              />
+              <Route
+                path="/books"
+                exact render={() =>
+                  <Books
+                    {...this.state}
+                    getBooks={this.getBooks}
+                    getAwardBooks={this.getAwardBooks}
+                    changeBookOverview={this.changeBookOverview}
+                  />
+                }
+              />
+              <Route
+                path="/bookoverview"
+                exact render={() =>
+                  <BookOverview
+                    {...this.state}
+                    setTag={this.setTag}
+                  />
+                }
+              />
+              <Route
+                path="/lists"
+                exact render={() =>
+                  <ListMenu
+                    {...this.state}
+                  />
+                }
+              />
+              <Route
+                path="/nebula"
+                exact render={() =>
+                  <Awards
+                    {...this.state}
+                    awardName="nebula"
+                    changeBookOverview={this.changeBookOverview}
+                    getBooks={this.getBooks}
+                    getAwardBooks={this.getAwardBooks}
+                  />
+                }
+              />
+              <Route
+                path="/npr"
+                exact render={() =>
+                  <Awards
+                    {...this.state}
+                    awardName="npr"
+                    changeBookOverview={this.changeBookOverview}
+                    getBooks={this.getBooks}
+                    getAwardBooks={this.getAwardBooks}
+                  />
+                }
+              />
+              <Route
+                path="/signin"
+                exact render={() =>
+                  <SignIn
+                    {...this.state}
+                  />
+                }
+              />
+              <Route
+                path="/search"
+                exact render={() =>
+                  <Search
+                    {...this.state}
+                    getBooks={this.getBooks}
+                  />
+                }
+              />
+              <Route
+                path="/tag"
+                exact render={() =>
+                  <Tag
+                    {...this.state}
+                    setTag={this.setTag}
+                    changeBookOverview={this.changeBookOverview}
+                    getBooks={this.getBooks}
+                  />
+                }
+              />
+              <Route component={NotFound} />
+            </Switch>
           </main>
         </div>
       </div>
