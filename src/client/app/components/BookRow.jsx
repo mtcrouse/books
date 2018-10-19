@@ -102,8 +102,8 @@ class BookRow extends React.Component {
 
 BookRow.propTypes = {
   book: React.PropTypes.object.isRequired,
-  changeBookOverview: React.PropType.func.isRequired,
-  getBooks: React.PropType.func.isRequired,
+  changeBookOverview: React.PropTypes.func.isRequired,
+  getBooks: React.PropTypes.func.isRequired,
 };
 
 export default BookRow;
