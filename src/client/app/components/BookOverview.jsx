@@ -78,7 +78,8 @@ class BookOverview extends React.Component {
           <div className="six columns">
             <h3 className="cormorant left-align">{this.props.bookOverview.title}</h3>
             <p className="left-align">by {this.props.bookOverview.author} <br />
-            {this.props.bookOverview.publicationYear}</p>
+              {this.props.bookOverview.publicationYear}
+            </p>
           </div>
           <div className="six columns">
             { this.props.bookOverview.googleImage ? (

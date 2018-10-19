@@ -13,7 +13,7 @@ class Tag extends React.Component {
     this.getTags();
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(_nextProps) {
     this.getTags();
   }
 

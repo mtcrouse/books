@@ -82,7 +82,7 @@ class AwardBook extends React.Component {
     if (status === 'read') {
       rowClass = 'tr-completed';
     } else if (status === 'reading') {
-      rowClass= 'tr-in-progress';
+      rowClass = 'tr-in-progress';
     } else if (status === 'to-read') {
       rowClass = 'tr-pending';
     } else {

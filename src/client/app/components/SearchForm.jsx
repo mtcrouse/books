@@ -19,10 +19,6 @@ class SearchForm extends React.Component {
     event.preventDefault();
     this.props.addSearchResults([]);
 
-    const data = { title: this.state.title,
-      author: this.state.author,
-    };
-
     let query = '';
 
     if (this.state.title) {

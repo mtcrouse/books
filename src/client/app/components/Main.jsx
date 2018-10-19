@@ -104,7 +104,7 @@ class Main extends React.Component {
 
   signOut() {
     axios.delete('/token')
-      .then((res) => {
+      .then((_res) => {
         this.setState({
           isLoggedIn: false,
         });

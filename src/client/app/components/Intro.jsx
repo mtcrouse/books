@@ -42,7 +42,7 @@ class Intro extends React.Component {
         { this.props.isLoggedIn === true ? (
           <Redirect to="/search" />
           ) : (
-          <div />
+            <div />
           )
         }
       </div>

@@ -17,25 +17,24 @@ class SignIn extends React.Component {
   doSignIn(event) {
     event.preventDefault();
 
-    let data = { username: this.state.username,
-      password: this.state.password
+    const data = { username: this.state.username,
+      password: this.state.password,
     };
 
     axios.post('/auth/signin', data)
       .then((_res) => {
-        
+
       })
       .catch((err) => {
         console.log(err);
       });
-    return;
   }
 
   createAccount(event) {
     event.preventDefault();
 
-    let data = { username: this.state.username,
-      password: this.state.password
+    const data = { username: this.state.username,
+      password: this.state.password,
     };
 
     axios.post('/auth/newuser', data)
@@ -45,7 +44,6 @@ class SignIn extends React.Component {
       .catch((err) => {
         console.log(err);
       });
-    return;
   }
 
   render() {
