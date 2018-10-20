@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class SignIn extends React.Component {
 
     axios.post('/auth/signin', data)
       .then((_res) => {
-
+        this.props.logInUser();
       })
       .catch((err) => {
         console.log(err);
@@ -39,7 +40,13 @@ class SignIn extends React.Component {
 
     axios.post('/auth/newuser', data)
       .then((_res) => {
-        this.doSignIn();
+        axios.post('/auth/signin', data)
+          .then((_res) => {
+            this.props.logInUser();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         console.log(err);
@@ -65,12 +72,6 @@ class SignIn extends React.Component {
               <button type="submit">Create Account</button>
             </form>
           </div>
-          { this.props.isLoggedIn === true ? (
-            <Redirect to="/search" />
-            ) : (
-              <div />
-            )
-          }
         </div>
       </div>
     );

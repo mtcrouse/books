@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Intro from './Intro';
 import SignIn from './SignIn';
 import Books from './Books';
@@ -30,6 +30,7 @@ class Main extends React.Component {
     this.getAwardBooks = this.getAwardBooks.bind(this);
     this.getCurrentUser = this.getCurrentUser.bind(this);
     this.setTag = this.setTag.bind(this);
+    this.logInUser = this.logInUser.bind(this);
   }
 
   changeBookOverview(book) {
@@ -37,6 +38,22 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
+    axios.get('/token')
+      .then((res) => {
+        const isLoggedIn = res.data;
+        if (isLoggedIn) {
+          this.setState({ isLoggedIn: true });
+          this.getBooks();
+        } else {
+          this.setState({ isLoggedIn: false });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  logInUser() {
     axios.get('/token')
       .then((res) => {
         const isLoggedIn = res.data;
@@ -132,81 +149,114 @@ class Main extends React.Component {
               <Route
                 path="/books"
                 exact render={() =>
-                  <Books
-                    {...this.state}
-                    getBooks={this.getBooks}
-                    getAwardBooks={this.getAwardBooks}
-                    changeBookOverview={this.changeBookOverview}
-                  />
+                  this.state.isLoggedIn === false ? (
+                    <Redirect to="/" />
+                  ) : (
+                    <Books
+                      {...this.state}
+                      getBooks={this.getBooks}
+                      getAwardBooks={this.getAwardBooks}
+                      changeBookOverview={this.changeBookOverview}
+                    />
+                  )
                 }
               />
               <Route
                 path="/bookoverview"
                 exact render={() =>
-                  <BookOverview
-                    {...this.state}
-                    setTag={this.setTag}
-                  />
+                  this.state.isLoggedIn === false ? (
+                    <Redirect to="/" />
+                  ) : (
+                    <BookOverview
+                      {...this.state}
+                      setTag={this.setTag}
+                    />
+                  )
                 }
               />
               <Route
                 path="/lists"
                 exact render={() =>
-                  <ListMenu
-                    {...this.state}
-                  />
+                  this.state.isLoggedIn === false ? (
+                    <Redirect to="/" />
+                  ) : (
+                    <ListMenu
+                      {...this.state}
+                    />
+                  )
                 }
               />
               <Route
                 path="/nebula"
                 exact render={() =>
-                  <Awards
-                    {...this.state}
-                    awardName="nebula"
-                    changeBookOverview={this.changeBookOverview}
-                    getBooks={this.getBooks}
-                    getAwardBooks={this.getAwardBooks}
-                  />
+                  this.state.isLoggedIn === false ? (
+                    <Redirect to="/" />
+                  ) : (
+                    <Awards
+                      {...this.state}
+                      awardName="nebula"
+                      changeBookOverview={this.changeBookOverview}
+                      getBooks={this.getBooks}
+                      getAwardBooks={this.getAwardBooks}
+                    />
+                  )
                 }
               />
               <Route
                 path="/npr"
                 exact render={() =>
-                  <Awards
-                    {...this.state}
-                    awardName="npr"
-                    changeBookOverview={this.changeBookOverview}
-                    getBooks={this.getBooks}
-                    getAwardBooks={this.getAwardBooks}
-                  />
+                  this.state.isLoggedIn === false ? (
+                    <Redirect to="/" />
+                  ) : (
+                    <Awards
+                      {...this.state}
+                      awardName="npr"
+                      changeBookOverview={this.changeBookOverview}
+                      getBooks={this.getBooks}
+                      getAwardBooks={this.getAwardBooks}
+                    />
+                  )
                 }
               />
               <Route
                 path="/signin"
                 exact render={() =>
-                  <SignIn
-                    {...this.state}
-                  />
+                  this.state.isLoggedIn === true ? (
+                    <Redirect to="/search" />
+                  ) : (
+                    <SignIn
+                      {...this.state}
+                      logInUser={this.logInUser}
+                    />
+                  )
                 }
               />
               <Route
                 path="/search"
                 exact render={() =>
-                  <Search
-                    {...this.state}
-                    getBooks={this.getBooks}
-                  />
+                  this.state.isLoggedIn === false ? (
+                    <Redirect to="/" />
+                  ) : (
+                    <Search
+                      {...this.state}
+                      getBooks={this.getBooks}
+                    />
+                  )
                 }
               />
               <Route
                 path="/tag"
                 exact render={() =>
-                  <Tag
-                    {...this.state}
-                    setTag={this.setTag}
-                    changeBookOverview={this.changeBookOverview}
-                    getBooks={this.getBooks}
-                  />
+                  this.state.isLoggedIn === false ? (
+                    <Redirect to="/" />
+                  ) : (
+                    <Tag
+                      {...this.state}
+                      setTag={this.setTag}
+                      changeBookOverview={this.changeBookOverview}
+                      getBooks={this.getBooks}
+                    />
+                  )
                 }
               />
               <Route component={NotFound} />
