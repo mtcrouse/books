@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import toastr from 'toastr';
 import { Redirect } from 'react-router-dom';
 
 class SignIn extends React.Component {
@@ -9,6 +10,10 @@ class SignIn extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.doSignIn = this.doSignIn.bind(this);
     this.createAccount = this.createAccount.bind(this);
+
+    toastr.options = {
+      positionClass: 'toast-bottom-right',
+    };
   }
 
   handleChange(event) {
@@ -27,6 +32,7 @@ class SignIn extends React.Component {
         this.props.logInUser();
       })
       .catch((err) => {
+        toastr.error('There was a problem signing you in.', 'Error');
         console.log(err);
       });
   }
@@ -45,10 +51,12 @@ class SignIn extends React.Component {
             this.props.logInUser();
           })
           .catch((err) => {
+            toastr.error('There was a problem signing you in.', 'Error');
             console.log(err);
           });
       })
       .catch((err) => {
+        toastr.error('There was a problem creating your account.', 'Error');
         console.log(err);
       });
   }
