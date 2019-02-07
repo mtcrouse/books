@@ -35,14 +35,18 @@ router.post('/auth/signin', (req, res, next) => {
     .first()
     .then((row) => {
       if (!row) {
-        return next(boom.create(400, 'Bad username or password'));
+        return next(boom.create(400, 'User not found'));
       }
 
       user = camelizeKeys(row);
 
       return bcrypt.compare(password, user.hashedPassword);
     })
-    .then(() => {
+    .then((correctPassword) => {
+      if (!correctPassword) {
+        return next(boom.create(400, 'Bad password'));
+      }
+
       delete user.hashedPassword;
 
       const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
@@ -90,21 +94,6 @@ router.post('/auth/newuser', (req, res, next) => {
     .catch((err) => {
       next(err);
     });
-
-  // const expiry = new Date(Date.now() + 1000 * 60 * 60 * 24 * 60);
-  // const token = jwt.sign({ userId: 1 }, process.env.JWT_SECRET, {
-  //   expiresIn: '60d'
-  // });
-  //
-  // console.log(token);
-  //
-  // res.cookie('token', token, {
-  //   httpOnly: true,
-  //   expires: expiry,
-  //   secure: router.get('env') === 'production'
-  // });
-  //
-  // res.redirect('/');
 });
 
 module.exports = router;
