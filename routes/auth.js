@@ -10,6 +10,9 @@ const request = require('request-promise');
 
 const router = express.Router();
 
+const ev = require('express-validation');
+const validations = require('../validations/users');
+
 const authorize = function(req, res, next) {
   jwt.verify(req.cookies.token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
@@ -65,7 +68,7 @@ router.post('/auth/signin', (req, res, next) => {
     });
 });
 
-router.post('/auth/newuser', (req, res, next) => {
+router.post('/auth/newuser', ev(validations.post), (req, res, next) => {
   const { username, password } = req.body;
 
   bcrypt.hash(password, 12)

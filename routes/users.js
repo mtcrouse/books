@@ -24,7 +24,7 @@ const authorize = function(req, res, next) {
   });
 };
 
-router.get('/users', /*authorize,*/ (req, res, next) => {
+router.get('/users', authorize, (req, res, next) => {
   knex('users')
     .orderBy('id')
     .then((rows) => {
